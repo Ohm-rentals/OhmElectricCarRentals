@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.manageAccount.ManageAccountsController">
+   <children>
+      <HBox layoutX="4.0" layoutY="3.0" prefHeight="700.0" prefWidth="1000.0">
+         <children>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0">
+               <children>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0">
+                     <children>
+                        <TableView fx:id="accountTable" layoutX="36.0" layoutY="85.0" prefHeight="582.0" prefWidth="429.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Customer ID" />
+                            <TableColumn prefWidth="130.0" text="First Name" />
+                              <TableColumn prefWidth="113.0" text="Last Name" />
+                              <TableColumn prefWidth="110.0" text="PhoneNo" />
+                          </columns>
+                        </TableView>
+                        <Button layoutX="413.0" layoutY="43.0" mnemonicParsing="false" onAction="#searchButton" text="Search" />
+                        <TextField fx:id="searchField" layoutX="153.0" layoutY="43.0" prefHeight="25.0" prefWidth="251.0" />
+                        <ChoiceBox fx:id="idChoice" layoutX="36.0" layoutY="43.0" prefHeight="25.0" prefWidth="109.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0">
+               <children>
+                  <VBox prefHeight="95.0" prefWidth="500.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label text="First Name:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="fNameField" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label text="Last Name:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="lNameField" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label text="DoB:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="dobField" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label fx:id="idLabel" text="Customer ID:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="idField" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label fx:id="ssnLicenseNoLabel" text="Licesens No:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="ssnLicenseNoField" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label text="Phone:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="phoneField" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label text="Country:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="countryField" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="125.0">
+                           <children>
+                              <Label text="City:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="125.0">
+                           <children>
+                              <TextField fx:id="cityField" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="50.0">
+                           <children>
+                              <Label text="Zip:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="125.0">
+                           <children>
+                              <TextField fx:id="zipField" prefHeight="25.0" prefWidth="70.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label text="Email:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="emailField" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
+                           <children>
+                              <Label text="Street:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                           <children>
+                              <TextField fx:id="streetField" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" onAction="#radioAdmin" text="Admin" />
+                        <RadioButton mnemonicParsing="false" onAction="#radioFrontDesk" text="Front Desk" />
+                        <RadioButton mnemonicParsing="false" onAction="#radioCustomer" text="Customer" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#saveButton" text="Save">
+                           <HBox.margin>
+                              <Insets right="25.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#cancelButton" text="Cancel">
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#backButton" text="Back">
+                           <HBox.margin>
+                              <Insets bottom="15.0" right="25.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
