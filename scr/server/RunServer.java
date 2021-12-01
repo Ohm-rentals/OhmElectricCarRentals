@@ -2,6 +2,7 @@ package server;
 
 public class RunServer
 
-    ZXCZXC
-{
+    ZXCZXC]
+
+        asdfasdf{
 }
