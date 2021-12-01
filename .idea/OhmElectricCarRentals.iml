@@ -7,8 +7,9 @@
     </content>
     <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="JavaFx" level="application" />
+    <orderEntry type="library" exported="" name="JavaFx" level="application" />
     <orderEntry type="library" name="JavaFX" level="application" />
     <orderEntry type="library" name="postgresql-42.3.1" level="application" />
+    <orderEntry type="library" name="lib" level="application" />
   </component>
 </module>
