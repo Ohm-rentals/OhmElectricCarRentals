@@ -7,6 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import shared.transferObjects.user.Customer;
+import shared.transferObjects.user.Email;
+import shared.transferObjects.user.Password;
+import shared.transferObjects.user.User;
 
 public class CreateAccountController implements ViewController
 {
@@ -25,10 +29,15 @@ public class CreateAccountController implements ViewController
   @FXML private TextField passwordOneField;
   @FXML private TextField passwordTwoField;
 
+  private ViewHandler viewHandler;
+  private Stage stage;
+
   @Override public void init(ViewHandler viewHandler,
       ViewModelFactory viewModelFactory, Stage stage)
   {
     reset();
+    this.viewHandler=viewHandler;
+    this.stage=stage;
 
   }
 
@@ -39,11 +48,18 @@ public class CreateAccountController implements ViewController
 
   public void createAccountButton(ActionEvent actionEvent)
   {
+    if (!isFieldsEmpty() && passwordCheck())
+    {
+      Email email = new Email(emailField.getText());
+      Password password = new Password(passwordOneField.getText());
+      User user = new Customer(fNameField.getText(),lNameField.getText(),countryField.getText(),cityField.getText(),streetField.getText(),Integer.parseInt(zipField.getText()),Integer.parseInt(phoneField.getText()),password,email,Integer.parseInt(licenseNoField.getText()));
+    }
 
   }
 
   public void cancelButton(ActionEvent actionEvent)
   {
+    stage.close();
   }
 
   private boolean isFieldsEmpty()
@@ -73,5 +89,10 @@ public class CreateAccountController implements ViewController
     streetField.clear();
     passwordOneField.clear();
     passwordTwoField.clear();
+  }
+
+  private boolean passwordCheck()
+  {
+    return passwordOneField.equals(passwordTwoField);
   }
 }
