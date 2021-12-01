@@ -9,12 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.createAccount.CreateAccountController">
+<AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.createAccount.CreateAccountController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0">
          <children>
-            <VBox prefHeight="51.0" prefWidth="500.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -22,6 +21,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -32,7 +34,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -40,6 +42,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -50,7 +55,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -58,17 +63,22 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                  <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0" spacing="7.0">
                      <children>
-                        <TextField fx:id="dobField" />
+                        <TextField fx:id="dobDayField" prefHeight="25.0" prefWidth="35.0" promptText="dd" />
+                        <TextField fx:id="dobMonthField" prefHeight="25.0" prefWidth="35.0" promptText="mm" />
+                        <TextField fx:id="dobYearField" prefHeight="25.0" prefWidth="65.0" promptText="yyyy" />
                      </children>
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -76,6 +86,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -86,7 +99,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -94,6 +107,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -104,7 +120,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -112,6 +128,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -122,7 +141,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="125.0">
                      <children>
@@ -130,6 +149,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -144,6 +166,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -154,7 +179,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -162,6 +187,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -172,7 +200,7 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
                <children>
                   <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                      <children>
@@ -180,6 +208,9 @@
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
@@ -190,7 +221,49 @@
                   </HBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="70.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefWidth="220.0">
+                     <children>
+                        <Label text="Password:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="passwordOneField" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefWidth="220.0">
+                     <children>
+                        <Label text="Repeat Password:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="passwordTwoField" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#createAccountButton" text="Create Account">
                      <HBox.margin>

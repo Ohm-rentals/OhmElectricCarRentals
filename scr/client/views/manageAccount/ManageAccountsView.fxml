@@ -47,6 +47,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -65,6 +68,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -83,12 +89,17 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
+                        <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0" spacing="7.0">
                            <children>
-                              <TextField fx:id="dobField" />
+                              <TextField fx:id="dobDayField" prefHeight="25.0" prefWidth="35.0" />
+                              <TextField fx:id="dobMonthField" prefHeight="25.0" prefWidth="35.0" />
+                              <TextField fx:id="dobYearField" prefHeight="25.0" prefWidth="65.0" />
                            </children>
                         </HBox>
                      </children>
@@ -101,12 +112,19 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" minWidth="-Infinity" prefWidth="250.0">
                            <children>
-                              <TextField fx:id="idField" prefWidth="150.0" />
+                              <Label fx:id="gottenIdLabel" text="ID Label">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
                      </children>
@@ -115,10 +133,13 @@
                      <children>
                         <HBox alignment="CENTER_RIGHT" minWidth="-Infinity" prefWidth="220.0">
                            <children>
-                              <Label fx:id="ssnLicenseNoLabel" text="Licesens No:">
+                              <Label fx:id="ssnLicenseNoLabel" text="License No:">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -137,6 +158,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -155,6 +179,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -173,6 +200,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -187,6 +217,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -205,6 +238,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
@@ -223,6 +259,9 @@
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
