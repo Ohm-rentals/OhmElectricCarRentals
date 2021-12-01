@@ -1,4 +1,4 @@
-package client.views.createAccount;
+package client.views.createAccountView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
@@ -32,20 +32,22 @@ public class CreateAccountController implements ViewController
   private ViewHandler viewHandler;
   private Stage stage;
 
-  @Override public void init(ViewHandler viewHandler,
-      ViewModelFactory viewModelFactory, Stage stage)
+
+  @Override public void init()
   {
-    reset();
-    this.viewHandler=viewHandler;
-    this.stage=stage;
+    //reset();
+   // this.viewHandler=viewHandler;
+  //  this.stage=stage;
 
   }
-
+/*
   @Override public void reset()
   {
     clearFields();
   }
 
+
+ */
   public void createAccountButton(ActionEvent actionEvent)
   {
     if (!isFieldsEmpty() && passwordCheck())

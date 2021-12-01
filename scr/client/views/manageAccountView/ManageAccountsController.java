@@ -1,4 +1,4 @@
-package client.views.manageAccount;
+package client.views.manageAccountView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
@@ -32,14 +32,14 @@ public class ManageAccountsController implements ViewController
   @FXML private TextField streetField;
   
 
-  @Override public void init(ViewHandler viewHandler,
-      ViewModelFactory viewModelFactory, Stage stage)
+  @Override public void init()
   {
 
 
 
   }
 
+  /*
   @Override public void reset()
   {
     clearFields();
@@ -48,6 +48,8 @@ public class ManageAccountsController implements ViewController
     gottenIdLabel.setText("");
   }
 
+
+   */
   public void searchButton(ActionEvent actionEvent)
   {
   }
