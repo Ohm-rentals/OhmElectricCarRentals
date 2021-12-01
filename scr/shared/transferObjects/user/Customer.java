@@ -1,8 +1,9 @@
 package shared.transferObjects.user;
 
+import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Customer extends User
+public class Customer extends User implements Serializable
 {
   private int driverLicenseNo, customerId;
 
