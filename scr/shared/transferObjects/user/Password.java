@@ -1,6 +1,8 @@
 package shared.transferObjects.user;
 
-public class Password
+import java.io.Serializable;
+
+public class Password implements Serializable
 {
   private String password;
 
@@ -8,4 +10,19 @@ public class Password
   {
     this.password = password;
   }
+
+
+  public boolean isValid()
+  {
+    boolean hasDigits = false;
+    for (char c : password.toCharArray())
+    {
+      if (Character.isDigit(c))
+      {
+        hasDigits = true;
+      }
+    }
+    return password.length()>7 && hasDigits;
+  }
 }
+
