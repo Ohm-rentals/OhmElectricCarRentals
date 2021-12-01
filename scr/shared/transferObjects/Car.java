@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Car implements Serializable
 {
-  private String make, model, licenseNumber, type;
+  private String make, model, licenseNumber, type, licenseNo;
   private int year, seats, range, km;
   private double price;
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km)
+      int range, int km, String licenseNo)
   {
     this.make = make;
     this.model = model;
@@ -18,6 +18,7 @@ public class Car implements Serializable
     this.type = type;
     this.range = range;
     this.km = km;
+    this.licenseNo=licenseNo;
   }
 
   public String getMake()
@@ -108,5 +109,15 @@ public class Car implements Serializable
   public void setPrice(double price)
   {
     this.price = price;
+  }
+
+  public String getLicenseNo()
+  {
+    return licenseNo;
+  }
+
+  public void setLicenseNo(String licenseNo)
+  {
+    this.licenseNo = licenseNo;
   }
 }
