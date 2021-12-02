@@ -1,6 +1,6 @@
 package server.DataAccess;
 
-public interface UsersData
+/*public interface UsersData
 {
   void storeUser(User user);
   void updateUser(String mail, User newUser);
@@ -8,4 +8,4 @@ public interface UsersData
   void deleteUser(User identity);
   List<User> getUserList();
   boolean existUser(String mail);
-}
+}*/
