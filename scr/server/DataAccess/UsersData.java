@@ -8,4 +8,5 @@ package server.DataAccess;
   void deleteUser(User identity);
   List<User> getUserList();
   boolean existUser(String mail);
+  test
 }*/
