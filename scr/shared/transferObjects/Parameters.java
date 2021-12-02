@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Parameters implements Serializable
 {
-  private String make, model, licenseNumber, type, licenseNo;
+  private String make, model, licenseNumber, type, licenseNo, pickUpPoint;
   private int year, seats, range, km;
   private double price;
 
   public Parameters(String make, String model, int year, double price, String type,
-      int range)
+      int range, String pickUpPoint)
   {
     this.make = make;
     this.model = model;
@@ -53,5 +53,6 @@ public class Parameters implements Serializable
     return price;
   }
 
+  public String getPickUpPoint() { return pickUpPoint; }
 
 }

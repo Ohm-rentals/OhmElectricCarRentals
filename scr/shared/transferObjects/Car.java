@@ -5,14 +5,14 @@ import java.util.regex.Pattern;
 
 public class Car implements Serializable
 {
-  private String make, model, licenseNumber, type;
+  private String make, model, licenseNumber, type, pickUpPoint;
   private LicenseNumber licenseNo;
   private int year, seats, range, km;
   private double price;
   private CarID id;
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km, LicenseNumber licenseNo)
+      int range, int km, String pickUpPoint, LicenseNumber licenseNo)
   {
     this.make = make;
     this.model = model;
@@ -21,6 +21,7 @@ public class Car implements Serializable
     this.type = type;
     this.range = range;
     this.km = km;
+    this.pickUpPoint = pickUpPoint;
     this.licenseNo = licenseNo;
     id = new CarID();
 
@@ -116,19 +117,23 @@ public class Car implements Serializable
     this.price = price;
   }
 
-  public LicenseNumber getLicenseNo()
-  {
-    return licenseNo;
-  }
-
   public CarID getId()
   {
     return id;
   }
 
+  public void setPickUpPoint(String pickUpPoint) { this.pickUpPoint = pickUpPoint; }
+
+  public String getPickUpPoint() { return pickUpPoint; }
+
   public void setLicenseNo(String licenseNo)
   {
     this.licenseNo = new LicenseNumber(licenseNo);
+  }
+
+  public LicenseNumber getLicenseNo()
+  {
+    return licenseNo;
   }
 
   @Override public String toString()
