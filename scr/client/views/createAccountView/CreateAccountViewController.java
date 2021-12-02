@@ -37,6 +37,7 @@ public class CreateAccountViewController implements ViewController {
     public void init() {
         createAccountViewModel = new CreateAccountViewModel(); //Change this
         firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
+        createAccountViewModel.DOBProperty().bind(DOBDatePicker.styleProperty());
       /*
         lastNameTextField.textProperty().bindBidirectional(createAccountViewModel.());
         firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
