@@ -1,14 +1,16 @@
-package server.database;
+package server.DataAccess;
 
 import shared.transferObjects.user.User;
 
 import java.util.List;
 
-public class DataBaseUsersHandler implements UsersData
+/*public class DataBaseUsersHandler implements UsersData
 {
+  DataBaseAccess dataBaseAccess = new DataBaseAccess();
 
   @Override public void storeUser(User user)
   {
+    String sql
   }
 
   @Override public void updateUser(String mail, User newUser)
@@ -35,4 +37,4 @@ public class DataBaseUsersHandler implements UsersData
   {
 
   }
-}
+}*/
