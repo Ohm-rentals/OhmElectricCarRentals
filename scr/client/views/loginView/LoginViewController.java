@@ -13,7 +13,7 @@ public class LoginViewController implements ViewController {
     @FXML TextField textFieldEmail;
     @FXML TextField textFieldPassword;
 
-    private Window window;
+
 
     @Override
     public void init() {
@@ -22,11 +22,12 @@ public class LoginViewController implements ViewController {
     }
 
     public void onClose(MouseEvent mouseEvent) {
-        window = textFieldEmail.getScene().getWindow();
+        Window window = textFieldEmail.getScene().getWindow();
         window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
     public void onCreateAccount(MouseEvent mouseEvent) {
+
     }
 
     public void login(MouseEvent mouseEvent) {

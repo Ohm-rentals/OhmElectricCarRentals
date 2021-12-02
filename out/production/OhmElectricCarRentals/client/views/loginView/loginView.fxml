@@ -12,7 +12,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" spacing="10.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.loginView.LoginViewController">
    <children>
-      <HBox alignment="CENTER_RIGHT" prefHeight="29.0" prefWidth="400.0">
+      <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="400.0">
          <children>
             <ImageView fitHeight="17.0" fitWidth="18.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -30,7 +30,7 @@
             <Insets right="7.0" top="7.0" />
          </padding>
       </HBox>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Log In">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="LOG IN">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
@@ -84,7 +84,7 @@
             <Insets bottom="30.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" onMouseClicked="#login" prefHeight="30.0" prefWidth="200.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#login" prefHeight="30.0" prefWidth="200.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets left="110.0" right="110.0" />
          </VBox.margin>
