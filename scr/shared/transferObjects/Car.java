@@ -1,7 +1,8 @@
 package shared.transferObjects;
 
+import maybeFolder.CarID;
+
 import java.io.Serializable;
-import java.util.regex.Pattern;
 
 public class Car implements Serializable
 {
@@ -9,7 +10,7 @@ public class Car implements Serializable
   private LicenseNumber licenseNo;
   private int year, seats, range, km;
   private double price;
-  private CarID id;
+  private String id;
 
   public Car(String make, String model, int year, double price, String type,
       int range, int km, LicenseNumber licenseNo)
@@ -22,9 +23,23 @@ public class Car implements Serializable
     this.range = range;
     this.km = km;
     this.licenseNo = licenseNo;
-    id = new CarID();
 
   }
+
+  public Car(String make, String model, int year, double price, String type,
+      int range, int km, LicenseNumber licenseNo, String  id)
+  {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.price = price;
+    this.type = type;
+    this.range = range;
+    this.km = km;
+    this.licenseNo = licenseNo;
+    this.id=id;
+  }
+
 
   public String getMake()
   {
@@ -121,7 +136,7 @@ public class Car implements Serializable
     return licenseNo;
   }
 
-  public CarID getId()
+  public String getId()
   {
     return id;
   }

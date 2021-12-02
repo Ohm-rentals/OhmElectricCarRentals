@@ -1,5 +1,6 @@
 package shared.transferObjects;
 
+import maybeFolder.ReservationID;
 import shared.transferObjects.user.Customer;
 
 import java.io.Serializable;
@@ -9,7 +10,7 @@ public class Reservation implements Serializable
   private Date start, end;
   private Car car;
   private Customer customer;
-  private ReservationID id;
+  private String id;
 
   public Reservation(Date start, Date end, Customer customer, Car car)
   {
@@ -17,10 +18,27 @@ public class Reservation implements Serializable
     this.end = end;
     this.customer = customer;
     this.car = car;
-    id= new ReservationID();
 
-    if(!Date.isBefore(start,end)){
-      throw new IllegalArgumentException("End date cannot be be before the start");
+    if (!Date.isBefore(start, end))
+    {
+      throw new IllegalArgumentException(
+          "End date cannot be be before the start");
+    }
+  }
+
+  public Reservation(Date start, Date end, Customer customer, Car car,
+      String id)
+  {
+    this.start = start;
+    this.end = end;
+    this.customer = customer;
+    this.car = car;
+    this.id = id;
+
+    if (!Date.isBefore(start, end))
+    {
+      throw new IllegalArgumentException(
+          "End date cannot be be before the start");
     }
   }
 
@@ -64,12 +82,19 @@ public class Reservation implements Serializable
     this.customer = customer;
   }
 
-  public ReservationID getId()
+  public String  getId()
   {
     return id;
   }
 
-  public double calculateTotal(){
-    return car.getPrice()*Date.calculateDateRange(start, end);
+  public double calculateTotal()
+  {
+    return car.getPrice() * Date.calculateDateRange(start, end);
+  }
+
+  @Override public String toString()
+  {
+    return "Reservation{" + "start=" + start + ", end=" + end + ", car=" + car
+        + ", customer=" + customer + ", id='" + id + '\'' + '}';
   }
 }
