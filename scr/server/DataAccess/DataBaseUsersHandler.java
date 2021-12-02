@@ -4,7 +4,7 @@ import shared.transferObjects.user.User;
 
 import java.util.List;
 
-public class DataBaseUsersHandler implements UsersData
+/*public class DataBaseUsersHandler implements UsersData
 {
   DataBaseAccess dataBaseAccess = new DataBaseAccess();
 
@@ -37,4 +37,5 @@ public class DataBaseUsersHandler implements UsersData
   {
 
   }
-}
+  test
+}*/
