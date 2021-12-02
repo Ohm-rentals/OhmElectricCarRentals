@@ -4,27 +4,27 @@ public class LoginUser
 {
   private Email email;
   private Password password;
-  private UserType userType;
+  private LoginType loginType;
 
-  public LoginUser(Email email, Password password, UserType userType)
+  public LoginUser(Email email, Password password, LoginType loginType)
   {
     this.email = email;
     this.password = password;
-    this.userType = userType;
+    this.loginType = loginType;
   }
 
-  public Email getEmail()
+  public String getEmail()
   {
-    return email;
+    return email.getEmail();
   }
 
-  public Password getPassword()
+  public String getPassword()
   {
-    return password;
+    return password.getPassword();
   }
 
-  public UserType getUserType()
+  public LoginType getUserType()
   {
-    return userType;
+    return loginType;
   }
 }

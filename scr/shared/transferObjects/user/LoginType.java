@@ -1,6 +1,6 @@
 package shared.transferObjects.user;
 
-public enum UserType
+public enum LoginType
 {
   CUSTOMER,
   ADMIN,

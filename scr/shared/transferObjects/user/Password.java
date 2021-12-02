@@ -16,6 +16,11 @@ public class Password implements Serializable
       throw new IllegalArgumentException("password is not valid");
   }
 
+  public String getPassword()
+  {
+    return password;
+  }
+
   public boolean isValid(String password)
   {
     boolean hasDigits = false;
@@ -29,5 +34,17 @@ public class Password implements Serializable
     return password.length() > 7 && hasDigits;
   }
 
+  public boolean equals(Object obj)
+  {
+    if (!(obj instanceof Password))
+    {
+      return false;
+    }
+    else
+    {
+      Password other = (Password) obj;
+      return password.equals(other.password);
+    }
+  }
 }
 

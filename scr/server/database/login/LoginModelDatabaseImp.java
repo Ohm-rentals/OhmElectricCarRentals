@@ -2,7 +2,7 @@ package server.database.login;
 
 import server.database.DatabaseConnector;
 import shared.transferObjects.user.LoginUser;
-import shared.transferObjects.user.UserType;
+import shared.transferObjects.user.LoginType;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ import java.sql.Statement;
 public class LoginModelDatabaseImp implements LoginModelDatabase
 {
 
-  @Override public UserType login(LoginUser user)
+  @Override public LoginType login(LoginUser user)
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection())
@@ -37,6 +37,6 @@ public class LoginModelDatabaseImp implements LoginModelDatabase
     {
       e.printStackTrace();
     }
-    return UserType.NO_ACCESS;
+    return LoginType.NO_ACCESS;
   }
 }
