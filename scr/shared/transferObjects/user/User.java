@@ -1,6 +1,6 @@
 package shared.transferObjects.user;
 
-public class User
+public abstract class User
 {
   private String fName, lName, country, city, street;
   private int zip, phoneNo;

@@ -7,6 +7,7 @@ public class Car implements Serializable
   private String make, model, licenseNumber, type, licenseNo;
   private int year, seats, range, km;
   private double price;
+  private CarID id;
 
   public Car(String make, String model, int year, double price, String type,
       int range, int km, String licenseNo)
@@ -19,6 +20,7 @@ public class Car implements Serializable
     this.range = range;
     this.km = km;
     this.licenseNo=licenseNo;
+    id=new CarID();
   }
 
   public String getMake()
@@ -114,6 +116,11 @@ public class Car implements Serializable
   public String getLicenseNo()
   {
     return licenseNo;
+  }
+
+  public CarID getId()
+  {
+    return id;
   }
 
   public void setLicenseNo(String licenseNo)
