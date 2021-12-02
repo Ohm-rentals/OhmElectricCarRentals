@@ -18,9 +18,10 @@ public class MainOhm extends Application {
         //loader.setLocation(getClass().getResource("/client/views/catalogView/catalogView.fxml"));
        // loader.setLocation(getClass().getResource("/client/views/searchView/searchView.fxml"));
 
-       loader.setLocation(getClass().getResource("/client/views/loginView/loginView.fxml"));
+      // loader.setLocation(getClass().getResource("/client/views/loginView/loginView.fxml"));
 
        // loader.setLocation(getClass().getResource("/client/views/createAccountView/createAccountView.fxml"));
+         loader.setLocation(getClass().getResource("/client/views/manageCarsView/manageCarsView.fxml"));
         Parent root = null;
         root = loader.load();
         Scene scene = new Scene(root);
