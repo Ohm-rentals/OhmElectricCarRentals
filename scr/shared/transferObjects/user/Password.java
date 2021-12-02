@@ -9,6 +9,9 @@ public class Password implements Serializable
   public Password(String password)
   {
     this.password = password;
+    if(!isValid()){
+      throw  new IllegalArgumentException("password is not valid");
+    }
   }
 
 
