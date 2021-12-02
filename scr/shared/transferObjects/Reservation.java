@@ -18,6 +18,10 @@ public class Reservation implements Serializable
     this.customer = customer;
     this.car = car;
     id= new ReservationID();
+
+    if(!Date.isBefore(start,end)){
+      throw new IllegalArgumentException("End date cannot be be before the start");
+    }
   }
 
   public Date getStart()
