@@ -140,7 +140,15 @@ public class Date
       }
     }
   }
-
+  public static int calculateDateRange(Date start, Date end){
+    int count=0;
+    Date startTemp= start.copy();
+    while (startTemp.equals(end)){
+      start.nextDay();
+      count++;
+    }
+    return count;
+  }
   public String toString()
   {
     return String.format("%02d/%02d/%04d", day, month, year);
