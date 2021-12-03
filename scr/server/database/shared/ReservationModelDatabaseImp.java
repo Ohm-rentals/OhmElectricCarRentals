@@ -108,10 +108,13 @@ public class ReservationModelDatabaseImp implements ReservationModelDatabase
 
   @Override public void updateReservation(Reservation reservation)
   {
-    try (Connection connection = DatabaseConnector.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE reservation SET startTime = ?, endTime = ?, km_start = ?, km_end = ?, customer_id = ?, car_id = ?"))
+    try (Connection connection = DatabaseConnector.getInstance()
+        .getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+            "UPDATE reservation SET startTime = ?, endTime = ?, km_start = ?, km_end = ?, customer_id = ?, car_id = ? WHERE reservation_id = ?"))
     {
-      reservationPreparedStatement(preparedStatement,reservation);
+      reservationPreparedStatement(preparedStatement, reservation);
+      preparedStatement.setString(7,reservation.getReservationId());
       preparedStatement.execute();
     }
     catch (SQLException e)
@@ -122,10 +125,12 @@ public class ReservationModelDatabaseImp implements ReservationModelDatabase
 
   @Override public void createReservation(Reservation reservation)
   {
-    try (Connection connection = DatabaseConnector.getInstance().getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO reservation (startTime, endTime, km_start, km_end, customer_id, car_id) VALUES (?,?,?,?,?,?"))
+    try (Connection connection = DatabaseConnector.getInstance()
+        .getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+            "INSERT INTO reservation (startTime, endTime, km_start, km_end, customer_id, car_id) VALUES (?,?,?,?,?,?)"))
     {
-      reservationPreparedStatement(preparedStatement,reservation);
+      reservationPreparedStatement(preparedStatement, reservation);
       preparedStatement.execute();
     }
     catch (SQLException e)

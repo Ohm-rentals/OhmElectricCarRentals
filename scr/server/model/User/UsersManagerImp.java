@@ -1,4 +1,4 @@
-package server.model.User;
+package server.model.user;
 
 import server.DataAccess.FileForTestDataBaseUSERS_Part;
 import server.DataAccess.UsersData;
