@@ -25,9 +25,9 @@ public class LoginModelDatabaseImp implements LoginModelDatabase
       ResultSet resultSet = statement.executeQuery(query);
 
       resultSet.next();
-      String dBPassword = resultSet.getString("Password");
+      String dbPassword = resultSet.getString("Password");
 
-      if (dBPassword.equals(user.getPassword()))
+      if (dbPassword.equals(user.getPassword()))
       {
         return user.getUserType();
       }
