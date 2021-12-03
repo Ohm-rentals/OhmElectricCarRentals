@@ -1,6 +1,5 @@
 package shared.transferObjects.user;
 
-import maybeFolder.AdminID;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
