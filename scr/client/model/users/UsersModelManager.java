@@ -1,13 +1,12 @@
-package client.model;
+package client.model.users;
 
 
+import client.model.personal.Personal;
 import client.networking.User.UsersClient;
-import com.sun.javafx.geom.transform.Identity;
 import shared.transferObjects.user.Email;
 import shared.transferObjects.user.Password;
 import shared.transferObjects.user.User;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -30,9 +29,12 @@ public class UsersModelManager implements UsersModel {
         if (identity == null) {
             support.firePropertyChange("LOGIN_ERROR", null, null);
         } else {
+            Personal personal = Personal.getPersonal();
+            personal.setIdentity(identity);
+            System.out.println(personal.getIdentity() + "My Iden");
+            System.out.println(personal.getStatus());
             support.firePropertyChange("LOGIN_SUCCESS", null, identity);
         }
-
     }
 
 

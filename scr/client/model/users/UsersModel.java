@@ -1,4 +1,4 @@
-package client.model;
+package client.model.users;
 
 import shared.transferObjects.user.Email;
 import shared.transferObjects.user.Password;
