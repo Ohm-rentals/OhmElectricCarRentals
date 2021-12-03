@@ -1,22 +1,35 @@
 package shared.transferObjects.user;
 
 import maybeFolder.AdminID;
+import shared.transferObjects.Address;
 
 import java.io.Serializable;
 
 public class Admin extends User implements Serializable
 {
-  private AdminID id;
-  public Admin(String fName, String lName, String country, String city,
-      String street, int zip, int phoneNo, Password password, Email email)
-  {
-    super(fName, lName, country, city, street, zip, phoneNo, password, email);
+  private String id;
 
-    id=new AdminID();
+  public Admin(String fName, String lName, Address address, int phoneNo,
+      Password password, Email email, String id)
+  {
+    super(fName, lName, address, phoneNo, password, email);
+    this.id = id;
   }
 
-  public AdminID getId()
+  public Admin(String fName, String lName, Address address, int phoneNo,
+      Password password, Email email)
+  {
+    super(fName, lName, address, phoneNo, password, email);
+
+  }
+
+  public String getId()
   {
     return id;
+  }
+
+  @Override public String toString()
+  {
+    return "Admin{" + "id='" + id + '\'' + '}';
   }
 }

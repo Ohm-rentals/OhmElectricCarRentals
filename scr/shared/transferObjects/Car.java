@@ -9,9 +9,10 @@ public class Car implements Serializable
   private int year, seats, range, km;
   private double price;
   private String id;
+  private Address pickupPoint;
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km, LicenseNumber licenseNo)
+      int range, int km, Address pickupPoint, LicenseNumber licenseNo)
   {
     this.make = make;
     this.model = model;
@@ -20,12 +21,13 @@ public class Car implements Serializable
     this.type = type;
     this.range = range;
     this.km = km;
+    this.pickupPoint=pickupPoint;
     this.licenseNo = licenseNo;
 
   }
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km, LicenseNumber licenseNo, String  id)
+      int range, int km,Address pickupPoint, LicenseNumber licenseNo, String  id)
   {
     this.make = make;
     this.model = model;
@@ -34,6 +36,7 @@ public class Car implements Serializable
     this.type = type;
     this.range = range;
     this.km = km;
+    this.pickupPoint=pickupPoint;
     this.licenseNo = licenseNo;
     this.id=id;
   }
@@ -142,6 +145,16 @@ public class Car implements Serializable
   public void setLicenseNo(String licenseNo)
   {
     this.licenseNo = new LicenseNumber(licenseNo);
+  }
+
+  public void setPickupPoint(Address pickupPoint)
+  {
+    this.pickupPoint = pickupPoint;
+  }
+
+  public Address getPickupPoint()
+  {
+    return pickupPoint;
   }
 
   @Override public String toString()

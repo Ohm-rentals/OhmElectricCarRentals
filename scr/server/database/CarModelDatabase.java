@@ -6,7 +6,7 @@ import shared.transferObjects.Parameters;
 
 import java.util.List;
 
-public interface CarsData
+public interface CarModelDatabase
 {
   void storeCar(Car car);
   void updateCar(String carId, Car car);
