@@ -13,7 +13,7 @@ public class UsersManagerImp implements UsersManager {
 
     @Override
     public void login(Email email, Password password) {
-
+        usersData.login(email, password);
     }
 
     @Override

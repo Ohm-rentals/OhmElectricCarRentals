@@ -29,8 +29,6 @@ public class FileForTestDataBaseUSERS_Part implements UsersData{
 
     }
 
-
-
     @Override
     public void deleteUser(User identity) {
         System.out.println("I deleted this madafaka.." + identity);

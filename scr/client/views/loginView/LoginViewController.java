@@ -4,6 +4,7 @@ import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.views.ViewController;
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -13,7 +14,7 @@ import javafx.stage.WindowEvent;
 
 public class LoginViewController implements ViewController {
     @FXML TextField textFieldEmail;
-    @FXML TextField textFieldPassword;
+    @FXML PasswordField passwordFieldPassword;
 
     private ViewHandler viewHandler;
     private LoginViewModel loginViewModel;
@@ -37,7 +38,7 @@ public class LoginViewController implements ViewController {
     }
 
     public void login(MouseEvent mouseEvent) {
-        loginViewModel.login(textFieldEmail.getText(), textFieldPassword.getText());
+        loginViewModel.login(textFieldEmail.getText(), passwordFieldPassword.getText());
     }
 
     public void requestPassword(MouseEvent mouseEvent) {
