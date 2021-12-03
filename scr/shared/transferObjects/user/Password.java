@@ -8,12 +8,12 @@ public class Password implements Serializable
 
   public Password(String password)
   {
-    if (isValid(password))
-    {
+   // if (isValid(password))
+   // {
       this.password = password;
-    }
-    else
-      throw new IllegalArgumentException("password is not valid");
+   // }
+   // else
+     // throw new IllegalArgumentException("password is not valid");
   }
 
   public String getPassword()

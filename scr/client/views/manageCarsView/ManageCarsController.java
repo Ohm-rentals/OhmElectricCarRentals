@@ -1,5 +1,7 @@
 package client.views.manageCarsView;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
 import client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -16,7 +18,7 @@ public class ManageCarsController implements ViewController {
     @FXML private ImageView threeImageView;
 
     @Override
-    public void init() {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
         statusComboBox.getItems().addAll("Available","Service", "Cleaning", "Unavailable");
     }
 

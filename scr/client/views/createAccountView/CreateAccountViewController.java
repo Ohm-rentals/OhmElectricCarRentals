@@ -1,5 +1,7 @@
 package client.views.createAccountView;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
 import client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -34,7 +36,7 @@ public class CreateAccountViewController implements ViewController {
     CreateAccountViewModel createAccountViewModel;
 
     @Override
-    public void init() {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
         createAccountViewModel = new CreateAccountViewModel(); //Change this
         firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
         createAccountViewModel.DOBProperty().bind(DOBDatePicker.styleProperty());

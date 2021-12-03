@@ -1,5 +1,7 @@
 package client.views.catalogView;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
 import client.views.ViewController;
 import client.views.extraObjectsView.carAd.CarController;
 import javafx.fxml.FXML;
@@ -36,7 +38,7 @@ public class CatalogViewController implements ViewController {
     private ArrayList<String> list = new ArrayList<>();
 
     @Override
-    public void init() {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
         brandFlowPane.getChildren().add(checkBox);
         kindFlowPane.getChildren().add(checkBox2);
 

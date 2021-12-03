@@ -1,5 +1,6 @@
 package client.views.manageAccountView;
 
+
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.views.ViewController;
@@ -30,12 +31,9 @@ public class ManageAccountsController implements ViewController
   @FXML private TextField zipField;
   @FXML private TextField emailField;
   @FXML private TextField streetField;
-  
-
-  @Override public void init()
-  {
 
 
+  public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
 
   }
 

@@ -1,12 +1,16 @@
 package server.DataAccess;
 
-/*public interface UsersData
-{
+import shared.transferObjects.user.Email;
+import shared.transferObjects.user.Password;
+import shared.transferObjects.user.User;
+
+import java.util.List;
+
+public interface UsersData {
+  User login(Email email, Password password);
   void storeUser(User user);
   void updateUser(String mail, User newUser);
-  User validateUser(String mail, String password);
   void deleteUser(User identity);
   List<User> getUserList();
   boolean existUser(String mail);
-  test
-}*/
+}

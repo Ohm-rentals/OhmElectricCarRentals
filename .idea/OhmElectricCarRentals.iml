@@ -8,8 +8,20 @@
     </content>
     <orderEntry type="jdk" jdkName="17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="postgresql-42.3.1" level="project" />
-    <orderEntry type="library" name="lib" level="application" />
-    <orderEntry type="library" name="JavaFXlib17Global" level="application" />
+    <orderEntry type="library" name="postgresql-42.3.1" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib/javafx-sdk-11.0.2/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/lib/javafx-sdk-11.0.2/lib" />
+        </SOURCES>
+        <jarDirectory url="file://$MODULE_DIR$/lib/javafx-sdk-11.0.2/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/lib/javafx-sdk-11.0.2/lib" recursive="false" type="SOURCES" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="JavaFX" level="application" />
   </component>
 </module>

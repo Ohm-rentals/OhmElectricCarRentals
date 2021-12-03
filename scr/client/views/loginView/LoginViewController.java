@@ -1,5 +1,7 @@
 package client.views.loginView;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
 import client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -13,10 +15,14 @@ public class LoginViewController implements ViewController {
     @FXML TextField textFieldEmail;
     @FXML TextField textFieldPassword;
 
+    private ViewHandler viewHandler;
+    private LoginViewModel loginViewModel;
+
 
 
     @Override
-    public void init() {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
+        this.loginViewModel = viewModelFactory.getLoginViewModel();
      //   ((Stage) textFieldEmail.getScene().getWindow()).initStyle(StageStyle.UNDECORATED);
 
     }
@@ -27,12 +33,14 @@ public class LoginViewController implements ViewController {
     }
 
     public void onCreateAccount(MouseEvent mouseEvent) {
-
+        viewHandler.openCreateAccountView();
     }
 
     public void login(MouseEvent mouseEvent) {
+        loginViewModel.login(textFieldEmail.getText(), textFieldPassword.getText());
     }
 
     public void requestPassword(MouseEvent mouseEvent) {
+
     }
 }

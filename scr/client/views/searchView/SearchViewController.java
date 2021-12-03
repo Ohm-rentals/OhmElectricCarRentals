@@ -1,5 +1,7 @@
 package client.views.searchView;
 
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
 import client.views.ViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +22,7 @@ public class SearchViewController implements ViewController {
     private SearchViewModel searchViewModel = new SearchViewModel(); // to create in the factory
 
     @Override
-    public void init() {
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
         rangeComboBox.getItems().setAll("0...1,000 DKK", "1,000...3,000 DKK", "3,000...5,000 DKK", "> 5,000 DKK");
         locationComboBox.getItems().setAll("Horsens", "Aarhus", "Kobenhavn", "Odense");
 

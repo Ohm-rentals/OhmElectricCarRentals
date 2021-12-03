@@ -5,6 +5,6 @@ import client.core.ViewModelFactory;
 import javafx.stage.Stage;
 
 public interface ViewController {
-  void init();
+  void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory);
  // void reset();
 }
