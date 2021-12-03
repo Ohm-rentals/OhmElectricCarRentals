@@ -10,6 +10,6 @@ public interface ReservationModelDatabase
   Reservation getReservationByReservationID(String reservationId);
   ArrayList<Reservation> getAllCustomerReservations(String customerId);
   void deleteReservation(String reservationId);
-  void updateReservation(String reservationId);
-  void createReservation();
+  void updateReservation(Reservation reservation);
+  void createReservation(Reservation reservation);
 }

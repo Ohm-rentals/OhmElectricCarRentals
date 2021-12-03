@@ -1,19 +1,19 @@
 package shared.transferObjects;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 public class Reservation implements Serializable
 {
-  private LocalDateTime start, end;
+  private Timestamp start, end;
 
   private String reservationId, customerId, carId;
   private int kmStart, kmEnd;
 
-  public Reservation(LocalDateTime start, LocalDateTime end, int kmStart,
+  public Reservation(Timestamp start, Timestamp end, int kmStart,
       int kmEnd, String customerId, String carId)
   {
-    if (start.isBefore(end) && kmStart < kmEnd)
+    if (start.before(end) && kmStart < kmEnd)
     {
       this.kmStart= kmStart;
       this.kmEnd = kmEnd;
@@ -26,10 +26,10 @@ public class Reservation implements Serializable
         "end date is before start or km start is bigger than km end");
   }
 
-  public Reservation(LocalDateTime start, LocalDateTime end, int kmStart,
+  public Reservation(Timestamp start, Timestamp end, int kmStart,
       int kmEnd, String customerId, String carId, String reservationId)
   {
-    if (start.isBefore(end) && kmStart < kmEnd)
+    if (start.before(end) && kmStart < kmEnd)
     {
       this.kmStart= kmStart;
       this.kmEnd = kmEnd;
@@ -43,22 +43,22 @@ public class Reservation implements Serializable
         "end date is before start or km start is bigger than km end");
   }
 
-  public LocalDateTime getStart()
+  public Timestamp getStart()
   {
     return start;
   }
 
-  public void setStart(LocalDateTime start)
+  public void setStart(Timestamp start)
   {
     this.start = start;
   }
 
-  public LocalDateTime getEnd()
+  public Timestamp getEnd()
   {
     return end;
   }
 
-  public void setEnd(LocalDateTime end)
+  public void setEnd(Timestamp end)
   {
     this.end = end;
   }
