@@ -3,6 +3,7 @@ package server.DataAccess;
 
 //// PLEASE DELETE THIS FILE WHEN YOU HAVE THE DATA BASE TO TEST
 
+import TESTING.TestUser;
 import shared.transferObjects.user.Email;
 import shared.transferObjects.user.Password;
 import shared.transferObjects.user.User;
@@ -16,7 +17,7 @@ public class FileForTestDataBaseUSERS_Part implements UsersData{
     @Override
     public User login(Email email, Password password) {
         System.out.println(email + "/ " + password + " -------- Validation here WORKING");
-        return null;
+        return TestUser.user(email, password);
     }
     @Override
     public void storeUser(User user) {

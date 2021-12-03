@@ -85,6 +85,11 @@
             <Insets bottom="30.0" />
          </VBox.margin>
       </HBox>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="0.0" prefWidth="400.0">
+         <children>
+            <Text fx:id="errorText" fill="#ff0606" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children>
+      </HBox>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#login" prefHeight="30.0" prefWidth="200.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets left="110.0" right="110.0" />

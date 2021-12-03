@@ -7,25 +7,40 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
+import java.beans.PropertyChangeEvent;
+
 public class LoginViewController implements ViewController {
-    @FXML TextField textFieldEmail;
-    @FXML PasswordField passwordFieldPassword;
+
+    @FXML private TextField textFieldEmail;
+    @FXML private PasswordField passwordFieldPassword;
+    @FXML private Text errorText;
 
     private ViewHandler viewHandler;
     private LoginViewModel loginViewModel;
 
 
-
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
+        this.viewHandler = viewHandler;
         this.loginViewModel = viewModelFactory.getLoginViewModel();
      //   ((Stage) textFieldEmail.getScene().getWindow()).initStyle(StageStyle.UNDECORATED);
+        loginViewModel.addListener("LOGIN_ERROR", this::onErrorLogin);
+        loginViewModel.addListener("LOGIN_SUCCESS", this::onSuccessLogin);
 
+    }
+
+    private void onSuccessLogin(PropertyChangeEvent event) {
+        viewHandler.openSearchView();
+    }
+
+    private void onErrorLogin(PropertyChangeEvent event) {
+        errorText.setText(event.getPropertyName());
     }
 
     public void onClose(MouseEvent mouseEvent) {

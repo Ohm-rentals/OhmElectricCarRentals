@@ -30,9 +30,9 @@ public class RMIUserServerImp implements RMIUserServer {
     }
 
     @Override
-    public void login(Email email, Password password) throws RemoteException {
+    public User login(Email email, Password password) throws RemoteException {
         System.out.println("Desde server");
-        usersManager.login(email, password);
+        return usersManager.login(email, password);
     }
 
     @Override

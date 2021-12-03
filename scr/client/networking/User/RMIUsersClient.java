@@ -33,13 +33,13 @@ public class RMIUsersClient implements UsersClient, ClientCallback {
     }
 
     @Override
-    public void login(Email email, Password password) {
-        connectUser(); //Change This
+    public User login(Email email, Password password) {
         try {
-            userServer.login(email, password);
+            return userServer.login(email, password);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     @Override
