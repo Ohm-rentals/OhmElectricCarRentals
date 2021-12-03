@@ -1,15 +1,14 @@
 package shared.transferObjects;
 
-import maybeFolder.Date;
-import maybeFolder.Time;
+import java.sql.Timestamp;
 
 public class Service extends Status
 {
   private int km;
 
-  public Service(Date startDate, Date endDate, Time startTime, Time endTime, int km)
+  public Service(int carId, int empId, Timestamp start, Timestamp end,int km)
   {
-    super(startDate, endDate, startTime, endTime);
+    super(carId, empId, start, end);
     this.km=km;
   }
 

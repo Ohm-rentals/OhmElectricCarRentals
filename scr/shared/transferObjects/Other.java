@@ -3,15 +3,16 @@ package shared.transferObjects;
 import maybeFolder.Date;
 import maybeFolder.Time;
 
+import java.sql.Timestamp;
+
 public class Other extends Status
 {
   private String description;
 
-  public Other(Date startDate, Date endDate, Time startTime, Time endTime,
-      String description)
+  public Other(int carId, int empId, Timestamp start, Timestamp end, String description)
   {
-    super(startDate, endDate, startTime, endTime);
-    this.description = description;
+    super(carId, empId, start, end);
+    this.description=description;
   }
 
   public String getDescription()
