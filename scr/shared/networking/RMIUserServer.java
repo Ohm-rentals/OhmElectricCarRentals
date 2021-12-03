@@ -8,7 +8,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface RMIUserServer extends Remote {
-    void login(Email email, Password password) throws RemoteException;
+    User login(Email email, Password password) throws RemoteException;
     void connectUser() throws RemoteException;
     void createUser(User user) throws RemoteException;
     void editUser(User user) throws RemoteException;

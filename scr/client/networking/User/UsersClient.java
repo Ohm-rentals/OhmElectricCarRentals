@@ -6,7 +6,7 @@ import shared.transferObjects.user.User;
 import shared.util.Subject;
 
 public interface UsersClient extends Subject {
-    void login(Email email, Password password);
+    User login(Email email, Password password);
     void connectUser();
     void createUser(User user);
     void editUser(String id, User user);
