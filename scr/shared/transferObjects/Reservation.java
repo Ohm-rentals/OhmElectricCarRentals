@@ -1,50 +1,46 @@
 package shared.transferObjects;
 
-
-import shared.transferObjects.user.Customer;
-
 import java.io.Serializable;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.time.LocalDateTime;
 
 public class Reservation implements Serializable
 {
   private LocalDateTime start, end;
 
-  private Car car;
-  private Customer customer;
-  private String id;
+  private String reservationId, customerId, carId;
+  private int kmStart, kmEnd;
 
-  public Reservation(LocalDateTime start, LocalDateTime end, Customer customer, Car car)
+  public Reservation(LocalDateTime start, LocalDateTime end, int kmStart,
+      int kmEnd, String customerId, String carId)
   {
-    this.start = start;
-    this.end = end;
-    this.customer = customer;
-    this.car = car;
-
-    //if (!LocalDateTime.isBefore(start, end))
-    if(!(start.isBefore(end)))
+    if (start.isBefore(end) && kmStart < kmEnd)
     {
-      throw new IllegalArgumentException(
-          "End date cannot be be before the start");
+      this.kmStart= kmStart;
+      this.kmEnd = kmEnd;
+      this.start = start;
+      this.end = end;
+      this.customerId = customerId;
+      this.carId = carId;
     }
+    else throw new IllegalArgumentException(
+        "end date is before start or km start is bigger than km end");
   }
 
-  public Reservation(LocalDateTime start, LocalDateTime end, Customer customer, Car car,
-      String id)
+  public Reservation(LocalDateTime start, LocalDateTime end, int kmStart,
+      int kmEnd, String customerId, String carId, String reservationId)
   {
-    this.start = start;
-    this.end = end;
-    this.customer = customer;
-    this.car = car;
-    this.id = id;
-
-    if (!(start.isBefore(end)))
+    if (start.isBefore(end) && kmStart < kmEnd)
     {
-      throw new IllegalArgumentException(
-          "End date cannot be be before the start");
+      this.kmStart= kmStart;
+      this.kmEnd = kmEnd;
+      this.start = start;
+      this.end = end;
+      this.customerId = customerId;
+      this.carId = carId;
+      this.reservationId=reservationId;
     }
+    else throw new IllegalArgumentException(
+        "end date is before start or km start is bigger than km end");
   }
 
   public LocalDateTime getStart()
@@ -67,39 +63,66 @@ public class Reservation implements Serializable
     this.end = end;
   }
 
-  public Car getCar()
+  public String getReservationId()
   {
-    return car;
+    return reservationId;
   }
 
-  public void setCar(Car car)
+  public void setReservationId(String reservationId)
   {
-    this.car = car;
+    this.reservationId = reservationId;
   }
 
-  public Customer getCustomer()
+  public String getCustomerId()
   {
-    return customer;
+    return customerId;
   }
 
-  public void setCustomer(Customer customer)
+  public void setCustomerId(String customerId)
   {
-    this.customer = customer;
+    this.customerId = customerId;
   }
 
-  public String getId()
+  public String getCarId()
   {
-    return id;
+    return carId;
   }
 
-  public double calculateTotal()
+  public void setCarId(String carId)
   {
-    return car.getPrice() * (int)Duration.between(start,end).toDays();
+    this.carId = carId;
+  }
+
+  public int getKmStart()
+  {
+    return kmStart;
+  }
+
+  public void setKmStart(int kmStart)
+  {
+    this.kmStart = kmStart;
+  }
+
+  public int getKmEnd()
+  {
+    return kmEnd;
+  }
+
+  public void setKmEnd(int kmEnd)
+  {
+    this.kmEnd = kmEnd;
   }
 
   @Override public String toString()
   {
-    return "Reservation{" + "start=" + start + ", end=" + end + ", car=" + car
-        + ", customer=" + customer + ", id='" + id + '\'' + '}';
+    return "Reservation{" + "start=" + start + ", end=" + end + ", id='" + reservationId
+        + '\'' + ", customerId='" + customerId + '\'' + ", carId='" + carId
+        + '\'' + '}';
   }
+
+  /*  public double calculateTotal()
+  {
+    return car.getPrice() * (int)Duration.between(start,end).toDays();
+  }*/
+
 }
