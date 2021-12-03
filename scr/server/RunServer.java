@@ -1,6 +1,6 @@
 package server;
 
-import server.model.User.UsersManagerImp;
+import server.model.user.UsersManagerImp;
 import server.networking.RMIUserServerImp;
 
 import java.rmi.RemoteException;

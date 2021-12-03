@@ -2,7 +2,7 @@ package server.networking;
 
 import server.DataAccess.FileForTestDataBaseUSERS_Part;
 import server.DataAccess.UsersData;
-import server.model.User.UsersManager;
+import server.model.user.UsersManager;
 import shared.networking.RMIUserServer;
 import shared.transferObjects.user.Email;
 import shared.transferObjects.user.Password;
