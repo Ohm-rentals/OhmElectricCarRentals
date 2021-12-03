@@ -1,6 +1,6 @@
 package client.views.loginView;
 
-import client.model.UsersModel;
+import client.model.users.UsersModel;
 import shared.transferObjects.user.Email;
 import shared.transferObjects.user.Password;
 import shared.util.Subject;

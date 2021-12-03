@@ -2,6 +2,8 @@ package client.views.loginView;
 
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import client.model.personal.Personal;
+import client.model.personal.status.Stat;
 import client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -21,12 +23,14 @@ public class LoginViewController implements ViewController {
     @FXML private PasswordField passwordFieldPassword;
     @FXML private Text errorText;
 
+
     private ViewHandler viewHandler;
     private LoginViewModel loginViewModel;
 
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
+
         this.viewHandler = viewHandler;
         this.loginViewModel = viewModelFactory.getLoginViewModel();
      //   ((Stage) textFieldEmail.getScene().getWindow()).initStyle(StageStyle.UNDECORATED);
@@ -34,6 +38,8 @@ public class LoginViewController implements ViewController {
         loginViewModel.addListener("LOGIN_SUCCESS", this::onSuccessLogin);
 
     }
+
+
 
     private void onSuccessLogin(PropertyChangeEvent event) {
         viewHandler.openSearchView();

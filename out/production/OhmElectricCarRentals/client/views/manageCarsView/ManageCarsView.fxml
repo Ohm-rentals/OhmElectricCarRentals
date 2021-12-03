@@ -59,7 +59,7 @@
                      <children>
                         <ImageView fx:id="bigImageView" fitHeight="250.0" fitWidth="401.0" pickOnBounds="true" HBox.hgrow="ALWAYS">
                            <image>
-                              <Image url="@../utils/delorean1.jpeg" />
+                              <Image url="@../utils/Images/delorean1.jpeg" />
                            </image>
                         </ImageView>
                      </children>
@@ -68,7 +68,7 @@
                      <children>
                         <ImageView fx:id="oneImageView" fitHeight="100.0" fitWidth="144.0" onMouseClicked="#oneImageView" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
                            <image>
-                              <Image url="@../utils/delorean2.jpeg" />
+                              <Image url="@../utils/Images/delorean2.jpeg" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -76,7 +76,7 @@
                         </ImageView>
                         <ImageView fx:id="twoImageView" fitHeight="100.0" fitWidth="144.0" onMouseClicked="#twoImageView" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../utils/delorean4.jpeg" />
+                              <Image url="@../utils/Images/delorean4.jpeg" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -84,7 +84,7 @@
                         </ImageView>
                         <ImageView fx:id="threeImageView" fitHeight="100.0" fitWidth="144.0" onMouseClicked="#threeImageView" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../utils/delorean5.jpeg" />
+                              <Image url="@../utils/Images/delorean5.jpeg" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />

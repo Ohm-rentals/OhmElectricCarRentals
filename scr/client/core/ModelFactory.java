@@ -1,7 +1,7 @@
 package client.core;
 
-import client.model.UsersModelManager;
-import client.model.UsersModel;
+import client.model.users.UsersModelManager;
+import client.model.users.UsersModel;
 
 public class ModelFactory {
     private ClientFactory clientFactory;

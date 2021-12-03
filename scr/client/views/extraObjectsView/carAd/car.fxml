@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="182.0" fitWidth="271.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../utils/KEY0.CC-Svg-Stock-Delorean-Drawing-Decal-Delorean-Png.png" />
+            <Image url="@../../utils/Images/KEY0.CC-Svg-Stock-Delorean-Drawing-Decal-Delorean-Png.png" />
          </image>
       </ImageView>
       <VBox alignment="TOP_RIGHT" prefHeight="219.0" prefWidth="522.0">
