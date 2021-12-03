@@ -1,75 +1,128 @@
 package shared.transferObjects;
 
-import shared.transferObjects.user.Customer;
-
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public class Reservation implements Serializable
 {
-  private Date start, end;
-  private Car car;
-  private Customer customer;
-  private ReservationID id;
+  private Timestamp start, end;
 
-  public Reservation(Date start, Date end, Customer customer, Car car)
+  private String reservationId, customerId, carId;
+  private int kmStart, kmEnd;
+
+  public Reservation(Timestamp start, Timestamp end, int kmStart,
+      int kmEnd, String customerId, String carId)
   {
-    this.start = start;
-    this.end = end;
-    this.customer = customer;
-    this.car = car;
-    id= new ReservationID();
-
-    if(!Date.isBefore(start,end)){
-      throw new IllegalArgumentException("End date cannot be be before the start");
+    if (start.before(end) && kmStart < kmEnd)
+    {
+      this.kmStart= kmStart;
+      this.kmEnd = kmEnd;
+      this.start = start;
+      this.end = end;
+      this.customerId = customerId;
+      this.carId = carId;
     }
+    else throw new IllegalArgumentException(
+        "end date is before start or km start is bigger than km end");
   }
 
-  public Date getStart()
+  public Reservation(Timestamp start, Timestamp end, int kmStart,
+      int kmEnd, String customerId, String carId, String reservationId)
+  {
+    if (start.before(end) && kmStart < kmEnd)
+    {
+      this.kmStart= kmStart;
+      this.kmEnd = kmEnd;
+      this.start = start;
+      this.end = end;
+      this.customerId = customerId;
+      this.carId = carId;
+      this.reservationId=reservationId;
+    }
+    else throw new IllegalArgumentException(
+        "end date is before start or km start is bigger than km end");
+  }
+
+  public Timestamp getStart()
   {
     return start;
   }
 
-  public void setStart(Date start)
+  public void setStart(Timestamp start)
   {
     this.start = start;
   }
 
-  public Date getEnd()
+  public Timestamp getEnd()
   {
     return end;
   }
 
-  public void setEnd(Date end)
+  public void setEnd(Timestamp end)
   {
     this.end = end;
   }
 
-  public Car getCar()
+  public String getReservationId()
   {
-    return car;
+    return reservationId;
   }
 
-  public void setCar(Car car)
+  public void setReservationId(String reservationId)
   {
-    this.car = car;
+    this.reservationId = reservationId;
   }
 
-  public Customer getCustomer()
+  public String getCustomerId()
   {
-    return customer;
+    return customerId;
   }
 
-  public void setCustomer(Customer customer)
+  public void setCustomerId(String customerId)
   {
-    this.customer = customer;
+    this.customerId = customerId;
   }
 
-  public ReservationID getId()
+  public String getCarId()
   {
-    return id;
+    return carId;
   }
 
-  public double calculateTotal(){
-    return car.getPrice()*Date.calculateDateRange(start, end);
+  public void setCarId(String carId)
+  {
+    this.carId = carId;
   }
+
+  public int getKmStart()
+  {
+    return kmStart;
+  }
+
+  public void setKmStart(int kmStart)
+  {
+    this.kmStart = kmStart;
+  }
+
+  public int getKmEnd()
+  {
+    return kmEnd;
+  }
+
+  public void setKmEnd(int kmEnd)
+  {
+    this.kmEnd = kmEnd;
+  }
+
+  @Override public String toString()
+  {
+    return "Reservation{" + "start=" + start + ", end=" + end + ", id='" + reservationId
+        + '\'' + ", customerId='" + customerId + '\'' + ", carId='" + carId
+        + '\'' + '}';
+  }
+
+  /*  public double calculateTotal()
+  {
+    return car.getPrice() * (int)Duration.between(start,end).toDays();
+  }*/
+
 }

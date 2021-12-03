@@ -20,4 +20,9 @@ public class Email implements Serializable
     Pattern pat = Pattern.compile(emailRegex);
     return pat.matcher(email).matches();
   }
+
+  public String getEmail()
+  {
+    return email;
+  }
 }

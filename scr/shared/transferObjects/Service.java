@@ -1,5 +1,8 @@
 package shared.transferObjects;
 
+import maybeFolder.Date;
+import maybeFolder.Time;
+
 public class Service extends Status
 {
   private int km;

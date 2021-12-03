@@ -1,5 +1,8 @@
 package shared.transferObjects;
 
+import maybeFolder.Date;
+import maybeFolder.Time;
+
 import java.io.Serializable;
 
 public abstract class Status implements Serializable
