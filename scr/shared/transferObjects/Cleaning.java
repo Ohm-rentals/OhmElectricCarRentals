@@ -3,11 +3,13 @@ package shared.transferObjects;
 import maybeFolder.Date;
 import maybeFolder.Time;
 
+import java.sql.Timestamp;
+
 public class Cleaning extends Status
 {
-  public Cleaning(Date startDate, Date endDate, Time startTime, Time endTime)
-  {
-    super(startDate, endDate, startTime, endTime);
-  }
 
+  public Cleaning(int carId, int empId, Timestamp start, Timestamp end)
+  {
+    super(carId, empId, start, end);
+  }
 }
