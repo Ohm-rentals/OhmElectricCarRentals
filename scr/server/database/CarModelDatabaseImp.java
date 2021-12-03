@@ -1,5 +1,6 @@
 package server.database;
 
+import shared.transferObjects.Address;
 import shared.transferObjects.Car;
 import maybeFolder.Date;
 import shared.transferObjects.LicenseNumber;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataBaseCarsHandler implements CarsData
+public class CarModelDatabaseImp implements CarModelDatabase
 {
 
   @Override public void storeCar(Car car)
@@ -30,7 +31,7 @@ public class DataBaseCarsHandler implements CarsData
       e.printStackTrace();
     }
   }
-
+//loation type is set to address, database retrieves objrct
   @Override public void updateCar(String carId, Car car)
   {
     try (Connection connection = DatabaseConnector.getInstance().getConnection();
@@ -62,7 +63,7 @@ public class DataBaseCarsHandler implements CarsData
         result.add(new Car(r.getString("make"), r.getString("model"),
             r.getInt("price"), r.getDouble("price"),
             r.getString("type"), r.getInt("range"),
-            r.getInt("km"), r.getString("location"),
+            r.getInt("km"), (Address) r.getObject("location"),
             (LicenseNumber) r.getObject("no_plate")));
       }
 
@@ -86,7 +87,7 @@ public class DataBaseCarsHandler implements CarsData
     preparedStatement.setInt(4, parameters.getYear());
     preparedStatement.setInt(5, parameters.getSeats());
     preparedStatement.setString(6, parameters.getType());
-    preparedStatement.setString(7, parameters.getPickUpPoint());
+    preparedStatement.setObject(7, parameters.getPickUpPoint());
 
 
     ResultSet r = preparedStatement.executeQuery();
@@ -97,7 +98,7 @@ public class DataBaseCarsHandler implements CarsData
       result.add(new Car(r.getString("make"), r.getString("model"),
           r.getInt("year"), r.getDouble("price"),
           r.getString("type"), r.getInt("range"),
-          r.getInt("km"), r.getString("location"),
+          r.getInt("km"),(Address)r.getObject("location"),
           (LicenseNumber) r.getObject("no_plate")));
     }
 

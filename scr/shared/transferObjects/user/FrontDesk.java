@@ -6,13 +6,14 @@ import java.io.Serializable;
 
 public class FrontDesk extends User implements Serializable
 {
-  private int ssn, employeeID;
+  private int ssn;
+  private String id;
 
   public FrontDesk(String fName, String lName, Address address, int phoneNo,
-      Password password, Email email, int ssn, int employeeID)
+      Password password, Email email, int ssn, String id)
   {
     super(fName, lName, address, phoneNo, password, email);
-    this.employeeID = employeeID;
+    this.id = id;
     this.ssn = ssn;
   }
 
@@ -27,14 +28,14 @@ public class FrontDesk extends User implements Serializable
     return ssn;
   }
 
-  public int getEmployeeID()
+  public String getId()
   {
-    return employeeID;
+    return id;
   }
 
   @Override public String toString()
   {
-    return "FrontDesk{" + "ssn=" + ssn + ", employeeID=" + employeeID + '}';
+    return "FrontDesk{" + "ssn=" + ssn + ", id='" + id + '\'' + '}';
   }
 }
 
