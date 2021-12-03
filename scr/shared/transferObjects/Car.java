@@ -1,15 +1,18 @@
 package shared.transferObjects;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 public class Car implements Serializable
 {
-  private String make, model, licenseNumber, type, licenseNo;
+  private String make, model, licenseNumber, type;
+  private LicenseNumber licenseNo;
   private int year, seats, range, km;
   private double price;
+  private CarID id;
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km, String licenseNo)
+      int range, int km, LicenseNumber licenseNo)
   {
     this.make = make;
     this.model = model;
@@ -18,7 +21,9 @@ public class Car implements Serializable
     this.type = type;
     this.range = range;
     this.km = km;
-    this.licenseNo=licenseNo;
+    this.licenseNo = licenseNo;
+    id = new CarID();
+
   }
 
   public String getMake()
@@ -111,13 +116,27 @@ public class Car implements Serializable
     this.price = price;
   }
 
-  public String getLicenseNo()
+  public LicenseNumber getLicenseNo()
   {
     return licenseNo;
   }
 
+  public CarID getId()
+  {
+    return id;
+  }
+
   public void setLicenseNo(String licenseNo)
   {
-    this.licenseNo = licenseNo;
+    this.licenseNo = new LicenseNumber(licenseNo);
+  }
+
+  @Override public String toString()
+  {
+    return "Car{" + "make='" + make + '\'' + ", model='" + model + '\''
+        + ", licenseNumber='" + licenseNumber + '\'' + ", type='" + type + '\''
+        + ", licenseNo='" + licenseNo + '\'' + ", year=" + year + ", seats="
+        + seats + ", range=" + range + ", km=" + km + ", price=" + price
+        + ", id=" + id + '}';
   }
 }

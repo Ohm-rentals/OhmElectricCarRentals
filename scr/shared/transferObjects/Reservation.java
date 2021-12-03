@@ -9,16 +9,19 @@ public class Reservation implements Serializable
   private Date start, end;
   private Car car;
   private Customer customer;
-  private String id;
+  private ReservationID id;
 
-  public Reservation(Date start, Date end, Customer customer, Car car,
-      String id)
+  public Reservation(Date start, Date end, Customer customer, Car car)
   {
     this.start = start;
     this.end = end;
     this.customer = customer;
     this.car = car;
-    this.id = id;
+    id= new ReservationID();
+
+    if(!Date.isBefore(start,end)){
+      throw new IllegalArgumentException("End date cannot be be before the start");
+    }
   }
 
   public Date getStart()
@@ -61,14 +64,9 @@ public class Reservation implements Serializable
     this.customer = customer;
   }
 
-  public String getId()
+  public ReservationID getId()
   {
     return id;
-  }
-
-  public void setId(String id)
-  {
-    this.id = id;
   }
 
   public double calculateTotal(){

@@ -1,6 +1,8 @@
 package shared.transferObjects.user;
 
-public class User
+import java.io.Serializable;
+
+public abstract class User implements Serializable
 {
   private String fName, lName, country, city, street;
   private int zip, phoneNo;

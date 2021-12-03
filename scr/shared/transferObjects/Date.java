@@ -6,7 +6,9 @@ import java.util.GregorianCalendar;
 
 public class Date
 {
-  private int day, month, year;
+  private  int day;
+  private  int month;
+  private  int year;
 
   public Date(int day, int month, int year)
   {
@@ -39,21 +41,23 @@ public class Date
     return year;
   }
 
-  public boolean isBefore(Date date2)
+
+  public static boolean isBefore(Date date1, Date date2)
   {
-    if (year < date2.year)
+
+    if (date1.year < date2.year)
     {
       return true;
     }
-    else if (year == date2.year)
+    else if (date1.year == date2.year)
     {
-      if (month < date2.month)
+      if (date1.month < date2.month)
       {
         return true;
       }
-      else if (month == date2.month)
+      else if (date1.month == date2.month)
       {
-        if (day < date2.day)
+        if (date1.month < date2.day)
         {
           return true;
         }
@@ -149,8 +153,24 @@ public class Date
     }
     return count;
   }
+
   public String toString()
   {
     return String.format("%02d/%02d/%04d", day, month, year);
+  }
+
+  public void setDay(int day)
+  {
+    this.day = day;
+  }
+
+  public void setMonth(int month)
+  {
+    this.month = month;
+  }
+
+  public void setYear(int year)
+  {
+    this.year = year;
   }
 }
