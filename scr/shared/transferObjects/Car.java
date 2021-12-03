@@ -1,7 +1,5 @@
 package shared.transferObjects;
 
-import maybeFolder.CarID;
-
 import java.io.Serializable;
 
 public class Car implements Serializable
