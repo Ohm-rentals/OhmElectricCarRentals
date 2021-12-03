@@ -1,4 +1,4 @@
-package shared.transferObjects;
+package maybeFolder;
 
 import java.io.Serializable;
 

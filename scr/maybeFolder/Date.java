@@ -1,7 +1,5 @@
-package shared.transferObjects;
+package maybeFolder;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 public class Date

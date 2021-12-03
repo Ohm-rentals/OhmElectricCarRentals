@@ -1,32 +1,37 @@
 package shared.transferObjects;
 
-import maybeFolder.ReservationID;
+
 import shared.transferObjects.user.Customer;
 
 import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
 public class Reservation implements Serializable
 {
-  private Date start, end;
+  private LocalDateTime start, end;
+
   private Car car;
   private Customer customer;
   private String id;
 
-  public Reservation(Date start, Date end, Customer customer, Car car)
+  public Reservation(LocalDateTime start, LocalDateTime end, Customer customer, Car car)
   {
     this.start = start;
     this.end = end;
     this.customer = customer;
     this.car = car;
 
-    if (!Date.isBefore(start, end))
+    //if (!LocalDateTime.isBefore(start, end))
+    if(!(start.isBefore(end)))
     {
       throw new IllegalArgumentException(
           "End date cannot be be before the start");
     }
   }
 
-  public Reservation(Date start, Date end, Customer customer, Car car,
+  public Reservation(LocalDateTime start, LocalDateTime end, Customer customer, Car car,
       String id)
   {
     this.start = start;
@@ -35,29 +40,29 @@ public class Reservation implements Serializable
     this.car = car;
     this.id = id;
 
-    if (!Date.isBefore(start, end))
+    if (!(start.isBefore(end)))
     {
       throw new IllegalArgumentException(
           "End date cannot be be before the start");
     }
   }
 
-  public Date getStart()
+  public LocalDateTime getStart()
   {
     return start;
   }
 
-  public void setStart(Date start)
+  public void setStart(LocalDateTime start)
   {
     this.start = start;
   }
 
-  public Date getEnd()
+  public LocalDateTime getEnd()
   {
     return end;
   }
 
-  public void setEnd(Date end)
+  public void setEnd(LocalDateTime end)
   {
     this.end = end;
   }
@@ -82,14 +87,14 @@ public class Reservation implements Serializable
     this.customer = customer;
   }
 
-  public String  getId()
+  public String getId()
   {
     return id;
   }
 
   public double calculateTotal()
   {
-    return car.getPrice() * Date.calculateDateRange(start, end);
+    return car.getPrice() * (int)Duration.between(start,end).toDays();
   }
 
   @Override public String toString()
