@@ -20,7 +20,7 @@ public class DatabaseTEST
     Password password = new Password("Vlad1234");
     System.out.println("Password has been made");
 
-    PhoneNo phoneNo = new PhoneNo("00000000");
+    PhoneNo phoneNo = new PhoneNo("11111111");
     Ssn ssn = new Ssn("0000000000");
 
     Admin simus = new Admin("Simus", "something",address,phoneNo,password,email,ssn);

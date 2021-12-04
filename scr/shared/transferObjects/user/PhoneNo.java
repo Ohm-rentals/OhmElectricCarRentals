@@ -7,7 +7,7 @@ public class PhoneNo implements Serializable
   private String number;
 
   public PhoneNo(String number){
-    if(!isValid(number)) throw new IllegalArgumentException("The phone number contains characters and/or is not 8 digits long");
+    if(isValid(number)) throw new IllegalArgumentException("The phone number contains characters and/or is not 8 digits long");
     this.number=number;
   }
 
