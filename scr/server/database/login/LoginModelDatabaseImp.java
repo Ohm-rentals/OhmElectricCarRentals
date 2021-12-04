@@ -19,16 +19,20 @@ public class LoginModelDatabaseImp implements LoginModelDatabase
     {
       Statement statement = connection.createStatement();
 
-      String query = "set search_path = \"OhmCarRental\"; SELECT password FROM " + user.getUserType().toString().toLowerCase()
-          + " WHERE email = '" + user.getEmail() + "'";
+    String query = "SELECT password FROM \"OhmCarRental\"." + user.getUserType()
+          + " WHERE email = '" + user.getEmail() + "';";
+
+      System.out.println("Database query---> " + query);
 
       ResultSet resultSet = statement.executeQuery(query);
 
       resultSet.next();
+      System.out.println("Database return<---"+resultSet.getString("password"));
       String dbPassword = resultSet.getString("password");
 
       if (dbPassword.equals(user.getPassword()))
       {
+        System.out.println(user.getUserType()+ " Logged in");
         return user.getUserType();
       }
 
@@ -37,6 +41,7 @@ public class LoginModelDatabaseImp implements LoginModelDatabase
     {
       e.printStackTrace();
     }
+    System.out.println(LoginType.NO_ACCESS + "Password did not match");
     return LoginType.NO_ACCESS;
   }
 }
