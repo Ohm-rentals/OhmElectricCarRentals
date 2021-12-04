@@ -6,12 +6,11 @@ import java.sql.Timestamp;
 public class Reservation implements Serializable
 {
   private Timestamp start, end;
-
-  private String reservationId, customerId, carId;
+  private int reservationId, customerId, carId;
   private int kmStart, kmEnd;
 
   public Reservation(Timestamp start, Timestamp end, int kmStart,
-      int kmEnd, String customerId, String carId)
+      int kmEnd, int customerId, int carId)
   {
     if (start.before(end) && kmStart < kmEnd)
     {
@@ -27,7 +26,7 @@ public class Reservation implements Serializable
   }
 
   public Reservation(Timestamp start, Timestamp end, int kmStart,
-      int kmEnd, String customerId, String carId, String reservationId)
+      int kmEnd, int customerId, int carId, int reservationId)
   {
     if (start.before(end) && kmStart < kmEnd)
     {
@@ -63,32 +62,32 @@ public class Reservation implements Serializable
     this.end = end;
   }
 
-  public String getReservationId()
+  public int getReservationId()
   {
     return reservationId;
   }
 
-  public void setReservationId(String reservationId)
+  public void setReservationId(int reservationId)
   {
     this.reservationId = reservationId;
   }
 
-  public String getCustomerId()
+  public int getCustomerId()
   {
     return customerId;
   }
 
-  public void setCustomerId(String customerId)
+  public void setCustomerId(int customerId)
   {
     this.customerId = customerId;
   }
 
-  public String getCarId()
+  public int getCarId()
   {
     return carId;
   }
 
-  public void setCarId(String carId)
+  public void setCarId(int carId)
   {
     this.carId = carId;
   }
@@ -112,17 +111,4 @@ public class Reservation implements Serializable
   {
     this.kmEnd = kmEnd;
   }
-
-  @Override public String toString()
-  {
-    return "Reservation{" + "start=" + start + ", end=" + end + ", id='" + reservationId
-        + '\'' + ", customerId='" + customerId + '\'' + ", carId='" + carId
-        + '\'' + '}';
-  }
-
-  /*  public double calculateTotal()
-  {
-    return car.getPrice() * (int)Duration.between(start,end).toDays();
-  }*/
-
 }

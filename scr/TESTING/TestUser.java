@@ -14,7 +14,7 @@ public class TestUser {
        Address address = new Address("Italy", "Genova", "Los Andes", "78", 1171);
        if (email.getEmail().equals("vlad@gmail.com") &&
                password.getPassword().equals("Simus123"))
-       return new Customer("Vlad", "Rodriguez", address,6667733, password, email,4567,4545);
+       return new Customer("Vlad", "Rodriguez", address,"6667733", password, email,"4567",4545);
    return null;
    }
 }

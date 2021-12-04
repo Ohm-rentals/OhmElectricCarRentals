@@ -1,41 +1,41 @@
 package shared.transferObjects.user;
 
-import maybeFolder.CustomerID;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
 
 public class Customer extends User implements Serializable
 {
-  private int driverLicenseNo, id;
+  private int customerId;
+  private String driverLicenseNo;
 
-  public Customer(String fName, String lName, Address address, int phoneNo,
-      Password password, Email email, int driverLicenseNo, int id)
+  public Customer(String fName, String lName, Address address, String phoneNo,
+      Password password, Email email, String driverLicenseNo, int id)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.driverLicenseNo = driverLicenseNo;
-    this.id = id;
+    this.customerId = id;
   }
-  public Customer(String fName, String lName, Address address, int phoneNo,
-      Password password, Email email, int driverLicenseNo)
+  public Customer(String fName, String lName, Address address, String phoneNo,
+      Password password, Email email, String driverLicenseNo)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.driverLicenseNo = driverLicenseNo;
   }
 
-  public int getId()
+  public int getCustomerId()
   {
-    return id;
+    return customerId;
   }
 
-  public int getDriverLicenseNo()
+  public String getDriverLicenseNo()
   {
     return driverLicenseNo;
   }
 
   @Override public String toString()
   {
-    return "Customer{" + "driverLicenseNo=" + driverLicenseNo + ", id=" + id
-        + '}';
+    return "Customer{" + "customerId=" + customerId + ", driverLicenseNo='"
+        + driverLicenseNo + '\'' + '}';
   }
 }
