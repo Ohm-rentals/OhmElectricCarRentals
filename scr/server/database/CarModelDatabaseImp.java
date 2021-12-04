@@ -3,7 +3,7 @@ package server.database;
 import shared.transferObjects.Address;
 import shared.transferObjects.Car;
 import maybeFolder.Date;
-import shared.transferObjects.LicenseNumber;
+import shared.transferObjects.PlateNo;
 import shared.transferObjects.Parameters;
 
 import java.sql.Connection;
@@ -68,7 +68,7 @@ public class CarModelDatabaseImp implements CarModelDatabase
             r.getInt("price"), r.getDouble("price"), r.getString("type"),
             r.getInt("range"), r.getInt("km"),
             (Address) r.getObject("location"),
-            (LicenseNumber) r.getObject("no_plate")));
+            (PlateNo) r.getObject("no_plate")));
       }
 
       return result;
@@ -104,7 +104,7 @@ public class CarModelDatabaseImp implements CarModelDatabase
             new Car(r.getString("make"), r.getString("model"), r.getInt("year"),
                 r.getDouble("price"), r.getString("type"), r.getInt("range"),
                 r.getInt("km"), (Address) r.getObject("location"),
-                (LicenseNumber) r.getObject("no_plate")));
+                (PlateNo) r.getObject("no_plate")));
       }
 
       return result;

@@ -38,4 +38,9 @@ public class Customer extends User implements Serializable
     return "Customer{" + "customerId=" + customerId + ", driverLicenseNo='"
         + driverLicenseNo + '\'' + '}';
   }
+
+  @Override public LoginType getType()
+  {
+    return LoginType.CUSTOMER;
+  }
 }

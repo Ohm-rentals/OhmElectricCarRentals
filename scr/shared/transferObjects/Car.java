@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Car implements Serializable
 {
   private String make, model, licenseNumber, type;
-  private LicenseNumber licenseNo;
+  private PlateNo licenseNo;
   private int year, seats, range, km;
   private double price;
   private String id;
   private Address pickupPoint;
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km, Address pickupPoint, LicenseNumber licenseNo)
+      int range, int km, Address pickupPoint, PlateNo licenseNo)
   {
     this.make = make;
     this.model = model;
@@ -27,7 +27,7 @@ public class Car implements Serializable
   }
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km,Address pickupPoint, LicenseNumber licenseNo, String  id)
+      int range, int km,Address pickupPoint, PlateNo licenseNo, String  id)
   {
     this.make = make;
     this.model = model;
@@ -132,7 +132,7 @@ public class Car implements Serializable
     this.price = price;
   }
 
-  public LicenseNumber getLicenseNo()
+  public PlateNo getLicenseNo()
   {
     return licenseNo;
   }
@@ -144,7 +144,7 @@ public class Car implements Serializable
 
   public void setLicenseNo(String licenseNo)
   {
-    this.licenseNo = new LicenseNumber(licenseNo);
+    this.licenseNo = new PlateNo(licenseNo);
   }
 
   public void setPickupPoint(Address pickupPoint)
