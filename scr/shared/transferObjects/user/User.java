@@ -6,17 +6,17 @@ import java.io.Serializable;
 
 public abstract class User implements Serializable
 {
-  private String fName, lName;
-  private int phoneNo;
+  private String fName, lName, phoneNo;
   private Password password;
   private Email email;
   private Address address;
 
-  public User(String fName, String lName, Address address, int phoneNo, Password password, Email email)
+  public User(String fName, String lName, Address address, String phoneNo,
+      Password password, Email email)
   {
     this.fName = fName;
     this.lName = lName;
-
+    this.address = address;
     this.phoneNo = phoneNo;
     this.password = password;
     this.email = email;
@@ -44,13 +44,12 @@ public abstract class User implements Serializable
     this.lName = lName;
   }
 
-
-  public int getPhoneNo()
+  public String getPhoneNo()
   {
     return phoneNo;
   }
 
-  public void setPhoneNo(int phoneNo)
+  public void setPhoneNo(String phoneNo)
   {
     this.phoneNo = phoneNo;
   }
@@ -75,5 +74,14 @@ public abstract class User implements Serializable
     this.email = email;
   }
 
+  public Address getAddress()
+  {
+    return address;
+  }
+
+  public void setAddress(Address address)
+  {
+    this.address = address;
+  }
 }
 

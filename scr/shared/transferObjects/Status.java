@@ -4,56 +4,62 @@ import maybeFolder.Date;
 import maybeFolder.Time;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 public abstract class Status implements Serializable
 {
-  private Date startDate, endDate;
-  private Time startTime, endTime;
+  private Timestamp start, end;
+  private int carId, empId;
 
-  public Status(Date startDate,Date endDate, Time startTime, Time endTime){
-    this.startDate=startDate;
-    this.endDate=endDate;
-    this.startTime=startTime;
-    this.endTime=endTime;
+  public Status(int carId,int empId,Timestamp start, Timestamp end){
+    this.carId=carId;
+    this.empId=empId;
+
   }
 
-  public  Date getEndDate()
+  public int getEmpId()
   {
-    return endDate;
+    return empId;
   }
 
-  public  Date getStartDate()
+  public Timestamp getEnd()
   {
-    return startDate;
+    return end;
   }
 
-  public Time getEndTime()
+  public Timestamp getStart()
   {
-    return endTime;
+    return start;
   }
 
-  public Time getStartTime()
+  public void setStart(Timestamp start)
   {
-    return startTime;
+    this.start = start;
   }
 
-  public  void setEndDate(Date endDate)
+  public void setEnd(Timestamp end)
   {
-    this.endDate = endDate;
+    this.end = end;
   }
 
-  public  void setEndTime(Time endTime)
+  public void setEmpId(int empId)
   {
-    this.endTime = endTime;
+    this.empId = empId;
   }
 
-  public  void setStartDate(Date startDate)
+  public void setCarId(int carId)
   {
-    this.startDate = startDate;
+    this.carId = carId;
   }
 
-  public  void setStartTime(Time startTime)
+  public int getCarId()
   {
-    this.startTime = startTime;
+    return carId;
+  }
+
+  @Override public String toString()
+  {
+    return "Status{" + "start=" + start + ", end=" + end + ", carId=" + carId
+        + ", empId=" + empId + '}';
   }
 }
