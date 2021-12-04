@@ -9,7 +9,7 @@ public interface CleaningModelDatabase
 
   ArrayList<Cleaning> getAllCleanings();
   ArrayList<Cleaning> getAllCleaningsFromACar(int carId);
-  void createCleaning(Cleaning cleaning, int carId);
+  void createCleaning(Cleaning cleaning);
   void deleteCleaning(Cleaning cleaning);
 
 }

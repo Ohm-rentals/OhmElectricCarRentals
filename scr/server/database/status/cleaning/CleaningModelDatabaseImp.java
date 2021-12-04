@@ -59,13 +59,13 @@ public class CleaningModelDatabaseImp implements CleaningModelDatabase
     return null;
   }
 
-  @Override public void createCleaning(Cleaning cleaning, int carId)
+  @Override public void createCleaning(Cleaning cleaning)
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection())
     {
       PreparedStatement statement = connection.prepareStatement(
-          "INSERT INTO car (start_time, end_time, emp_id, car_id) VALUES (?,?,?,?)");
+          "INSERT INTO cleaning (start_time, end_time, emp_id, car_id) VALUES (?,?,?,?)");
 
       setCleaningStatement(statement, cleaning);
       statement.execute();
