@@ -38,5 +38,10 @@ public class FrontDesk extends User implements Serializable
   {
     return "FrontDesk{" + "empId=" + empId + ", ssn='" + ssn + '\'' + '}';
   }
+
+  @Override public LoginType getType()
+  {
+    return LoginType.FRONT_DESK;
+  }
 }
 

@@ -43,4 +43,8 @@ public class Admin extends User implements Serializable
   {
     return "Admin{" + "ssn='" + ssn + '\'' + ", empId='" + empId + '\'' + '}';
   }
+
+  @Override public LoginType getType()
+  {
+    return LoginType.ADMIN;}
 }

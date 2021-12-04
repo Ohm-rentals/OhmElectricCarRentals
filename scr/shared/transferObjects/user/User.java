@@ -22,6 +22,8 @@ public abstract class User implements Serializable
     this.email = email;
   }
 
+  public abstract LoginType getType();
+
   public String getfName()
   {
     return fName;
