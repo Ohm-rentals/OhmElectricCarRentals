@@ -58,6 +58,6 @@ public class MenuBarController  {
     }
 
     public void onMyAccount(MouseEvent mouseEvent) {
-        viewHandler.openManageAccount();
+        viewHandler.openMyAccountView();
     }
 }

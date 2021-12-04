@@ -43,6 +43,12 @@ public class ViewHandler {
         openNewWindow(scene);
     }
 
+    public void openMyAccountView(){
+        Scene scene = new Scene(getRoot("../views/myAccountView/myAccountView.fxml"));
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void openManageAccount(){
         Scene scene = new Scene(getRoot("../views/manageAccountView/manageAccountsView.fxml"));
         stage.setScene(scene);
