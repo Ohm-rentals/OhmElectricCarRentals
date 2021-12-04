@@ -1,25 +1,24 @@
-package server.database.user.admin;
+package server.database.user.frontDesk;
 
 import server.database.DatabaseConnector;
 import shared.transferObjects.Address;
-import shared.transferObjects.user.Admin;
 import shared.transferObjects.user.Email;
+import shared.transferObjects.user.FrontDesk;
 import shared.transferObjects.user.Password;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
+public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabase
 {
-
-  @Override public ArrayList<Admin> getAllAdmins()
+  @Override public ArrayList<FrontDesk> getAllFrontDesk()
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "SELECT * FROM admin"))
+            "SELECT * FROM front_desk"))
     {
-      ArrayList<Admin> admins = new ArrayList<>();
+      ArrayList<FrontDesk> frontDesks = new ArrayList<>();
 
       ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -32,12 +31,12 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
 
-        admins.add(new Admin(resultSet.getString("f_name"),
+        frontDesks.add(new FrontDesk(resultSet.getString("f_name"),
             resultSet.getString("l_name"), address,
             resultSet.getString("phone_no"), password, email,
             resultSet.getString("snn"), resultSet.getInt("emp_id")));
       }
-      return admins;
+      return frontDesks;
     }
     catch (SQLException throwables)
     {
@@ -46,14 +45,14 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     return null;
   }
 
-  @Override public Admin getAdminById(int empId)
+  @Override public FrontDesk getFrontDeskById(int empId)
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection())
     {
       Statement statement = connection.createStatement();
 
-      String query = "SELECT * FROM admin WHERE emp_id = '" + empId + "'";
+      String query = "SELECT * FROM front_desk WHERE emp_id = '" + empId + "'";
 
       ResultSet resultSet = statement.executeQuery(query);
 
@@ -64,7 +63,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
 
-      return new Admin(resultSet.getString("f_name"),
+      return new FrontDesk(resultSet.getString("f_name"),
           resultSet.getString("l_name"), address,
           resultSet.getString("phone_no"), password, email,
           resultSet.getString("snn"), resultSet.getInt("emp_id"));
@@ -76,14 +75,14 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     return null;
   }
 
-  @Override public void createAdmin(Admin admin)
+  @Override public void createFrontDesk(FrontDesk frontDesk)
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO admin (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, snn) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+            "INSERT INTO front_desk (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, snn) VALUES (?,?,?,?,?,?,?,?,?,?)"))
     {
-      adminPreparedStatement(preparedStatement, admin);
+      adminPreparedStatement(preparedStatement, frontDesk);
       preparedStatement.execute();
     }
     catch (SQLException e)
@@ -92,15 +91,15 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     }
   }
 
-  @Override public void updateAdmin(Admin admin)
+  @Override public void updateFrontDesk(FrontDesk frontDesk)
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE admin SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, snn = ? WHERE emp_id?"))
+            "UPDATE front_desk SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, snn = ? WHERE emp_id?"))
     {
-      adminPreparedStatement(preparedStatement, admin);
-      preparedStatement.setInt(12, admin.getEmpId());
+      adminPreparedStatement(preparedStatement, frontDesk);
+      preparedStatement.setInt(12, frontDesk.getEmpId());
       preparedStatement.execute();
     }
     catch (SQLException e)
@@ -109,14 +108,14 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     }
   }
 
-  @Override public void deleteAdmin(Admin admin)
+  @Override public void deleteFrontDesk(FrontDesk frontDesk)
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "DELETE FROM admin WHERE emp_id = ?"))
+            "DELETE FROM front_desk WHERE emp_id = ?"))
     {
-      preparedStatement.setInt(1, admin.getEmpId());
+      preparedStatement.setInt(1, frontDesk.getEmpId());
       preparedStatement.execute();
     }
     catch (SQLException e)
@@ -126,21 +125,21 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
   }
 
   private void adminPreparedStatement(PreparedStatement preparedStatement,
-      Admin admin)
+      FrontDesk frontDesk)
   {
     try
     {
-      preparedStatement.setString(1, admin.getfName());
-      preparedStatement.setString(2, admin.getlName());
-      preparedStatement.setString(3, admin.getPhoneNo());
-      preparedStatement.setString(4, admin.getEmail().getEmail());
-      preparedStatement.setString(5, admin.getPassword().getPassword());
-      preparedStatement.setString(6, admin.getAddress().getCountry());
-      preparedStatement.setString(7, admin.getAddress().getCity());
-      preparedStatement.setString(8, admin.getAddress().getStreet());
-      preparedStatement.setString(9, admin.getAddress().getNumber());
-      preparedStatement.setInt(10, admin.getAddress().getZip());
-      preparedStatement.setString(11, admin.getSsn());
+      preparedStatement.setString(1, frontDesk.getfName());
+      preparedStatement.setString(2, frontDesk.getlName());
+      preparedStatement.setString(3, frontDesk.getPhoneNo());
+      preparedStatement.setString(4, frontDesk.getEmail().getEmail());
+      preparedStatement.setString(5, frontDesk.getPassword().getPassword());
+      preparedStatement.setString(6, frontDesk.getAddress().getCountry());
+      preparedStatement.setString(7, frontDesk.getAddress().getCity());
+      preparedStatement.setString(8, frontDesk.getAddress().getStreet());
+      preparedStatement.setString(9, frontDesk.getAddress().getNumber());
+      preparedStatement.setInt(10, frontDesk.getAddress().getZip());
+      preparedStatement.setString(11, frontDesk.getSsn());
     }
     catch (SQLException e)
     {
@@ -148,5 +147,4 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     }
 
   }
-
 }

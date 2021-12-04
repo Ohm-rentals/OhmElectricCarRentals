@@ -6,36 +6,37 @@ import java.io.Serializable;
 
 public class FrontDesk extends User implements Serializable
 {
-  private int ssn;
-  private String id;
+  private int empId;
+  private String ssn;
 
-  public FrontDesk(String fName, String lName, Address address, int phoneNo,
-      Password password, Email email, int ssn, String id)
+  public FrontDesk(String fName, String lName, Address address, String phoneNo,
+      Password password, Email email, String ssn, int empId)
   {
     super(fName, lName, address, phoneNo, password, email);
-    this.id = id;
+    this.empId = empId;
     this.ssn = ssn;
   }
 
-  public FrontDesk(String fName, String lName, Address address, int phoneNo,
-      Password password, Email email)
+  public FrontDesk(String fName, String lName, Address address, String phoneNo,
+      Password password, Email email, String snn)
   {
     super(fName, lName, address, phoneNo, password, email);
+    this.ssn = ssn;
   }
 
-  public int getSsn()
+  public int getEmpId()
+  {
+    return empId;
+  }
+
+  public String getSsn()
   {
     return ssn;
   }
 
-  public String getId()
-  {
-    return id;
-  }
-
   @Override public String toString()
   {
-    return "FrontDesk{" + "ssn=" + ssn + ", id='" + id + '\'' + '}';
+    return "FrontDesk{" + "empId=" + empId + ", ssn='" + ssn + '\'' + '}';
   }
 }
 
