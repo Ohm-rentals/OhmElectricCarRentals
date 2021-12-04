@@ -24,8 +24,8 @@ public class DatabaseTEST
     System.out.println("Admin has been made");
 
 
-    AdminUserModelDatabase adminUserModelDatabase = new AdminUserModelDatabaseImpl();
-    adminUserModelDatabase.createAdmin(simus);
+   /* AdminUserModelDatabase adminUserModelDatabase = new AdminUserModelDatabaseImpl();
+    adminUserModelDatabase.createAdmin(simus);*/
     System.out.println("Admin added");
 
     LoginUser loginUser = new LoginUser(email,password, LoginType.ADMIN);

@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DatabaseConnector
 {
-  static final String DB_URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/dtiqzmpo?currentSchema=OhmCarRental";
+  static final String DB_URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/dtiqzmpo";
   static final String USER = "dtiqzmpo";
   static final String PASSWORD = "DD9MFQuiTIB_7ZDsqk17ngu9dAh-Sefh";
 

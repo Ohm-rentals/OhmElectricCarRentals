@@ -81,7 +81,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO admin (name, phone_no, email, password, address, ssn) VALUES ((?,?),?,?,?,(?,?,?,?,?),?)"))
+            "INSERT INTO \"OhmCarRental\".admin (name, phone_no, email, password, address, ssn) VALUES ((?,?),?,?,?,(?,?,?,?,?),?)"))
     {
       adminPreparedStatement(preparedStatement, admin);
       preparedStatement.execute();
