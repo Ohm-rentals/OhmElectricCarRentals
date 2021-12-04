@@ -20,7 +20,6 @@ public class SearchViewController implements ViewController {
     @FXML private ComboBox<String> rangeComboBox;
     @FXML private DatePicker fromDatePicker;
     @FXML private DatePicker toDatePicker;
-    @FXML private Text logInText; //Change This
     @FXML private HBox menuBarHBox;
 
     private Label selectedLocation = new Label();
@@ -28,21 +27,19 @@ public class SearchViewController implements ViewController {
 
 
     private SearchViewModel searchViewModel;
+    private ViewHandler viewHandler;
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
-
+        this.viewHandler = viewHandler;
         searchViewModel = viewModelFactory.getSearchViewModel();
-        menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml"));
+        menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml", viewHandler));
         rangeComboBox.getItems().setAll("0...1,000 DKK", "1,000...3,000 DKK", "3,000...5,000 DKK", "> 5,000 DKK");
         locationComboBox.getItems().setAll("Horsens", "Aarhus", "Kobenhavn", "Odense");
 
     }
 
 
-    public void logInAction(MouseEvent mouseEvent) {
-        searchViewModel.onLogIn();
-    }
 
     public void searchAction(ActionEvent actionEvent) {
         searchViewModel.onSearch(locationComboBox.getSelectionModel().getSelectedItem(),

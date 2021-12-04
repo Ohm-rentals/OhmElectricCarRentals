@@ -52,7 +52,7 @@ public class Personal {
     }
 
     public UserKind getKind(){
-        return this.identity.getKind();
+        return (identity == null) ?  UserKind.GUEST : this.identity.getKind();
     }
 
     public static Personal getPersonal() {

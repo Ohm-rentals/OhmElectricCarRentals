@@ -15,9 +15,4 @@ public class SearchViewModel {
         System.out.println(dateTo);
     }
 
-    public void onLogIn() {
-        System.out.println("GO TO LOG IN..");
-        // model.logIn
-
-    }
 }

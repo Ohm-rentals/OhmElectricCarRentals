@@ -43,6 +43,7 @@ public class LoginViewController implements ViewController {
 
     private void onSuccessLogin(PropertyChangeEvent event) {
         viewHandler.openSearchView();
+        closeWindow();
     }
 
     private void onErrorLogin(PropertyChangeEvent event) {
@@ -50,12 +51,12 @@ public class LoginViewController implements ViewController {
     }
 
     public void onClose(MouseEvent mouseEvent) {
-        Window window = textFieldEmail.getScene().getWindow();
-        window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
+        closeWindow();
     }
 
     public void onCreateAccount(MouseEvent mouseEvent) {
         viewHandler.openCreateAccountView();
+
     }
 
     public void login(MouseEvent mouseEvent) {
@@ -64,5 +65,10 @@ public class LoginViewController implements ViewController {
 
     public void requestPassword(MouseEvent mouseEvent) {
 
+    }
+
+    private void closeWindow() {
+        Window window = textFieldEmail.getScene().getWindow();
+        window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 }
