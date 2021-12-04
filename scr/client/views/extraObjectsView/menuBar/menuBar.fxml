@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox alignment="CENTER_LEFT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="1024.0" spacing="10.0" style="-fx-background-color: #e5e5e5#e5e5e5;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.extraObjectsView.menuBar.MenuBarController">
+   <children>
+      <Text fx:id="text1" fill="#0660e8" onMouseClicked="#logInAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Text1">
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin>
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+      <Text fx:id="text2" fill="#0660e8" onMouseClicked="#logInAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Text2">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+      <Text fx:id="text3" fill="#0660e8" onMouseClicked="#logInAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Text3">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+      <Text fx:id="text4" fill="#0660e8" onMouseClicked="#logInAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Text4">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+   </children>
+   <opaqueInsets>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </opaqueInsets>
+</HBox>

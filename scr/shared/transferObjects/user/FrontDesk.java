@@ -23,6 +23,11 @@ public class FrontDesk extends User implements Serializable
     super(fName, lName, address, phoneNo, password, email);
   }
 
+  @Override
+  public UserKind getKind() {
+    return UserKind.FRONT_DESK;
+  }
+
   public int getSsn()
   {
     return ssn;

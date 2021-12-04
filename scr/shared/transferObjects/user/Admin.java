@@ -22,6 +22,11 @@ public class Admin extends User implements Serializable
 
   }
 
+  @Override
+  public UserKind getKind() {
+    return UserKind.ADMIN;
+  }
+
   public String getId()
   {
     return id;
