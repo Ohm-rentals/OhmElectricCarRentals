@@ -34,7 +34,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
         frontDesks.add(new FrontDesk(resultSet.getString("f_name"),
             resultSet.getString("l_name"), address,
             resultSet.getString("phone_no"), password, email,
-            resultSet.getString("snn"), resultSet.getInt("emp_id")));
+            resultSet.getString("ssn"), resultSet.getInt("emp_id")));
       }
       return frontDesks;
     }
@@ -66,7 +66,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
       return new FrontDesk(resultSet.getString("f_name"),
           resultSet.getString("l_name"), address,
           resultSet.getString("phone_no"), password, email,
-          resultSet.getString("snn"), resultSet.getInt("emp_id"));
+          resultSet.getString("ssn"), resultSet.getInt("emp_id"));
     }
     catch (SQLException throwables)
     {
@@ -80,7 +80,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO front_desk (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, snn) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+            "INSERT INTO front_desk (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, ssn) VALUES (?,?,?,?,?,?,?,?,?,?)"))
     {
       adminPreparedStatement(preparedStatement, frontDesk);
       preparedStatement.execute();
@@ -96,7 +96,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE front_desk SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, snn = ? WHERE emp_id?"))
+            "UPDATE front_desk SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, ssn = ? WHERE emp_id?"))
     {
       adminPreparedStatement(preparedStatement, frontDesk);
       preparedStatement.setInt(12, frontDesk.getEmpId());

@@ -19,13 +19,13 @@ public class LoginModelDatabaseImp implements LoginModelDatabase
     {
       Statement statement = connection.createStatement();
 
-      String query = "SELECT PASSWORD FROM " + user.getUserType().toString()
-          + " WHERE EMAIL = '" + user.getEmail() + "'";
+      String query = "set search_path = \"OhmCarRental\"; SELECT password FROM " + user.getUserType().toString().toLowerCase()
+          + " WHERE email = '" + user.getEmail() + "'";
 
       ResultSet resultSet = statement.executeQuery(query);
 
       resultSet.next();
-      String dbPassword = resultSet.getString("Password");
+      String dbPassword = resultSet.getString("password");
 
       if (dbPassword.equals(user.getPassword()))
       {

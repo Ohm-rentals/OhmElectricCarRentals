@@ -35,7 +35,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
         admins.add(new Admin(resultSet.getString("f_name"),
             resultSet.getString("l_name"), address,
             resultSet.getString("phone_no"), password, email,
-            resultSet.getString("snn"), resultSet.getInt("emp_id")));
+            resultSet.getString("ssn"), resultSet.getInt("emp_id")));
       }
       return admins;
     }
@@ -67,7 +67,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
       return new Admin(resultSet.getString("f_name"),
           resultSet.getString("l_name"), address,
           resultSet.getString("phone_no"), password, email,
-          resultSet.getString("snn"), resultSet.getInt("emp_id"));
+          resultSet.getString("ssn"), resultSet.getInt("emp_id"));
     }
     catch (SQLException throwables)
     {
@@ -81,7 +81,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO admin (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, snn) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+            "set search_path = \"OhmCarRental\"; INSERT INTO admin (name, phone_no, email, password, address, ssn) VALUES ((?,?),?,?,?,(?,?,?,?,?),?)"))
     {
       adminPreparedStatement(preparedStatement, admin);
       preparedStatement.execute();
@@ -97,7 +97,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE admin SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, snn = ? WHERE emp_id?"))
+            "UPDATE admin SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, ssn = ? WHERE emp_id?"))
     {
       adminPreparedStatement(preparedStatement, admin);
       preparedStatement.setInt(12, admin.getEmpId());
