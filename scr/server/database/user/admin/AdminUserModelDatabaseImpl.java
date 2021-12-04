@@ -2,9 +2,7 @@ package server.database.user.admin;
 
 import server.database.DatabaseConnector;
 import shared.transferObjects.Address;
-import shared.transferObjects.user.Admin;
-import shared.transferObjects.user.Email;
-import shared.transferObjects.user.Password;
+import shared.transferObjects.user.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "SELECT * FROM admin"))
+            "SELECT * FROM \"OhmCarRental\".admin"))
     {
       ArrayList<Admin> admins = new ArrayList<>();
 
@@ -31,11 +29,12 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
 
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
+        PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
+        Ssn ssn = new Ssn(resultSet.getString("ssn"));
 
-/*        admins.add(new Admin(resultSet.getString("f_name"),
-            resultSet.getString("l_name"), address,
-            resultSet.getString("phone_no"), password, email,
-            resultSet.getString("ssn"), resultSet.getInt("emp_id")));*/
+        admins.add(new Admin(resultSet.getString("f_name"),
+            resultSet.getString("l_name"), address, phoneNo, password, email,
+            ssn, resultSet.getInt("emp_id")));
       }
       return admins;
     }
@@ -53,7 +52,8 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     {
       Statement statement = connection.createStatement();
 
-      String query = "SELECT * FROM admin WHERE emp_id = '" + empId + "'";
+      String query =
+          "SELECT * FROM \"OhmCarRental\".admin WHERE emp_id = '" + empId + "'";
 
       ResultSet resultSet = statement.executeQuery(query);
 
@@ -63,11 +63,12 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
 
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
-/*
+      PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
+      Ssn ssn = new Ssn(resultSet.getString("ssn"));
+
       return new Admin(resultSet.getString("f_name"),
-          resultSet.getString("l_name"), address,
-          resultSet.getString("phone_no"), password, email,
-          resultSet.getString("ssn"), resultSet.getInt("emp_id"));*/
+          resultSet.getString("l_name"), address, phoneNo, password, email, ssn,
+          resultSet.getInt("emp_id"));
     }
     catch (SQLException throwables)
     {
@@ -81,9 +82,10 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO \"OhmCarRental\".admin (name, phone_no, email, password, address, ssn) VALUES ((?,?),?,?,?,(?,?,?,?,?),?)"))
+            "INSERT INTO \"OhmCarRental\".admin (name, phone_no, email, password, address, ssn, type) VALUES ((?,?),?,?,?,(?,?,?,?,?),?,?)"))
     {
       adminPreparedStatement(preparedStatement, admin);
+      preparedStatement.setString(12, admin.getType().toString());
       preparedStatement.execute();
     }
     catch (SQLException e)
@@ -97,7 +99,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE admin SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, ssn = ? WHERE emp_id?"))
+            "UPDATE \"OhmCarRental\".admin SET name = (?,?), phone_no = ?, email = ?, password = ?, address = (?,?,?,?,?), ssn = ? WHERE emp_id = ?"))
     {
       adminPreparedStatement(preparedStatement, admin);
       preparedStatement.setInt(12, admin.getEmpId());
@@ -114,7 +116,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "DELETE FROM admin WHERE emp_id = ?"))
+            "DELETE FROM \"OhmCarRental\".admin WHERE emp_id = ?"))
     {
       preparedStatement.setInt(1, admin.getEmpId());
       preparedStatement.execute();

@@ -20,18 +20,21 @@ public class DatabaseTEST
     Password password = new Password("Vlad1234");
     System.out.println("Password has been made");
 
-    Admin simus = new Admin("Simus", "something",address,"8888888",password,email,"111111111");
+    PhoneNo phoneNo = new PhoneNo("11111111");
+    Ssn ssn = new Ssn("0000000000");
+
+    Admin simus = new Admin("Simus", "something",address,phoneNo,password,email,ssn);
     System.out.println("Admin has been made");
 
 
-   /* AdminUserModelDatabase adminUserModelDatabase = new AdminUserModelDatabaseImpl();
-    adminUserModelDatabase.createAdmin(simus);*/
+    AdminUserModelDatabase adminUserModelDatabase = new AdminUserModelDatabaseImpl();
+    adminUserModelDatabase.createAdmin(simus);
     System.out.println("Admin added");
 
-    LoginUser loginUser = new LoginUser(email,password, LoginType.ADMIN);
+/*    LoginUser loginUser = new LoginUser(email,password, LoginType.ADMIN);
     LoginModelDatabase loginModelDatabase = new LoginModelDatabaseImp();
     loginModelDatabase.login(loginUser);
-    System.out.println("User login");
+    System.out.println("User login");*/
   }
 
 

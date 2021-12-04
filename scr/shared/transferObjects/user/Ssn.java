@@ -8,7 +8,7 @@ public class Ssn implements Serializable
 
   public Ssn(String ssn)
   {
-    if (!isValid(ssn))
+    if (isValid(ssn))
       throw new IllegalArgumentException(
           "ssn contains characters and/or is not 10 digits long");
     this.ssn = ssn;

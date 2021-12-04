@@ -9,7 +9,7 @@ public class Admin extends User implements Serializable
   private Ssn ssn;
   private int empId;
 
-  public Admin(String fName, String lName, Address address, String phoneNo,
+  public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
       Password password, Email email, Ssn ssn, int empId)
   {
     super(fName, lName, address, phoneNo, password, email);
@@ -17,7 +17,7 @@ public class Admin extends User implements Serializable
     this.empId = empId;
   }
 
-  public Admin(String fName, String lName, Address address, String phoneNo,
+  public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
       Password password, Email email, Ssn ssn)
   {
     super(fName, lName, address, phoneNo, password, email);
