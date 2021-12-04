@@ -32,10 +32,10 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
 
-        admins.add(new Admin(resultSet.getString("f_name"),
+/*        admins.add(new Admin(resultSet.getString("f_name"),
             resultSet.getString("l_name"), address,
             resultSet.getString("phone_no"), password, email,
-            resultSet.getString("ssn"), resultSet.getInt("emp_id")));
+            resultSet.getString("ssn"), resultSet.getInt("emp_id")));*/
       }
       return admins;
     }
@@ -63,11 +63,11 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
 
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
-
+/*
       return new Admin(resultSet.getString("f_name"),
           resultSet.getString("l_name"), address,
           resultSet.getString("phone_no"), password, email,
-          resultSet.getString("ssn"), resultSet.getInt("emp_id"));
+          resultSet.getString("ssn"), resultSet.getInt("emp_id"));*/
     }
     catch (SQLException throwables)
     {

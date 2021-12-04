@@ -6,11 +6,11 @@ import java.io.Serializable;
 
 public class Admin extends User implements Serializable
 {
-  private String ssn;
+  private Ssn ssn;
   private int empId;
 
   public Admin(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, String ssn, int empId)
+      Password password, Email email, Ssn ssn, int empId)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.ssn = ssn;
@@ -18,7 +18,7 @@ public class Admin extends User implements Serializable
   }
 
   public Admin(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, String ssn)
+      Password password, Email email, Ssn ssn)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.ssn = ssn;
@@ -26,12 +26,7 @@ public class Admin extends User implements Serializable
 
   public String getSsn()
   {
-    return ssn;
-  }
-
-  public void setSsn(String snn)
-  {
-    this.ssn = snn;
+    return ssn.getSsn();
   }
 
   public int getEmpId()

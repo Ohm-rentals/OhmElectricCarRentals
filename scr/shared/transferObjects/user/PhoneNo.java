@@ -26,4 +26,9 @@ public class PhoneNo implements Serializable
     }
     return number.length()==7;
   }
+
+  public void setNumber(String number){
+    if(!isValid(number)) throw new IllegalArgumentException("The phone number contains characters and/or is not 8 digits long");
+    this.number=number;
+  }
 }

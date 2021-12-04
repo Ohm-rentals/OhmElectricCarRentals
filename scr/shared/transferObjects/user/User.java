@@ -6,12 +6,13 @@ import java.io.Serializable;
 
 public abstract class User implements Serializable
 {
-  private String fName, lName, phoneNo;
+  private String fName, lName;
   private Password password;
   private Email email;
   private Address address;
+  private PhoneNo phoneNo;
 
-  public User(String fName, String lName, Address address, String phoneNo,
+  public User(String fName, String lName, Address address, PhoneNo phoneNo,
       Password password, Email email)
   {
     this.fName = fName;
@@ -46,12 +47,12 @@ public abstract class User implements Serializable
 
   public String getPhoneNo()
   {
-    return phoneNo;
+    return phoneNo.getNumber();
   }
 
   public void setPhoneNo(String phoneNo)
   {
-    this.phoneNo = phoneNo;
+    this.phoneNo.setNumber(phoneNo);
   }
 
   public Password getPassword()
