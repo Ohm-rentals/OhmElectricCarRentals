@@ -83,8 +83,8 @@ public class ServiceModelDatabaseImp implements ServiceModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "DELETE * FROM service WHERE emp_id=" + service.getEmpId()
-                + "AND car_id=" + service.getCarId()))
+            "DELETE * FROM service WHERE emp_id='" + service.getEmpId()+"' "
+                + "AND car_id='" + service.getCarId()+"'"))
     {
       preparedStatement.execute();
     }
