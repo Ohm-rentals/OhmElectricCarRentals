@@ -2,9 +2,7 @@ package server.database.user.frontDesk;
 
 import server.database.DatabaseConnector;
 import shared.transferObjects.Address;
-import shared.transferObjects.user.Email;
-import shared.transferObjects.user.FrontDesk;
-import shared.transferObjects.user.Password;
+import shared.transferObjects.user.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,10 +29,12 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
 
+        PhoneNo phoneNo= new PhoneNo(resultSet.getString("phone_no"));
+        Ssn ssn= new Ssn(resultSet.getString("ssn"));
         frontDesks.add(new FrontDesk(resultSet.getString("f_name"),
             resultSet.getString("l_name"), address,
-            resultSet.getString("phone_no"), password, email,
-            resultSet.getString("ssn"), resultSet.getInt("emp_id")));
+            phoneNo, password, email,
+            ssn, resultSet.getInt("emp_id")));
       }
       return frontDesks;
     }
@@ -52,7 +52,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
     {
       Statement statement = connection.createStatement();
 
-      String query = "SELECT * FROM front_desk WHERE emp_id = '" + empId + "'";
+      String query = "SELECT * FROM \"OhmCarRental\".front_desk WHERE emp_id = '" + empId + "'";
 
       ResultSet resultSet = statement.executeQuery(query);
 
@@ -62,11 +62,12 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
 
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
-
+      PhoneNo phoneNo= new PhoneNo(resultSet.getString("phone_no"));
+      Ssn ssn= new Ssn(resultSet.getString("ssn"));
       return new FrontDesk(resultSet.getString("f_name"),
           resultSet.getString("l_name"), address,
-          resultSet.getString("phone_no"), password, email,
-          resultSet.getString("ssn"), resultSet.getInt("emp_id"));
+          phoneNo, password, email,
+          ssn, resultSet.getInt("emp_id"));
     }
     catch (SQLException throwables)
     {
@@ -80,7 +81,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO front_desk (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, ssn) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+            "INSERT INTO \"OhmCarRental\".front_desk (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, ssn) VALUES (?,?,?,?,?,?,?,?,?,?)"))
     {
       adminPreparedStatement(preparedStatement, frontDesk);
       preparedStatement.execute();
@@ -96,7 +97,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE front_desk SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, ssn = ? WHERE emp_id?"))
+            "UPDATE \"OhmCarRental\".front_desk SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, ssn = ? WHERE emp_id?"))
     {
       adminPreparedStatement(preparedStatement, frontDesk);
       preparedStatement.setInt(12, frontDesk.getEmpId());
@@ -113,7 +114,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "DELETE FROM front_desk WHERE emp_id = ?"))
+            "DELETE FROM \"OhmCarRental\".front_desk WHERE emp_id = ?"))
     {
       preparedStatement.setInt(1, frontDesk.getEmpId());
       preparedStatement.execute();
@@ -139,7 +140,7 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
       preparedStatement.setString(8, frontDesk.getAddress().getStreet());
       preparedStatement.setString(9, frontDesk.getAddress().getNumber());
       preparedStatement.setInt(10, frontDesk.getAddress().getZip());
-      preparedStatement.setString(11, frontDesk.getSsn());
+      preparedStatement.setString(11, frontDesk.getSsn().getSsn());
     }
     catch (SQLException e)
     {

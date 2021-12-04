@@ -2,9 +2,7 @@ package server.database.user.customer;
 
 import server.database.DatabaseConnector;
 import shared.transferObjects.Address;
-import shared.transferObjects.user.Customer;
-import shared.transferObjects.user.Email;
-import shared.transferObjects.user.Password;
+import shared.transferObjects.user.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,8 +13,8 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(
-            "SELECT * FROM customer"))
+        PreparedStatement preparedStatement = connection
+            .prepareStatement("SELECT * FROM \"OhmCarRental\".customer"))
     {
       ArrayList<Customer> customers = new ArrayList<>();
 
@@ -30,12 +28,13 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
 
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
+        PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
+        DriverLicense driverLicense = new DriverLicense(
+            resultSet.getString("driver_license_no"));
 
         customers.add(new Customer(resultSet.getString("name.f_name"),
-            resultSet.getString("name.l_name"), address,
-            resultSet.getString("phone_no"), password, email,
-            resultSet.getString("driver_license_no"),
-            resultSet.getInt("customer_id")));
+            resultSet.getString("name.l_name"), address, phoneNo, password,
+            email, driverLicense, resultSet.getInt("customer_id")));
       }
       return customers;
     }
@@ -64,12 +63,13 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
 
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
+      PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
+      DriverLicense driverLicense = new DriverLicense(
+          resultSet.getString("driver_license_no"));
 
       return new Customer(resultSet.getString("name.f_name"),
-          resultSet.getString("name.l_name"), address,
-          resultSet.getString("phone_no"), password, email,
-          resultSet.getString("driver_license_no"),
-          resultSet.getInt("customer_id"));
+          resultSet.getString("name.l_name"), address, phoneNo, password, email,
+          driverLicense, resultSet.getInt("customer_id"));
     }
     catch (SQLException throwables)
     {
@@ -83,7 +83,7 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO customer (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, driver_license_no) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+            "INSERT INTO \"OhmCarRental\".customer (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, driver_license_no) VALUES (?,?,?,?,?,?,?,?,?,?)"))
     {
       customerPreparedStatement(preparedStatement, customer);
       preparedStatement.execute();
@@ -99,7 +99,7 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE customer SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, driver_license_no = ? WHERE customer_id?"))
+            "UPDATE \"OhmCarRental\".customer SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, driver_license_no = ? WHERE customer_id?"))
     {
       customerPreparedStatement(preparedStatement, customer);
       preparedStatement.setInt(12, customer.getCustomerId());
@@ -116,7 +116,7 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "DELETE FROM customer WHERE customer_id = ?"))
+            "DELETE FROM \"OhmCarRental\".customer WHERE customer_id = ?"))
     {
       preparedStatement.setInt(1, customer.getCustomerId());
       preparedStatement.execute();
@@ -142,7 +142,8 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
       preparedStatement.setString(8, customer.getAddress().getStreet());
       preparedStatement.setString(9, customer.getAddress().getNumber());
       preparedStatement.setInt(10, customer.getAddress().getZip());
-      preparedStatement.setString(11, customer.getDriverLicenseNo());
+      preparedStatement
+          .setString(11, customer.getDriverLicenseNo().getLicence());
     }
     catch (SQLException throwables)
     {
