@@ -7,17 +7,17 @@ import java.io.Serializable;
 public class FrontDesk extends User implements Serializable
 {
   private int empId;
-  private String ssn;
+  private Ssn ssn;
 
-  public FrontDesk(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, String ssn, int empId)
+  public FrontDesk(String fName, String lName, Address address, PhoneNo phoneNo,
+      Password password, Email email, Ssn ssn, int empId)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.empId = empId;
     this.ssn = ssn;
   }
 
-  public FrontDesk(String fName, String lName, Address address, String phoneNo,
+  public FrontDesk(String fName, String lName, Address address, PhoneNo phoneNo,
       Password password, Email email, String snn)
   {
     super(fName, lName, address, phoneNo, password, email);
@@ -29,10 +29,11 @@ public class FrontDesk extends User implements Serializable
     return empId;
   }
 
-  public String getSsn()
+  public Ssn getSsn()
   {
     return ssn;
   }
+
 
   @Override public String toString()
   {
