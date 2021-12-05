@@ -32,8 +32,8 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
         DriverLicense driverLicense = new DriverLicense(
             resultSet.getString("driver_license_no"));
 
-        customers.add(new Customer(resultSet.getString("name.f_name"),
-            resultSet.getString("name.l_name"), address, phoneNo, password,
+        customers.add(new Customer(resultSet.getString("f_name"),
+            resultSet.getString("l_name"), address, phoneNo, password,
             email, driverLicense, resultSet.getInt("customer_id")));
       }
       return customers;
@@ -67,8 +67,8 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
       DriverLicense driverLicense = new DriverLicense(
           resultSet.getString("driver_license_no"));
 
-      return new Customer(resultSet.getString("name.f_name"),
-          resultSet.getString("name.l_name"), address, phoneNo, password, email,
+      return new Customer(resultSet.getString(" f_name"),
+          resultSet.getString("l_name"), address, phoneNo, password, email,
           driverLicense, resultSet.getInt("customer_id"));
     }
     catch (SQLException throwables)
@@ -83,7 +83,7 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO \"OhmCarRental\".customer (f_name, l_name, phone_no, email, password, address.country, address.city, address.street, address.number, address.zip, driver_license_no) VALUES (?,?,?,?,?,?,?,?,?,?)"))
+            "INSERT INTO \"OhmCarRental\".customer (f_name, l_name, phone_no, email, password, country, city, street, number, zip, driver_license_no) VALUES (?,?,?,?,?,?,?,?,?,?)"))
     {
       customerPreparedStatement(preparedStatement, customer);
       preparedStatement.execute();
@@ -99,7 +99,7 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE \"OhmCarRental\".customer SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, address.country = ?, address.city = ?, address.street = ?, address.number = ?, address.zip = ?, driver_license_no = ? WHERE customer_id?"))
+            "UPDATE \"OhmCarRental\".customer SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, country = ?, city = ?, street = ?, number = ?, zip = ?, driver_license_no = ? WHERE customer_id?"))
     {
       customerPreparedStatement(preparedStatement, customer);
       preparedStatement.setInt(12, customer.getCustomerId());
