@@ -56,7 +56,7 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
           "SELECT * FROM customer WHERE emp_id = '" + customerId + "'";
 
       ResultSet resultSet = statement.executeQuery(query);
-
+      resultSet.next();
       Address address = new Address(resultSet.getString("country"),
           resultSet.getString("city"), resultSet.getString("street"),
           resultSet.getString("number"), resultSet.getInt("zip"));
