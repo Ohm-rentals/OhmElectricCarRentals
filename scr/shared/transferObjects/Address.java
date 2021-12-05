@@ -16,6 +16,16 @@ public class Address implements Serializable
     this.number=number;
   }
 
+  public Address(String address)
+  {
+    String[] parts = address.split(",");
+    this.country = parts[0];
+    this.city = parts[1];
+    this.street = parts[2];
+    this.number = parts[3];
+
+  }
+
   public int getZip()
   {
     return zip;

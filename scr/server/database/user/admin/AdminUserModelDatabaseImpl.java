@@ -57,6 +57,8 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
 
       ResultSet resultSet = statement.executeQuery(query);
 
+      resultSet.next();
+
       Address address = new Address(resultSet.getString("country"),
           resultSet.getString("city"), resultSet.getString("street"),
           resultSet.getString("number"), resultSet.getInt("zip"));
@@ -82,7 +84,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO \"OhmCarRental\".admin (name, phone_no, email, password, address, ssn, type) VALUES ((?,?),?,?,?,(?,?,?,?,?),?,?)"))
+            "INSERT INTO \"OhmCarRental\".admin (f_name, l_name, phone_no, email, password, country, city, street, number, zip, ssn, type) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"))
     {
       adminPreparedStatement(preparedStatement, admin);
       preparedStatement.setString(12, admin.getType().toString());
@@ -99,7 +101,7 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "UPDATE \"OhmCarRental\".admin SET name = (?,?), phone_no = ?, email = ?, password = ?, address = (?,?,?,?,?), ssn = ? WHERE emp_id = ?"))
+            "UPDATE \"OhmCarRental\".admin SET f_name = ?, l_name = ?, phone_no = ?, email = ?, password = ?, country = ?, city = ?, street = ?, number = ?, zip = ?, ssn = ? WHERE emp_id = ?"))
     {
       adminPreparedStatement(preparedStatement, admin);
       preparedStatement.setInt(12, admin.getEmpId());
