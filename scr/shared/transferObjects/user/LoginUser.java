@@ -4,13 +4,11 @@ public class LoginUser
 {
   private Email email;
   private Password password;
-  private LoginType loginType;
 
-  public LoginUser(Email email, Password password, LoginType loginType)
+  public LoginUser(Email email, Password password)
   {
     this.email = email;
     this.password = password;
-    this.loginType = loginType;
   }
 
   public String getEmail()
@@ -21,10 +19,5 @@ public class LoginUser
   public String getPassword()
   {
     return password.getPassword();
-  }
-
-  public LoginType getUserType()
-  {
-    return loginType;
   }
 }
