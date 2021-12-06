@@ -18,7 +18,9 @@ public class ViewHandler {
     private Stage stage, popUpStage;
     private Parent root;
 
-
+    Scene scene;
+    ViewController viewController;
+    String actualPath;
 
     public ViewHandler(ViewModelFactory viewModelFactory) {
         this.viewModelFactory = viewModelFactory;
@@ -27,42 +29,47 @@ public class ViewHandler {
     }
 
     public void openCatalogView(){
-        Scene scene = new Scene(getRoot("../views/catalogView/catalogView.fxml"));
+        actualPath ="../views/catalogView/catalogView.fxml";
+        scene = new Scene(getRoot(actualPath));
         stage.setScene(scene);
         stage.show();
     }
 
     public void openCreateAccountView(){
-        Scene scene = new Scene(getRoot("../views/createAccountView/createAccountView.fxml"));
-        openNewWindow(scene);
+        Scene newScene = new Scene(getRoot("../views/createAccountView/createAccountView.fxml"));
+        openNewWindow(newScene);
     }
 
 
     public void openLoginView(){
-        Scene scene = new Scene(getRoot("../views/loginView/loginView.fxml"));
-        openNewWindow(scene);
+        Scene newScene = new Scene(getRoot("../views/loginView/loginView.fxml"));
+        openNewWindow(newScene);
     }
 
     public void openMyAccountView(){
-        Scene scene = new Scene(getRoot("../views/myAccountView/myAccountView.fxml"));
+        actualPath ="../views/myAccountView/myAccountView.fxml";
+        scene = new Scene(getRoot(actualPath));
         stage.setScene(scene);
         stage.show();
     }
 
-    public void openManageAccount(){
-        Scene scene = new Scene(getRoot("../views/manageAccountView/manageAccountsView.fxml"));
+    public void openManageAccountView(){
+        actualPath ="../views/manageAccountView/manageAccountsView.fxml";
+        scene = new Scene(getRoot(actualPath));
         stage.setScene(scene);
         stage.show();
     }
 
     public void openManageCars(){
-        Scene scene = new Scene(getRoot("../views/manageCarsView/manageCarsView.fxml"));
+        actualPath = "../views/manageCarsView/manageCarsView.fxml";
+        scene = new Scene(getRoot(actualPath));
         stage.setScene(scene);
         stage.show();
     }
 
     public void openSearchView(){
-        Scene scene = new Scene(getRoot("../views/searchView/searchView.fxml"));
+        actualPath = "../views/searchView/searchView.fxml";
+        scene = new Scene(getRoot(actualPath));
         stage.setScene(scene);
         stage.show();
     }
@@ -73,7 +80,7 @@ public class ViewHandler {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource(path));
             root = loader.load();
-            ViewController viewController = loader.getController();
+            viewController = loader.getController();
             viewController.init(this, viewModelFactory);
         } catch (IOException e) {
             e.printStackTrace();
@@ -109,5 +116,11 @@ public class ViewHandler {
 
 
         popUpStage.show();
+    }
+
+    public void refreshActualView() {
+        scene = new Scene(getRoot(actualPath));
+        stage.setScene(scene);
+        stage.show();
     }
 }

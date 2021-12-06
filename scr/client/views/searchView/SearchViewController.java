@@ -23,7 +23,7 @@ public class SearchViewController implements ViewController {
     @FXML private HBox menuBarHBox;
 
     private Label selectedLocation = new Label();
-    private Personal personal;
+
 
 
     private SearchViewModel searchViewModel;
@@ -42,6 +42,7 @@ public class SearchViewController implements ViewController {
 
 
     public void searchAction(ActionEvent actionEvent) {
+        viewHandler.openCatalogView();
         searchViewModel.onSearch(locationComboBox.getSelectionModel().getSelectedItem(),
                                  rangeComboBox.getSelectionModel().getSelectedItem(),
                                  fromDatePicker.getValue(),

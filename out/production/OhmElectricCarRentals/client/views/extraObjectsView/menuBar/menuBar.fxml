@@ -24,31 +24,31 @@
             <Insets />
          </HBox.margin>
          <font>
-            <Font name="Arial Rounded MT Bold" size="21.0" />
+            <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text fx:id="text2" fill="#0660e8" onMouseClicked="#logInAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Text2">
+      <Text fx:id="text2" fill="#0660e8" onMouseClicked="#onManageAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Text2">
          <font>
-            <Font name="Arial Rounded MT Bold" size="21.0" />
+            <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text fx:id="text3" fill="#0660e8" onMouseClicked="#logInAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Text3">
+      <Text fx:id="text3" fill="#0660e8" onMouseClicked="#onManageReservations" strokeType="OUTSIDE" strokeWidth="0.0" text="Text3">
          <font>
-            <Font name="Arial Rounded MT Bold" size="21.0" />
+            <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text fx:id="text4" fill="#0660e8" onMouseClicked="#logInAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Text4">
+      <Text fx:id="text4" fill="#0660e8" onMouseClicked="#onManageCars" strokeType="OUTSIDE" strokeWidth="0.0" text="Text4">
          <font>
-            <Font name="Arial Rounded MT Bold" size="21.0" />
+            <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

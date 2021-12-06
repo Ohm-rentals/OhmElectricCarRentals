@@ -42,7 +42,7 @@ public class LoginViewController implements ViewController {
 
 
     private void onSuccessLogin(PropertyChangeEvent event) {
-        viewHandler.openSearchView();
+       viewHandler.refreshActualView();
         closeWindow();
     }
 

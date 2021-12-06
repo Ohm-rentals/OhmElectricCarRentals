@@ -39,8 +39,15 @@ public class Admin extends User implements Serializable
     return empId;
   }
 
+
   @Override public String toString()
   {
     return "Admin{" + "ssn='" + ssn + '\'' + ", empId='" + empId + '\'' + '}';
+  }
+
+
+  @Override
+  public UserKind getKind() {
+    return UserKind.ADMIN;
   }
 }

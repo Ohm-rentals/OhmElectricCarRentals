@@ -49,8 +49,11 @@ public class MenuBarController  {
     public void logInAction(MouseEvent mouseEvent) {
         if (personal.getStatus().equals(Stat.OFFLINE)) {
             viewHandler.openLoginView();
-        } else {
+        }
+
+        if (personal.getStatus().equals(Stat.ONLINE)){
             personal.logOut();
+          //  viewHandler.refreshActualView(); // what shoul I do when I log out? which view should I GO
             viewHandler.openSearchView();
         }
 
@@ -59,5 +62,17 @@ public class MenuBarController  {
 
     public void onMyAccount(MouseEvent mouseEvent) {
         viewHandler.openMyAccountView();
+    }
+
+    public void onManageAccount(MouseEvent mouseEvent) {
+        viewHandler.openManageAccountView();
+    }
+
+    public void onManageReservations(MouseEvent mouseEvent) {
+
+    }
+
+    public void onManageCars(MouseEvent mouseEvent) {
+        viewHandler.openManageCars();
     }
 }

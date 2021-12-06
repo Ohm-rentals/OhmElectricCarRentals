@@ -9,7 +9,7 @@ public class FrontDesk extends User implements Serializable
   private int ssn;
   private String id;
 
-  public FrontDesk(String fName, String lName, Address address, int phoneNo,
+  public FrontDesk(String fName, String lName, Address address, String phoneNo,
       Password password, Email email, int ssn, String id)
   {
     super(fName, lName, address, phoneNo, password, email);
@@ -17,7 +17,7 @@ public class FrontDesk extends User implements Serializable
     this.ssn = ssn;
   }
 
-  public FrontDesk(String fName, String lName, Address address, int phoneNo,
+  public FrontDesk(String fName, String lName, Address address, String phoneNo,
       Password password, Email email)
   {
     super(fName, lName, address, phoneNo, password, email);

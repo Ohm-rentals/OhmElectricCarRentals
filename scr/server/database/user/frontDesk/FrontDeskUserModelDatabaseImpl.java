@@ -10,7 +10,33 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabase
+
 {
+  @Override
+  public ArrayList<FrontDesk> getAllFrontDesk() {
+    return null;
+  }
+
+  @Override
+  public FrontDesk getFrontDeskById(int empId) {
+    return null;
+  }
+
+  @Override
+  public void createFrontDesk(FrontDesk frontDesk) {
+
+  }
+
+  @Override
+  public void updateFrontDesk(FrontDesk frontDesk) {
+
+  }
+
+  @Override
+  public void deleteFrontDesk(FrontDesk frontDesk) {
+
+  }
+/*
   @Override public ArrayList<FrontDesk> getAllFrontDesk()
   {
     try (Connection connection = DatabaseConnector.getInstance()
@@ -31,12 +57,12 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
 
-        frontDesks.add(new FrontDesk(resultSet.getString("f_name"),
-            resultSet.getString("l_name"), address,
-            resultSet.getString("phone_no"), password, email,
-            resultSet.getString("ssn"), resultSet.getInt("emp_id")));
-      }
-      return frontDesks;
+    //    frontDesks.add(new FrontDesk(resultSet.getString("f_name"),
+         //   resultSet.getString("l_name"), address,
+          //  resultSet.getString("phone_no"), password, email,
+          //  resultSet.getString("ssn"), resultSet.getInt("emp_id")));
+    //  }
+   //   return frontDesks;
     }
     catch (SQLException throwables)
     {
@@ -145,6 +171,8 @@ public class FrontDeskUserModelDatabaseImpl implements FrontDeskUserModelDatabas
     {
       e.printStackTrace();
     }
-
   }
+   */
+
+
 }
