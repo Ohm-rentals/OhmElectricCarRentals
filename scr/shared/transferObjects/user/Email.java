@@ -9,10 +9,12 @@ public class Email implements Serializable
 
   public Email(String email)
   {
+    if (!isValid(email)) throw  new IllegalArgumentException("Email is not valid");
+
     this.email = email;
   }
 
-  public boolean isValid()
+  public boolean isValid(String email)
   {
     String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@"
         + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";

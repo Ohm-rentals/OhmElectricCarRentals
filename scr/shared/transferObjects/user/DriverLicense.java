@@ -16,6 +16,7 @@ public class DriverLicense implements Serializable
   {
     return licence;
   }
+
   public boolean isValid(String license)
   {
     for (char c : license.toCharArray())
@@ -25,5 +26,5 @@ public class DriverLicense implements Serializable
         return false;
       }
     }
-    return license.length() == 7;
+    return license.length() == 8;
   }}

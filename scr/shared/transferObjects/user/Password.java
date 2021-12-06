@@ -36,13 +36,12 @@ public class Password implements Serializable
 
   public boolean equals(Object obj)
   {
-    if (!(obj instanceof Password))
+    if (!(obj instanceof Password other))
     {
       return false;
     }
     else
     {
-      Password other = (Password) obj;
       return password.equals(other.password);
     }
   }
