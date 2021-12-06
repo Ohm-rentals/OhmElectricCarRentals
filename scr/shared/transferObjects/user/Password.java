@@ -23,30 +23,44 @@ public class Password implements Serializable
     return password;
   }
 
-  public boolean isValid(String password)
+  public static boolean isValid(String password)
   {
     boolean hasDigits = false;
+    boolean hasUppercase = false;
+    boolean hasLowercase = false;
     for (char c : password.toCharArray())
     {
       if (Character.isDigit(c))
       {
         hasDigits = true;
       }
+      if (Character.isUpperCase(c))
+      {
+        hasUppercase = true;
+      }
+      if (Character.isLowerCase(c))
+      {
+        hasLowercase = true;
+      }
     }
-    return password.length() > 7 && hasDigits;
+    return password.length() > 7 && hasDigits && hasLowercase && hasUppercase;
   }
 
   public boolean equals(Object obj)
   {
-    if (!(obj instanceof Password))
+    if (!(obj instanceof Password other))
     {
       return false;
     }
     else
     {
-      Password other = (Password) obj;
       return password.equals(other.password);
     }
+  }
+
+  @Override public String toString()
+  {
+    return "Password{" + "password='" + password + '\'' + '}';
   }
 }
 

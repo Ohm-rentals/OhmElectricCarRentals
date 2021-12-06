@@ -6,41 +6,50 @@ import java.io.Serializable;
 
 public class FrontDesk extends User implements Serializable
 {
-  private int ssn;
-  private String id;
+  private int empId;
+  private Ssn ssn;
+  private Address workAddress;
 
-  public FrontDesk(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, int ssn, String id)
+  public FrontDesk(String fName, String lName, Address personalAddress, PhoneNo phoneNo,
+      Password password, Email email, Ssn ssn, Address workAddress, int empId)
   {
-    super(fName, lName, address, phoneNo, password, email);
-    this.id = id;
+    super(fName, lName, personalAddress, phoneNo, password, email);
+    this.empId = empId;
     this.ssn = ssn;
+    this.workAddress=workAddress;
   }
 
-  public FrontDesk(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email)
+  public FrontDesk(String fName, String lName, Address personalAddress, PhoneNo phoneNo,
+      Password password, Email email, String snn, Address workAddress)
   {
-    super(fName, lName, address, phoneNo, password, email);
+    super(fName, lName, personalAddress, phoneNo, password, email);
+    this.ssn = ssn;
+    this.workAddress=workAddress;
   }
 
-  @Override
-  public UserKind getKind() {
-    return UserKind.FRONT_DESK;
+  public int getEmpId()
+  {
+    return empId;
   }
 
-  public int getSsn()
+  public Ssn getSsn()
   {
     return ssn;
   }
 
-  public String getId()
-  {
-    return id;
-  }
 
   @Override public String toString()
   {
-    return "FrontDesk{" + "ssn=" + ssn + ", id='" + id + '\'' + '}';
+    return "FrontDesk{" + "empId=" + empId + ", ssn='" + ssn + '\'' + '}';
+  }
+
+  @Override public LoginType getType()
+  {
+    return LoginType.FRONT_DESK;
+  }
+
+  public Address getWorkAddress(){
+    return workAddress;
   }
 }
 

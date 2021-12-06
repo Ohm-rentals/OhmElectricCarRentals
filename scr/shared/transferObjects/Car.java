@@ -4,15 +4,14 @@ import java.io.Serializable;
 
 public class Car implements Serializable
 {
-  private String make, model, licenseNumber, type;
-  private LicenseNumber licenseNo;
-  private int year, seats, range, km;
+  private String make, model, type;
+  private PlateNo plateNo;
+  private int year, seats, range, km, carId;
   private double price;
-  private String id;
   private Address pickupPoint;
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km, Address pickupPoint, LicenseNumber licenseNo)
+      int range, int km, Address pickupPoint, PlateNo plateNo)
   {
     this.make = make;
     this.model = model;
@@ -22,12 +21,12 @@ public class Car implements Serializable
     this.range = range;
     this.km = km;
     this.pickupPoint=pickupPoint;
-    this.licenseNo = licenseNo;
+    this.plateNo = plateNo;
 
   }
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km,Address pickupPoint, LicenseNumber licenseNo, String  id)
+      int range, int km,Address pickupPoint, PlateNo plateNo, int  carId)
   {
     this.make = make;
     this.model = model;
@@ -37,10 +36,9 @@ public class Car implements Serializable
     this.range = range;
     this.km = km;
     this.pickupPoint=pickupPoint;
-    this.licenseNo = licenseNo;
-    this.id=id;
+    this.plateNo = plateNo;
+    this.carId=carId;
   }
-
 
   public String getMake()
   {
@@ -62,16 +60,6 @@ public class Car implements Serializable
     this.model = model;
   }
 
-  public String getLicenseNumber()
-  {
-    return licenseNumber;
-  }
-
-  public void setLicenseNumber(String licenseNumber)
-  {
-    this.licenseNumber = licenseNumber;
-  }
-
   public String getType()
   {
     return type;
@@ -80,6 +68,16 @@ public class Car implements Serializable
   public void setType(String type)
   {
     this.type = type;
+  }
+
+  public PlateNo getPlateNo()
+  {
+    return plateNo;
+  }
+
+  public void setPlateNo(PlateNo plateNo)
+  {
+    this.plateNo = plateNo;
   }
 
   public int getYear()
@@ -132,24 +130,14 @@ public class Car implements Serializable
     this.price = price;
   }
 
-  public LicenseNumber getLicenseNo()
+  public int getCarId()
   {
-    return licenseNo;
+    return carId;
   }
 
-  public String getId()
+  public void setCarId(int carId)
   {
-    return id;
-  }
-
-  public void setLicenseNo(String licenseNo)
-  {
-    this.licenseNo = new LicenseNumber(licenseNo);
-  }
-
-  public void setPickupPoint(Address pickupPoint)
-  {
-    this.pickupPoint = pickupPoint;
+    this.carId = carId;
   }
 
   public Address getPickupPoint()
@@ -157,12 +145,8 @@ public class Car implements Serializable
     return pickupPoint;
   }
 
-  @Override public String toString()
+  public void setPickupPoint(Address pickupPoint)
   {
-    return "Car{" + "make='" + make + '\'' + ", model='" + model + '\''
-        + ", licenseNumber='" + licenseNumber + '\'' + ", type='" + type + '\''
-        + ", licenseNo='" + licenseNo + '\'' + ", year=" + year + ", seats="
-        + seats + ", range=" + range + ", km=" + km + ", price=" + price
-        + ", id=" + id + '}';
+    this.pickupPoint = pickupPoint;
   }
 }

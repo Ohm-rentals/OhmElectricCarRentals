@@ -6,19 +6,19 @@ import java.io.Serializable;
 
 public class Admin extends User implements Serializable
 {
-  private String ssn;
+  private Ssn ssn;
   private int empId;
 
-  public Admin(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, String ssn, int empId)
+  public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
+      Password password, Email email, Ssn ssn, int empId)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.ssn = ssn;
     this.empId = empId;
   }
 
-  public Admin(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, String ssn)
+  public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
+      Password password, Email email, Ssn ssn)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.ssn = ssn;
@@ -26,12 +26,7 @@ public class Admin extends User implements Serializable
 
   public String getSsn()
   {
-    return ssn;
-  }
-
-  public void setSsn(String snn)
-  {
-    this.ssn = snn;
+    return ssn.getSsn();
   }
 
   public int getEmpId()
@@ -39,15 +34,12 @@ public class Admin extends User implements Serializable
     return empId;
   }
 
-
   @Override public String toString()
   {
     return "Admin{" + "ssn='" + ssn + '\'' + ", empId='" + empId + '\'' + '}';
   }
 
-
-  @Override
-  public UserKind getKind() {
-    return UserKind.ADMIN;
-  }
+  @Override public LoginType getType()
+  {
+    return LoginType.ADMIN;}
 }

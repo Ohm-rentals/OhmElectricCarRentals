@@ -7,17 +7,17 @@ import java.io.Serializable;
 public class Customer extends User implements Serializable
 {
   private int customerId;
-  private String driverLicenseNo;
+  private DriverLicense driverLicenseNo;
 
-  public Customer(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, String driverLicenseNo, int id)
+  public Customer(String fName, String lName, Address address, PhoneNo phoneNo,
+      Password password, Email email, DriverLicense driverLicenseNo, int id)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.driverLicenseNo = driverLicenseNo;
     this.customerId = id;
   }
-  public Customer(String fName, String lName, Address address, String phoneNo,
-      Password password, Email email, String driverLicenseNo)
+  public Customer(String fName, String lName, Address address, PhoneNo phoneNo,
+      Password password, Email email, DriverLicense driverLicenseNo)
   {
     super(fName, lName, address, phoneNo, password, email);
     this.driverLicenseNo = driverLicenseNo;
@@ -28,7 +28,7 @@ public class Customer extends User implements Serializable
     return customerId;
   }
 
-  public String getDriverLicenseNo()
+  public DriverLicense getDriverLicenseNo()
   {
     return driverLicenseNo;
   }
@@ -39,8 +39,8 @@ public class Customer extends User implements Serializable
         + driverLicenseNo + '\'' + '}';
   }
 
-  @Override
-  public UserKind getKind() {
-    return UserKind.CUSTOMER;
+  @Override public LoginType getType()
+  {
+    return LoginType.CUSTOMER;
   }
 }
