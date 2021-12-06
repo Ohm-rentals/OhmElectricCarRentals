@@ -143,7 +143,7 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
       preparedStatement.setString(9, customer.getAddress().getNumber());
       preparedStatement.setInt(10, customer.getAddress().getZip());
       preparedStatement
-          .setString(11, customer.getDriverLicenseNo().getLicence());
+          .setString(11, customer.getDriverLicenseNo().getLicense());
     }
     catch (SQLException throwables)
     {

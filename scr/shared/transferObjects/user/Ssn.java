@@ -9,9 +9,14 @@ public class Ssn implements Serializable
   public Ssn(String ssn)
   {
     if (isValid(ssn))
+    { this.ssn = ssn;
+
+    }
+    else {
       throw new IllegalArgumentException(
           "ssn contains characters and/or is not 10 digits long");
-    this.ssn = ssn;
+    }
+
   }
 
   public String getSsn()
@@ -19,15 +24,8 @@ public class Ssn implements Serializable
     return ssn;
   }
 
-  public boolean isValid(String ssn)
+  public static boolean isValid(String ssn)
   {
-    for (char c : ssn.toCharArray())
-    {
-      if (!Character.isDigit(c))
-      {
-        return false;
-      }
-    }
-    return ssn.length() == 9;
+    return ssn.length() == 10 && ssn.matches("[0-9]+");
   }
 }
