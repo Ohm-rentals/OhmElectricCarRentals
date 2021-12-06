@@ -5,6 +5,7 @@ import client.model.personal.status.Offline;
 import client.model.personal.status.Online;
 import client.model.personal.status.Stat;
 import client.model.personal.status.Status;
+import shared.transferObjects.user.LoginType;
 import shared.transferObjects.user.User;
 import shared.transferObjects.user.UserKind;
 
@@ -51,8 +52,8 @@ public class Personal {
             setOnline();
     }
 
-    public UserKind getKind(){
-        return (identity == null) ?  UserKind.GUEST : this.identity.getKind();
+    public LoginType getKind(){
+        return (identity == null) ?  LoginType.NO_ACCESS : this.identity.getType();
     }
 
     public static Personal getPersonal() {
