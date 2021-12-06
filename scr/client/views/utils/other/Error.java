@@ -5,10 +5,10 @@ public enum Error {
         PASSWORD_NOT_MACH(2,"Passwords should match!!!"),
         EMPTY_FIELDS(2,"Fiels cannot be empty"),
         LOGIN(3,"Username or password are wrong"),
-        CONNECTION(4,"there are no connection to the server");
+        CONNECTION(4,"there are no connection to the server"),
+        USER_AGE_INVALID(5, "User should have at least 18 years old");
 
-
-        private  int num;
+    private  int num;
         private  String message;
 
         private Error(int num, String message) {

@@ -49,7 +49,7 @@ public class AlertControl {
 
     //TEST
     public static boolean confirmationBox(Message messageNotification) {
-        return confirmationBox(messageNotification.getMessage(), messageNotification.name(), null);
+        return confirmationBox(messageNotification.getMessage() , messageNotification.name(), null);
     }
     //END TEST
 

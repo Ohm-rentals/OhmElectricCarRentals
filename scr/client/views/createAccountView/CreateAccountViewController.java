@@ -14,6 +14,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.chrono.Chronology;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 
 public class CreateAccountViewController implements ViewController {
@@ -71,11 +76,15 @@ public class CreateAccountViewController implements ViewController {
     public void createAccount(MouseEvent mouseEvent) { //change to through errors
         if (fieldsEmpty()) {
             errorText.setText(Error.EMPTY_FIELDS.getMessage());
-        } else if (equalPasswords()) {
-                createAccountViewModel.createAccount();
-            } else {
-                errorText.setText(Error.PASSWORD_NOT_MACH.getMessage());
-            }
+        } else if (!equalPasswords()) {
+            errorText.setText(Error.PASSWORD_NOT_MACH.getMessage());
+        } else if (isMinor()) {
+            errorText.setText(Error.USER_AGE_INVALID.getMessage());
+        } else {
+            createAccountViewModel.createAccount();
+            errorText.setText("");
+        }
+
     }
 
     private boolean equalPasswords() { //change to through errors
@@ -88,10 +97,16 @@ public class CreateAccountViewController implements ViewController {
                 emailTextField.getText().isEmpty() ||
                 phoneTextField.getText().isEmpty() ||
                 licenseTextField.getText().isEmpty() ||
+                zipTextField.getText().isEmpty() ||
+                (DOBDatePicker.getValue() == null) ||
                 streetTextField.getText().isEmpty() ||
                 numberTextField.getText().isEmpty() ||
                 cityTextField.getText().isEmpty() ||
                 countryTextField.getText().isEmpty();
+    }
+
+    private boolean isMinor() {
+        return (!DOBDatePicker.getValue().isBefore(LocalDate.now().minusYears(18)));
     }
 
 }
