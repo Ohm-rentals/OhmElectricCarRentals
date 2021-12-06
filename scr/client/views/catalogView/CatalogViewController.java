@@ -3,6 +3,7 @@ package client.views.catalogView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.views.ViewController;
+import client.views.extraObjectsView.LoadPanel;
 import client.views.extraObjectsView.carAd.CarController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +29,7 @@ public class CatalogViewController implements ViewController {
     @FXML private Slider sliderPrice;
     @FXML private Slider sliderSeat;
 
+    @FXML private HBox menuBarHBox;
 
     @FXML private CheckBox checkBox = new CheckBox("Other");
     @FXML private CheckBox checkBox2 = new CheckBox("Other2");
@@ -39,6 +38,7 @@ public class CatalogViewController implements ViewController {
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
+        menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml", viewHandler));
         brandFlowPane.getChildren().add(checkBox);
         kindFlowPane.getChildren().add(checkBox2);
 

@@ -16,7 +16,7 @@ public class Email implements Serializable
     else
     {
       throw new IllegalArgumentException(
-          "email does not follow the proper format");
+          "email does not follow   the proper format");
     }
   }
 
