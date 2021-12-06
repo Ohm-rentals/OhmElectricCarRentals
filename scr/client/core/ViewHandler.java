@@ -60,7 +60,15 @@ public class ViewHandler {
         stage.show();
     }
 
-    public void openManageCars(){
+    public void openManageReservationsView(){
+        actualPath ="../views/manageReservationsView/manageReservationsView.fxml";
+        scene = new Scene(getRoot(actualPath));
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    public void openManageCarsView(){
         actualPath = "../views/manageCarsView/manageCarsView.fxml";
         scene = new Scene(getRoot(actualPath));
         stage.setScene(scene);

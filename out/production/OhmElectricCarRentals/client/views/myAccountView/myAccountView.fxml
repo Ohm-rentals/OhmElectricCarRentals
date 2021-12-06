@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
@@ -39,21 +40,79 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <TableView prefHeight="200.0" prefWidth="683.0" VBox.vgrow="ALWAYS">
+                  <TableView prefHeight="588.0" prefWidth="469.0" VBox.vgrow="ALWAYS">
                      <columns>
                         <TableColumn prefWidth="49.0" text="#ID" />
                         <TableColumn prefWidth="54.0" text="From" />
                         <TableColumn prefWidth="50.0" text="To" />
                         <TableColumn prefWidth="45.0" text="Car" />
-                        <TableColumn prefWidth="55.0" text="Mother" />
-                        <TableColumn prefWidth="62.0" text="Fucker" />
-                        <TableColumn minWidth="0.0" prefWidth="63.0" text="keep" />
-                        <TableColumn minWidth="0.0" prefWidth="93.0" text="reading" />
+                        <TableColumn prefWidth="55.0" text="Pick Up" />
                      </columns>
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
                      </VBox.margin>
                   </TableView>
+                  <VBox maxHeight="-Infinity" prefHeight="350.0" prefWidth="100.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="CarIdTextField1" promptText="e-mail" />
+                                    <DatePicker fx:id="FromDatePicker11" promptText="Date of Birth" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <ComboBox prefHeight="26.0" prefWidth="204.0" promptText="Location" />
+                                    <DatePicker fx:id="toDatePicker1" promptText="Date of Birth" />
+                                    <HBox prefHeight="18.0" prefWidth="186.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="30.0" right="30.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <HBox fx:id="createAccountHBox1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onCancel" prefHeight="30.0" prefWidth="160.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                           <children>
+                              <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox fx:id="createAccountHBox11" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpdate" prefHeight="30.0" prefWidth="160.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                           <children>
+                              <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Update">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />

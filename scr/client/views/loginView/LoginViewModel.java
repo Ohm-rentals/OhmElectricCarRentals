@@ -25,8 +25,14 @@ public class LoginViewModel implements Subject {
         support.firePropertyChange(event);
     }
 
-    public void login(String email, String password) {
-        usersModel.login(new Email(email), new Password(password));
+    public void login(String emailString, String passwordString) {
+        try {
+            Email email = new Email(emailString);
+            Password password = new Password(passwordString);
+            usersModel.login(email, password);
+        } catch (Exception e) {
+            support.firePropertyChange("LOGIN_ERROR", null, null);
+        }
     }
 
     @Override

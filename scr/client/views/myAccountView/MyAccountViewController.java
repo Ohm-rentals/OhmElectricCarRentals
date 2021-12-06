@@ -6,7 +6,8 @@ import client.core.ViewModelFactory;
 import client.model.personal.Personal;
 import client.views.ViewController;
 import client.views.extraObjectsView.LoadPanel;
-import javafx.beans.property.SimpleStringProperty;
+import client.views.utils.other.AlertControl;
+import client.views.utils.other.Message;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -64,6 +65,8 @@ public class MyAccountViewController implements ViewController {
     }
 
     public void onCancel(MouseEvent mouseEvent) {
+        AlertControl.confirmationBox(Message.CANCEL);
+
     }
 
     public void onUpdate(MouseEvent mouseEvent) {

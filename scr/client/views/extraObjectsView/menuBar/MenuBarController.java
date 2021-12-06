@@ -69,10 +69,11 @@ public class MenuBarController  {
     }
 
     public void onManageReservations(MouseEvent mouseEvent) {
+        viewHandler.openManageReservationsView();
 
     }
 
     public void onManageCars(MouseEvent mouseEvent) {
-        viewHandler.openManageCars();
+        viewHandler.openManageCarsView();
     }
 }
