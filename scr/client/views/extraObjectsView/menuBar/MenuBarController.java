@@ -1,9 +1,9 @@
 package client.views.extraObjectsView.menuBar;
 
-import client.core.ViewHandler;
+import client.core.viewHandler.View;
+import client.core.viewHandler.ViewHandler;
 import client.model.personal.Personal;
 import client.model.personal.status.Stat;
-import client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -48,32 +48,32 @@ public class MenuBarController  {
 
     public void logInAction(MouseEvent mouseEvent) {
         if (personal.getStatus().equals(Stat.OFFLINE)) {
-            viewHandler.openLoginView();
+            viewHandler.openNewView(View.LOGIN);
         }
 
         if (personal.getStatus().equals(Stat.ONLINE)){
             personal.logOut();
           //  viewHandler.refreshActualView(); // what shoul I do when I log out? which view should I GO
-            viewHandler.openSearchView();
+            viewHandler.openView(View.SEARCH);
         }
 
 
     }
 
     public void onMyAccount(MouseEvent mouseEvent) {
-        viewHandler.openMyAccountView();
+        viewHandler.openView(View.MY_ACCOUNT);
     }
 
     public void onManageAccount(MouseEvent mouseEvent) {
-        viewHandler.openManageAccountView();
+        viewHandler.openView(View.MANAGE_ACCOUNT);
     }
 
     public void onManageReservations(MouseEvent mouseEvent) {
-        viewHandler.openManageReservationsView();
+        viewHandler.openView(View.MANAGE_RESERVATIONS);
 
     }
 
     public void onManageCars(MouseEvent mouseEvent) {
-        viewHandler.openManageCarsView();
+        viewHandler.openView(View.MANAGE_CARS);
     }
 }

@@ -1,7 +1,7 @@
 package client.views.myAccountView;
 
 
-import client.core.ViewHandler;
+import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
 import client.model.personal.Personal;
 import client.views.ViewController;

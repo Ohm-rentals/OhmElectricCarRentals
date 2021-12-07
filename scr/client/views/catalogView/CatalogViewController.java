@@ -1,6 +1,6 @@
 package client.views.catalogView;
 
-import client.core.ViewHandler;
+import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
 import client.views.ViewController;
 import client.views.extraObjectsView.LoadPanel;

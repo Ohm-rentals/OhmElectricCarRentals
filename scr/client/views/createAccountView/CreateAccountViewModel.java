@@ -3,11 +3,13 @@ package client.views.createAccountView;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import shared.transferObjects.user.Password;
 import shared.transferObjects.user.User;
 
 
 public class CreateAccountViewModel {
-    private StringProperty firstName, lastName, email, phone, license, street, number, city, country, zip, DOB;
+    private StringProperty firstName, lastName, email, phone, license, addressStreet, addressNumber, addressCity, addressCountry, addressZip, DOB;
+    private Password password;
 
 
     public CreateAccountViewModel() {
@@ -16,15 +18,15 @@ public class CreateAccountViewModel {
         email = new SimpleStringProperty();
         phone = new SimpleStringProperty();
         license = new SimpleStringProperty();
-        street = new SimpleStringProperty();
-        number = new SimpleStringProperty();
-        city = new SimpleStringProperty();
-        country = new SimpleStringProperty();
-        zip = new SimpleStringProperty();
         DOB = new SimpleStringProperty();
+        addressStreet = new SimpleStringProperty();
+        addressNumber = new SimpleStringProperty();
+        addressCity = new SimpleStringProperty();
+        addressCountry = new SimpleStringProperty();
+        addressZip = new SimpleStringProperty();
     }
 
-    public void createAccount() {
+    public void createAccount(Password password) {
 
         System.out.println(firstName.getValue());
         System.out.println(DOB.getValue());
