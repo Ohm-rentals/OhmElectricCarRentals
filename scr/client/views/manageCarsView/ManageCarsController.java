@@ -19,6 +19,7 @@ public class ManageCarsController implements ViewController {
     @FXML private ImageView twoImageView;
     @FXML private ImageView threeImageView;
 
+
     @FXML private HBox menuBarHBox;
 
     @Override
@@ -50,5 +51,8 @@ public class ManageCarsController implements ViewController {
         bigImageView.setImage(image.getImage());
         image.setImage(tempImageView);
 
+    }
+
+    public void onUpdate(MouseEvent mouseEvent) {
     }
 }

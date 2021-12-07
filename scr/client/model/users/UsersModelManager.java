@@ -30,6 +30,10 @@ public class UsersModelManager implements UsersModel {
             support.firePropertyChange("LOGIN_ERROR", null, null);
         } else {
             Personal personal = Personal.getPersonal();
+            System.out.println(identity.getfName());
+            System.out.println(identity.getEmail());
+            System.out.println(identity.getType());
+            System.out.println("Esperado");
             personal.setIdentity(identity);
             support.firePropertyChange("LOGIN_SUCCESS", null, identity);
         }

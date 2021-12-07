@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import shared.transferObjects.user.UserKind;
+import shared.transferObjects.user.LoginType;
 
 public class MyAccountViewController implements ViewController {
 
@@ -40,7 +40,7 @@ public class MyAccountViewController implements ViewController {
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
-        kindHBox.setVisible(Personal.getPersonal().getKind().equals(UserKind.ADMIN) ? true : false);
+        kindHBox.setVisible(Personal.getPersonal().getKind().equals(LoginType.ADMIN) ? true : false);
         myAccountViewModel = viewModelFactory.getMyAccountViewModel();
         menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml", viewHandler));
         firstNameTextField.setDisable(true);

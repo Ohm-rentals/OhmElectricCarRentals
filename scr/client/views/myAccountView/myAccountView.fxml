@@ -67,7 +67,7 @@
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <ComboBox prefHeight="26.0" prefWidth="204.0" promptText="Location" />
+                                    <ComboBox prefHeight="26.0" prefWidth="204.0" promptText="PickUp  Point" />
                                     <DatePicker fx:id="toDatePicker1" promptText="Date of Birth" />
                                     <HBox prefHeight="18.0" prefWidth="186.0" />
                                  </children>

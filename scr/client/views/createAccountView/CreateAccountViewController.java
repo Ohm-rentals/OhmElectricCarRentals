@@ -4,6 +4,7 @@ import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
 import client.views.ViewController;
 import client.views.utils.other.Error;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -15,6 +16,7 @@ import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 import shared.transferObjects.user.Password;
 
+import javax.swing.event.ChangeListener;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -54,44 +56,22 @@ public class CreateAccountViewController implements ViewController {
 
     CreateAccountViewModel createAccountViewModel;
 
-    /*
-    public CreateAccountViewController() {
-        this.firstNameTextField = new TextField("qw");
-        this.lastNameTextField = new TextField("");
-        this.emailTextField = new TextField("");
-        this.phoneTextField = new TextField("");
-        this.licenseTextField = new TextField("");
-        this.DOBDatePicker = new DatePicker(LocalDate.now());
-        this.streetTextField = new TextField("");
-        this.numberTextField = new TextField("");
-        this.cityTextField = new TextField("");
-        this.countryTextField = new TextField("");
-        this.zipTextField = new TextField("");
-        this.passwordPasswordField = new PasswordField();
-        this.rePasswordPasswordField = new PasswordField();
-        this.errorText = new Text("");
-    }
-    */
-
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
         createAccountViewModel = viewModelFactory.getCreateAccountViewModel();
         firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
+        lastNameTextField.textProperty().bindBidirectional(createAccountViewModel.lastNameProperty());
+        emailTextField.textProperty().bindBidirectional(createAccountViewModel.emailProperty());
+        phoneTextField.textProperty().bindBidirectional(createAccountViewModel.phoneProperty());
+        licenseTextField.textProperty().bindBidirectional(createAccountViewModel.licenseProperty());
+        streetTextField.textProperty().bindBidirectional(createAccountViewModel.addressStreetProperty());
+        numberTextField.textProperty().bindBidirectional(createAccountViewModel.addressNumberProperty());
+        cityTextField.textProperty().bindBidirectional(createAccountViewModel.addressCityProperty());
+        countryTextField.textProperty().bindBidirectional(createAccountViewModel.getAddressCountryProperty());
+        zipTextField.textProperty().bind(createAccountViewModel.getAddressZipProperty().asString());
         createAccountViewModel.DOBProperty().bind(DOBDatePicker.styleProperty());
-      /*
-        lastNameTextField.textProperty().bindBidirectional(createAccountViewModel.());
-        firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
-        firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
-        firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
-        firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
-        firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
-        //createAccountViewModel.firstNameProperty().bind(firstNameTextField.textProperty());
-
-
-       */
-
-        // createAccountHBox.setDisable(true);
+        errorText.textProperty().bindBidirectional(createAccountViewModel.errorTextProperty());
         kindHBox.setVisible(false);
 
     }
@@ -111,8 +91,13 @@ public class CreateAccountViewController implements ViewController {
         } else if (isMinor()) {
             errorText.setText(Error.USER_AGE_INVALID.getMessage());
         } else {
-            createAccountViewModel.createAccount(new Password(passwordPasswordField.getText()));
-            errorText.setText("");
+            try {
+                Password password = new Password(passwordPasswordField.getText());
+                createAccountViewModel.createAccount(password);
+            } catch (Exception e) {
+                errorText.setText(e.getMessage());
+            }
+
         }
 
     }

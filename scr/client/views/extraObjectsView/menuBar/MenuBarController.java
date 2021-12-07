@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import shared.transferObjects.user.UserKind;
+import shared.transferObjects.user.LoginType;
 
 public class MenuBarController  {
     @FXML private HBox welcomeHBox;
@@ -39,9 +39,9 @@ public class MenuBarController  {
             welcomeHBox.setVisible(true);
             logText.setText("|Logout|");
             text1.setText("|My Account|");
-            text2.setText(personal.getKind().equals(UserKind.CUSTOMER) ? "" : "|Manage Accounts|");
-            text3.setText(personal.getKind().equals(UserKind.CUSTOMER) ? "" : "|Manage Reservations|");
-            text4.setText(personal.getKind().equals(UserKind.CUSTOMER) ? "" : "|Manage Cars|");
+            text2.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Accounts|");
+            text3.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Reservations|");
+            text4.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Cars|");
         }
 
     }

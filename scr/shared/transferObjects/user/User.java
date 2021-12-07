@@ -105,6 +105,7 @@ public abstract class User implements Serializable
     return dob;
   }
 
+
   public String getDobAsString()
   {
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
