@@ -6,19 +6,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DriverLicenseTest
 {
-  @Test public void validPhoneNo()
+  private boolean isValid(String license)
+  {
+
+    return license.length() == 8 && license.matches("[0-9]+");
+  }
+  @Test public void validDriverLicense()
   {
     DriverLicense DriverLicense = new DriverLicense("12345678");
-    assertTrue(shared.transferObjects.user.DriverLicense.isValid(
-        DriverLicense.getLicense()));
+    assertTrue(isValid(DriverLicense.getLicense()));
   }
 
-  @Test public void shortPhoneNo()
+  @Test public void shortDriverLicense()
   {
     try
     {
       DriverLicense shortPhoneNo = new DriverLicense("123543");
-      assertFalse(DriverLicense.isValid(shortPhoneNo.getLicense()));
+      assertFalse(isValid(shortPhoneNo.getLicense()));
     }
     catch (IllegalArgumentException e)
     {
@@ -26,12 +30,12 @@ class DriverLicenseTest
     }
   }
 
-  @Test public void longPhoneNo()
+  @Test public void longDriverLicense()
   {
     try
     {
       DriverLicense longDriverLicense = new DriverLicense("1234567890");
-      assertFalse(DriverLicense.isValid(longDriverLicense.getLicense()));
+      assertFalse(isValid(longDriverLicense.getLicense()));
     }
     catch (IllegalArgumentException e)
     {
@@ -39,12 +43,12 @@ class DriverLicenseTest
     }
   }
 
-  @Test public void phoneNoContainsCharacters()
+  @Test public void driverLicenseContainsCharacters()
   {
     try
     {
       DriverLicense driverLicenseWithCharacter = new DriverLicense("DK123456");
-      assertFalse(DriverLicense.isValid(driverLicenseWithCharacter.getLicense()));
+      assertFalse(isValid(driverLicenseWithCharacter.getLicense()));
     }
     catch (IllegalArgumentException e)
     {
@@ -52,12 +56,12 @@ class DriverLicenseTest
     }
   }
 
-  @Test public void phoneNumberInvalidFormat()
+  @Test public void driverLicenseInvalidFormat()
   {
     try
     {
       DriverLicense invalidFormatDriverLicense = new DriverLicense("123-456-78");
-      assertFalse(DriverLicense.isValid(invalidFormatDriverLicense.getLicense()));
+      assertFalse(isValid(invalidFormatDriverLicense.getLicense()));
     }
     catch (IllegalArgumentException e)
     {

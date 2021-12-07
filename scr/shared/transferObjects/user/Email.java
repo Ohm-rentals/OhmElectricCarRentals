@@ -20,7 +20,7 @@ public class Email implements Serializable
     }
   }
 
-  public static boolean isValid(String email)
+  private boolean isValid(String email)
   {
     String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@"
         + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";

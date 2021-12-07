@@ -3,6 +3,7 @@ package shared.transferObjects.user;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Admin extends User implements Serializable
 {
@@ -10,17 +11,17 @@ public class Admin extends User implements Serializable
   private int empId;
 
   public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email, Ssn ssn, int empId)
+      Password password, Email email, LocalDate dob, Ssn ssn, int empId)
   {
-    super(fName, lName, address, phoneNo, password, email);
+    super(fName, lName, address, phoneNo, password, email,dob);
     this.ssn = ssn;
     this.empId = empId;
   }
 
   public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email, Ssn ssn)
+      Password password, Email email,LocalDate dob, Ssn ssn)
   {
-    super(fName, lName, address, phoneNo, password, email);
+    super(fName, lName, address, phoneNo, password, email, dob);
     this.ssn = ssn;
   }
 

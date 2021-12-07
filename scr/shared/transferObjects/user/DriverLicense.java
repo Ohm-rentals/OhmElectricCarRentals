@@ -25,7 +25,7 @@ public class DriverLicense implements Serializable
     return licence;
   }
 
-  public static boolean isValid(String license)
+  private boolean isValid(String license)
   {
 
     return license.length() == 8 && license.matches("[0-9]+");

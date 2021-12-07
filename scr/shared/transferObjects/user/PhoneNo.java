@@ -25,7 +25,7 @@ public class PhoneNo implements Serializable
     return number;
   }
 
-  public static boolean isValid(String number)
+  private boolean isValid(String number)
   {
     return number.length() == 8 && number.matches("[0-9]+");
   }
