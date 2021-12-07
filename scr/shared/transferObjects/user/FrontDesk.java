@@ -3,6 +3,7 @@ package shared.transferObjects.user;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class FrontDesk extends User implements Serializable
@@ -12,7 +13,7 @@ public class FrontDesk extends User implements Serializable
   private Address workAddress;
 
   public FrontDesk(String fName, String lName, Address personalAddress, PhoneNo phoneNo,
-      Password password, Email email, LocalDate dob, Ssn ssn, Address workAddress, int empId)
+      Password password, Email email, Date dob, Ssn ssn, Address workAddress, int empId)
   {
     super(fName, lName, personalAddress, phoneNo, password, email, dob);
     this.empId = empId;
@@ -21,7 +22,7 @@ public class FrontDesk extends User implements Serializable
   }
 
   public FrontDesk(String fName, String lName, Address personalAddress, PhoneNo phoneNo,
-      Password password, Email email,LocalDate dob, String snn, Address workAddress)
+      Password password, Email email,Date dob, Ssn ssn, Address workAddress)
   {
     super(fName, lName, personalAddress, phoneNo, password, email, dob);
     this.ssn = ssn;

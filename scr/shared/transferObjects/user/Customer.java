@@ -3,6 +3,7 @@ package shared.transferObjects.user;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Customer extends User implements Serializable
@@ -11,14 +12,14 @@ public class Customer extends User implements Serializable
   private DriverLicense driverLicenseNo;
 
   public Customer(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email, LocalDate dob, DriverLicense driverLicenseNo, int id)
+      Password password, Email email, Date dob, DriverLicense driverLicenseNo, int id)
   {
     super(fName, lName, address, phoneNo, password, email,dob);
     this.driverLicenseNo = driverLicenseNo;
     this.customerId = id;
   }
   public Customer(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email,LocalDate dob, DriverLicense driverLicenseNo)
+      Password password, Email email,Date dob, DriverLicense driverLicenseNo)
   {
     super(fName, lName, address, phoneNo, password, email,dob);
     this.driverLicenseNo = driverLicenseNo;

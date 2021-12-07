@@ -1,14 +1,13 @@
 package shared.transferObjects.user;
 
-import maybeFolder.Time;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
+
 
 public abstract class User implements Serializable
 {
@@ -17,10 +16,10 @@ public abstract class User implements Serializable
   private Email email;
   private Address address;
   private PhoneNo phoneNo;
-  private LocalDate dob;
+  private Date dob;
 
   public User(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email, LocalDate dob)
+      Password password, Email email, Date dob)
   {
     this.fName = fName;
     this.lName = lName;
@@ -28,7 +27,7 @@ public abstract class User implements Serializable
     this.phoneNo = phoneNo;
     this.password = password;
     this.email = email;
-    if (hasValidDob(dob))
+    if (hasValidDob(dob.toLocalDate()))
     {
       this.dob = dob;
     }
@@ -100,7 +99,7 @@ public abstract class User implements Serializable
     this.address = address;
   }
 
-  public LocalDate getDob()
+  public Date getDob()
   {
     return dob;
   }
