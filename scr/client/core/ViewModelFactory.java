@@ -5,6 +5,7 @@ import client.views.createAccountView.CreateAccountViewModel;
 import client.views.loginView.LoginViewModel;
 import client.views.manageAccountView.ManageAccountsViewModel;
 import client.views.manageCarsView.ManageCarsViewModel;
+import client.views.myAccountView.MyAccountViewModel;
 import client.views.searchView.SearchViewModel;
 
 public class ViewModelFactory {
@@ -16,6 +17,7 @@ public class ViewModelFactory {
     private ManageAccountsViewModel manageAccountsViewModel;
     private ManageCarsViewModel manageCarsViewModel;
     private SearchViewModel searchViewModel;
+    private MyAccountViewModel myAccountViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -56,4 +58,12 @@ public class ViewModelFactory {
             return new SearchViewModel();
         return searchViewModel;
     }
+
+    public MyAccountViewModel getMyAccountViewModel() {
+        if (searchViewModel == null)
+            return new MyAccountViewModel();
+        return myAccountViewModel;
+    }
+
+
 }

@@ -7,6 +7,8 @@ import server.database.user.admin.AdminUserModelDatabaseImpl;
 import shared.transferObjects.Address;
 import shared.transferObjects.user.*;
 
+import java.time.LocalDate;
+
 public class DatabaseTEST
 {
   public static void main(String[] args)
@@ -24,7 +26,8 @@ public class DatabaseTEST
 
     Ssn ssn = new Ssn("0000000000");
 
-    Admin simus = new Admin("Simus", "something",address,phoneNo,password,email,ssn);
+    Admin simus = new Admin("Simus", "something",address,phoneNo,password,email,
+        LocalDate.of(2000,1,1),ssn);
 
     System.out.println("Admin has been made");
 

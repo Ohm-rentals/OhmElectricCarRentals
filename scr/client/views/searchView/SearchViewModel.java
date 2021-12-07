@@ -9,15 +9,11 @@ public class SearchViewModel {
     }
 
     public void onSearch(String selectedItem, String item, LocalDate dateFrom, LocalDate dateTo) {
+
         System.out.println(selectedItem);
         System.out.println(item);
         System.out.println(dateFrom);
         System.out.println(dateTo);
     }
 
-    public void onLogIn() {
-        System.out.println("GO TO LOG IN..");
-        // model.logIn
-
-    }
 }

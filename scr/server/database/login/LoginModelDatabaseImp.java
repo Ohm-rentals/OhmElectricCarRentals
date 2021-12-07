@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class LoginModelDatabaseImp implements LoginModelDatabase
+public class   LoginModelDatabaseImp implements LoginModelDatabase
 {
 
   @Override public LoginType login(LoginUser user)

@@ -6,25 +6,28 @@ public class DriverLicense implements Serializable
 {
   private String licence;
 
-  public DriverLicense(String licence){
-    if(!isValid(licence)) throw new IllegalArgumentException("The license number contains characters and/or is not 8 digits long");
+  public DriverLicense(String licence)
+  {
+    if (isValid(licence))
+    {
+      this.licence = licence;
+    }
+    else
+    {
+      throw new IllegalArgumentException(
+          "The license number contains characters and/or is not 8 digits long");
+    }
 
-    this.licence=licence;
   }
 
-  public String getLicence()
+  public String getLicense()
   {
     return licence;
   }
 
-  public boolean isValid(String license)
+  private boolean isValid(String license)
   {
-    for (char c : license.toCharArray())
-    {
-      if (!Character.isDigit(c))
-      {
-        return false;
-      }
-    }
-    return license.length() == 8;
-  }}
+
+    return license.length() == 8 && license.matches("[0-9]+");
+  }
+}

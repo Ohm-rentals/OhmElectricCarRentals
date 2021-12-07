@@ -3,6 +3,7 @@ package client.views.createAccountView;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import client.views.ViewController;
+import client.views.utils.other.Error;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -13,6 +14,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
+import java.time.chrono.Chronology;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 
 public class CreateAccountViewController implements ViewController {
@@ -35,9 +41,12 @@ public class CreateAccountViewController implements ViewController {
 
     CreateAccountViewModel createAccountViewModel;
 
+
+
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
-        createAccountViewModel = new CreateAccountViewModel(); //Change this
+        errorText.setText("");
+        createAccountViewModel = viewModelFactory.getCreateAccountViewModel(); //Change this
         firstNameTextField.textProperty().bindBidirectional(createAccountViewModel.firstNameProperty());
         createAccountViewModel.DOBProperty().bind(DOBDatePicker.styleProperty());
       /*
@@ -54,7 +63,7 @@ public class CreateAccountViewController implements ViewController {
 
        // createAccountHBox.setDisable(true);
         kindHBox.setVisible(false);
-        errorText.setText("This is a test of the possible errors");
+
     }
 
     public void onClose(MouseEvent mouseEvent) {
@@ -65,15 +74,17 @@ public class CreateAccountViewController implements ViewController {
 
 
     public void createAccount(MouseEvent mouseEvent) { //change to through errors
-      //  if (fieldsEmpty()) {
-            if (equalPasswords()) {
-                createAccountViewModel.createAccount();
-            } else {
-                errorText.setText("Passwords should match!!!");
-            }
-     //   } else {
-      //      errorText.setText("All fields must be completed");
-       //     }
+        if (fieldsEmpty()) {
+            errorText.setText(Error.EMPTY_FIELDS.getMessage());
+        } else if (!equalPasswords()) {
+            errorText.setText(Error.PASSWORD_NOT_MACH.getMessage());
+        } else if (isMinor()) {
+            errorText.setText(Error.USER_AGE_INVALID.getMessage());
+        } else {
+            createAccountViewModel.createAccount();
+            errorText.setText("");
+        }
+
     }
 
     private boolean equalPasswords() { //change to through errors
@@ -81,15 +92,21 @@ public class CreateAccountViewController implements ViewController {
     }
 
     private boolean fieldsEmpty() { //change to through errors
-        return firstNameTextField.getText().isEmpty() &&
-                lastNameTextField.getText().isEmpty() &&
-                emailTextField.getText().isEmpty() &&
-                phoneTextField.getText().isEmpty() &&
-                licenseTextField.getText().isEmpty() &&
-                streetTextField.getText().isEmpty() &&
-                numberTextField.getText().isEmpty() &&
-                cityTextField.getText().isEmpty() &&
+        return firstNameTextField.getText().isEmpty() ||
+                lastNameTextField.getText().isEmpty() ||
+                emailTextField.getText().isEmpty() ||
+                phoneTextField.getText().isEmpty() ||
+                licenseTextField.getText().isEmpty() ||
+                zipTextField.getText().isEmpty() ||
+                (DOBDatePicker.getValue() == null) ||
+                streetTextField.getText().isEmpty() ||
+                numberTextField.getText().isEmpty() ||
+                cityTextField.getText().isEmpty() ||
                 countryTextField.getText().isEmpty();
+    }
+
+    private boolean isMinor() {
+        return (!DOBDatePicker.getValue().isBefore(LocalDate.now().minusYears(18)));
     }
 
 }

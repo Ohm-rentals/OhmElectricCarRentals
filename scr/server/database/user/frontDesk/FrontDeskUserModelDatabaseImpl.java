@@ -5,6 +5,7 @@ import shared.transferObjects.Address;
 import shared.transferObjects.user.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FrontDeskUserModelDatabaseImpl
@@ -34,12 +35,14 @@ public class FrontDeskUserModelDatabaseImpl
             resultSet.getInt("workplace_zip"));
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
-
+        LocalDate dob = LocalDate.of(resultSet.getDate("dob").getYear(),
+            resultSet.getDate("dob").getMonth(),
+            resultSet.getDate("dob").getDay());
         PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
         Ssn ssn = new Ssn(resultSet.getString("ssn"));
         frontDesks.add(new FrontDesk(resultSet.getString("f_name"),
             resultSet.getString("l_name"), address, phoneNo, password, email,
-            ssn, workAddress, resultSet.getInt("emp_id")));
+            dob, ssn, workAddress, resultSet.getInt("emp_id")));
       }
       return frontDesks;
     }
@@ -75,11 +78,14 @@ public class FrontDeskUserModelDatabaseImpl
 
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
+      LocalDate dob = LocalDate.of(resultSet.getDate("dob").getYear(),
+          resultSet.getDate("dob").getMonth(),
+          resultSet.getDate("dob").getDay());
       PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
       Ssn ssn = new Ssn(resultSet.getString("ssn"));
       return new FrontDesk(resultSet.getString("f_name"),
-          resultSet.getString("l_name"), address, phoneNo, password, email, ssn,
-          workAddress, resultSet.getInt("emp_id"));
+          resultSet.getString("l_name"), address, phoneNo, password, email, dob,
+          ssn, workAddress, resultSet.getInt("emp_id"));
     }
     catch (SQLException throwables)
     {
@@ -93,7 +99,7 @@ public class FrontDeskUserModelDatabaseImpl
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(
-            "INSERT INTO \"OhmCarRental\".front_desk (f_name, l_name, phone_no, email, password, country, city,street, number, zip, ssn,workplace_country, workplace_city, workplace_street, workplace_number, workplace_zip) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"))
+            "INSERT INTO \"OhmCarRental\".front_desk (f_name, l_name, phone_no, email, password, country, city,street, number, zip,dob, ssn,workplace_country, workplace_city, workplace_street, workplace_number, workplace_zip) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"))
     {
       frontDeskPreparedStatement(preparedStatement, frontDesk);
       preparedStatement.execute();

@@ -12,7 +12,7 @@ public class CarList
   private Address address = new Address("Denmark", "Aarhus", "Oddervej", "14",8000);
   private PlateNo plateNo = new PlateNo("CH 16786");
   private Car car0 = new Car("Tesla", "Model 3", 2020, 800, "Sedan", 550,20000,address,
-      plateNo,"010501");
+    plateNo,"010501");
   private Car car1 = new Car("BMW", "i3", 2020, 350, "Hatch Back", 350,20000,address,
       plateNo,"010104");
   private Car car2 = new Car("Kia", "Niro", 2020, 200, "SUV", 200,20000,address,

@@ -31,8 +31,6 @@ public class UsersModelManager implements UsersModel {
         } else {
             Personal personal = Personal.getPersonal();
             personal.setIdentity(identity);
-            System.out.println(personal.getIdentity() + "My Iden");
-            System.out.println(personal.getStatus());
             support.firePropertyChange("LOGIN_SUCCESS", null, identity);
         }
     }

@@ -6,9 +6,17 @@ public class PhoneNo implements Serializable
 {
   private String number;
 
-  public PhoneNo(String number){
-    if(isValid(number)) throw new IllegalArgumentException("The phone number contains characters and/or is not 8 digits long");
-    this.number=number;
+  public PhoneNo(String number)
+  {
+    if (isValid(number))
+    {
+      this.number = number;
+    }
+    else
+    {
+      throw new IllegalArgumentException(
+          "The phone number contains characters and/or is not 8 digits long");
+    }
   }
 
   public String getNumber()
@@ -16,19 +24,17 @@ public class PhoneNo implements Serializable
 
     return number;
   }
-  private boolean isValid(String number){
-    for (char c:number.toCharArray())
-    {
-      if (!Character.isDigit(c))
-      {
-        return false;
-      }
-    }
-    return number.length()==7;
+
+  private boolean isValid(String number)
+  {
+    return number.length() == 8 && number.matches("[0-9]+");
   }
 
-  public void setNumber(String number){
-    if(!isValid(number)) throw new IllegalArgumentException("The phone number contains characters and/or is not 8 digits long");
-    this.number=number;
+  public void setNumber(String number)
+  {
+    if (!isValid(number))
+      throw new IllegalArgumentException(
+          "The phone number contains characters and/or is not 8 digits long");
+    this.number = number;
   }
 }

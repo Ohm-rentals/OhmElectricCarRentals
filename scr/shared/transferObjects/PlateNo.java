@@ -7,17 +7,24 @@ public class PlateNo implements Serializable
 {
   String plate;
 
-  public PlateNo(String plate){
+  public PlateNo(String plate)
+  {
 
-    if(!isValid(plate)){
-      throw  new IllegalArgumentException("The number plate does not follow the pattern");
+    if (isValid(plate))
+    {
+      this.plate = plate.toUpperCase();
     }
-
-    this.plate=plate.toUpperCase();
+    else
+    {
+      throw new IllegalArgumentException(
+          "The number plate does not follow the pattern");
+    }
   }
-  private boolean isValid(String plateNo){
-    String licenseRegex= "[A-Za-z][A-Za-z][0-9][0-9][0-9][0-9][0-9]";
-    Pattern pattern= Pattern.compile(licenseRegex);
+
+  private boolean isValid(String plateNo)
+  {
+    String licenseRegex = "[A-Za-z][A-Za-z][0-9][0-9][0-9][0-9][0-9]";
+    Pattern pattern = Pattern.compile(licenseRegex);
     return pattern.matcher(plateNo).matches();
   }
 

@@ -23,7 +23,7 @@ public class MainOhm extends Application {
         ViewModelFactory viewModelFactory = new ViewModelFactory(modelFactory);
         ViewHandler viewHandler = new ViewHandler(viewModelFactory);
 
-        viewHandler.openLoginView();
+        viewHandler.openSearchView();
 
     }
 

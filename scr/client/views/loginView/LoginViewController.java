@@ -5,9 +5,11 @@ import client.core.ViewModelFactory;
 import client.model.personal.Personal;
 import client.model.personal.status.Stat;
 import client.views.ViewController;
+import client.views.utils.other.Error;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -37,25 +39,33 @@ public class LoginViewController implements ViewController {
         loginViewModel.addListener("LOGIN_ERROR", this::onErrorLogin);
         loginViewModel.addListener("LOGIN_SUCCESS", this::onSuccessLogin);
 
+        //Access when I press enter
+        passwordFieldPassword.setOnKeyPressed(keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                login(null);
+            }
+        });
+
     }
 
 
 
     private void onSuccessLogin(PropertyChangeEvent event) {
-        viewHandler.openSearchView();
+       viewHandler.refreshActualView();
+        closeWindow();
     }
 
     private void onErrorLogin(PropertyChangeEvent event) {
-        errorText.setText(event.getPropertyName());
+        errorText.setText(Error.LOGIN.getMessage());
     }
 
     public void onClose(MouseEvent mouseEvent) {
-        Window window = textFieldEmail.getScene().getWindow();
-        window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
+        closeWindow();
     }
 
     public void onCreateAccount(MouseEvent mouseEvent) {
         viewHandler.openCreateAccountView();
+
     }
 
     public void login(MouseEvent mouseEvent) {
@@ -64,5 +74,10 @@ public class LoginViewController implements ViewController {
 
     public void requestPassword(MouseEvent mouseEvent) {
 
+    }
+
+    private void closeWindow() {
+        Window window = textFieldEmail.getScene().getWindow();
+        window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 }
