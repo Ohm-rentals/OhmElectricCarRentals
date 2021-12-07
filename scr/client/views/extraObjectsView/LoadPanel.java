@@ -1,6 +1,6 @@
 package client.views.extraObjectsView;
 
-import client.core.ViewHandler;
+import client.core.viewHandler.ViewHandler;
 import client.views.extraObjectsView.menuBar.MenuBarController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;

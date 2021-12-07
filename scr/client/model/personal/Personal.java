@@ -7,7 +7,6 @@ import client.model.personal.status.Stat;
 import client.model.personal.status.Status;
 import shared.transferObjects.user.LoginType;
 import shared.transferObjects.user.User;
-import shared.transferObjects.user.UserKind;
 
 
 public class Personal {

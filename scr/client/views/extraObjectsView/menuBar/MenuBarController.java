@@ -1,14 +1,14 @@
 package client.views.extraObjectsView.menuBar;
 
-import client.core.ViewHandler;
+import client.core.viewHandler.View;
+import client.core.viewHandler.ViewHandler;
 import client.model.personal.Personal;
 import client.model.personal.status.Stat;
-import client.views.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import shared.transferObjects.user.UserKind;
+import shared.transferObjects.user.LoginType;
 
 public class MenuBarController  {
     @FXML private HBox welcomeHBox;
@@ -39,41 +39,41 @@ public class MenuBarController  {
             welcomeHBox.setVisible(true);
             logText.setText("|Logout|");
             text1.setText("|My Account|");
-            text2.setText(personal.getKind().equals(UserKind.CUSTOMER) ? "" : "|Manage Accounts|");
-            text3.setText(personal.getKind().equals(UserKind.CUSTOMER) ? "" : "|Manage Reservations|");
-            text4.setText(personal.getKind().equals(UserKind.CUSTOMER) ? "" : "|Manage Cars|");
+            text2.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Accounts|");
+            text3.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Reservations|");
+            text4.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Cars|");
         }
 
     }
 
     public void logInAction(MouseEvent mouseEvent) {
         if (personal.getStatus().equals(Stat.OFFLINE)) {
-            viewHandler.openLoginView();
+            viewHandler.openNewView(View.LOGIN);
         }
 
         if (personal.getStatus().equals(Stat.ONLINE)){
             personal.logOut();
           //  viewHandler.refreshActualView(); // what shoul I do when I log out? which view should I GO
-            viewHandler.openSearchView();
+            viewHandler.openView(View.SEARCH);
         }
 
 
     }
 
     public void onMyAccount(MouseEvent mouseEvent) {
-        viewHandler.openMyAccountView();
+        viewHandler.openView(View.MY_ACCOUNT);
     }
 
     public void onManageAccount(MouseEvent mouseEvent) {
-        viewHandler.openManageAccountView();
+        viewHandler.openView(View.MANAGE_ACCOUNT);
     }
 
     public void onManageReservations(MouseEvent mouseEvent) {
-        viewHandler.openManageReservationsView();
+        viewHandler.openView(View.MANAGE_RESERVATIONS);
 
     }
 
     public void onManageCars(MouseEvent mouseEvent) {
-        viewHandler.openManageCarsView();
+        viewHandler.openView(View.MANAGE_CARS);
     }
 }

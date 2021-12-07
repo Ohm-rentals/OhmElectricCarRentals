@@ -1,8 +1,8 @@
 package client.views.searchView;
 
-import client.core.ViewHandler;
+import client.core.viewHandler.View;
+import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
-import client.model.personal.Personal;
 import client.views.ViewController;
 import client.views.extraObjectsView.LoadPanel;
 import javafx.event.ActionEvent;
@@ -10,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 
 public class SearchViewController implements ViewController {
 
@@ -42,7 +40,7 @@ public class SearchViewController implements ViewController {
 
 
     public void searchAction(ActionEvent actionEvent) {
-        viewHandler.openCatalogView();
+        viewHandler.openView(View.CATALOG);
         searchViewModel.onSearch(locationComboBox.getSelectionModel().getSelectedItem(),
                                  rangeComboBox.getSelectionModel().getSelectedItem(),
                                  fromDatePicker.getValue(),

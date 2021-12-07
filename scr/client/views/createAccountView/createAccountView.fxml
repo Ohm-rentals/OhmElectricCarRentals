@@ -132,7 +132,7 @@
       </HBox>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Text fx:id="errorText" fill="#ff0606" strokeType="OUTSIDE" strokeWidth="0.0" text="There are some errors in your form" />
+            <Text fx:id="errorText" fill="#ff0606" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children>
       </HBox>
       <HBox fx:id="createAccountHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#createAccount" prefHeight="30.0" prefWidth="200.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">

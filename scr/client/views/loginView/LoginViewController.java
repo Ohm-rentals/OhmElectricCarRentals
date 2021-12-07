@@ -1,9 +1,8 @@
 package client.views.loginView;
 
-import client.core.ViewHandler;
+import client.core.viewHandler.View;
+import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
-import client.model.personal.Personal;
-import client.model.personal.status.Stat;
 import client.views.ViewController;
 import client.views.utils.other.Error;
 import javafx.fxml.FXML;
@@ -12,8 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
@@ -64,7 +61,7 @@ public class LoginViewController implements ViewController {
     }
 
     public void onCreateAccount(MouseEvent mouseEvent) {
-        viewHandler.openCreateAccountView();
+        viewHandler.openNewView(View.CREATE_ACCOUNT);
 
     }
 
