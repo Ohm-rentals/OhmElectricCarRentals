@@ -6,12 +6,34 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PasswordTest
 {
+  private boolean isValid(String password)
+  {
+    boolean hasDigits = false;
+    boolean hasUppercase = false;
+    boolean hasLowercase = false;
+    for (char c : password.toCharArray())
+    {
+      if (Character.isDigit(c))
+      {
+        hasDigits = true;
+      }
+      if (Character.isUpperCase(c))
+      {
+        hasUppercase = true;
+      }
+      if (Character.isLowerCase(c))
+      {
+        hasLowercase = true;
+      }
+    }
+    return password.length() > 7 && hasDigits && hasLowercase && hasUppercase;
+  }
   @Test public void validPassword()
   {
 
     Password validPassword = new Password("Bob12345");
 
-    assertTrue(Password.isValid(validPassword.getPassword()));
+    assertTrue(isValid(validPassword.getPassword()));
   }
 
   @Test public void passwordWithNoDigits()
@@ -19,7 +41,7 @@ class PasswordTest
     try
     {
       Password noDigitPassword = new Password("BobIsCool");
-      assertFalse(Password.isValid(noDigitPassword.getPassword()));
+      assertFalse(isValid(noDigitPassword.getPassword()));
     }
 
     catch (IllegalArgumentException e)
@@ -33,7 +55,7 @@ class PasswordTest
     try
     {
       Password noUppercasePassword = new Password("bob12345");
-      assertFalse(Password.isValid(noUppercasePassword.getPassword()));
+      assertFalse(isValid(noUppercasePassword.getPassword()));
     }
 
     catch (IllegalArgumentException e)
@@ -48,7 +70,7 @@ class PasswordTest
     try
     {
       Password noLowercasePassword = new Password("BOB12345");
-      assertFalse(Password.isValid(noLowercasePassword.getPassword()));
+      assertFalse(isValid(noLowercasePassword.getPassword()));
     }
 
     catch (IllegalArgumentException e)
@@ -62,7 +84,7 @@ class PasswordTest
     try
     {
       Password shortPassword = new Password("Bob123");
-      assertFalse(Password.isValid(shortPassword.getPassword()));
+      assertFalse(isValid(shortPassword.getPassword()));
     }
 
     catch (IllegalArgumentException e)

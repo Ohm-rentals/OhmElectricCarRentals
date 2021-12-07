@@ -24,7 +24,7 @@ public class Ssn implements Serializable
     return ssn;
   }
 
-  public static boolean isValid(String ssn)
+  private boolean isValid(String ssn)
   {
     return ssn.length() == 10 && ssn.matches("[0-9]+");
   }

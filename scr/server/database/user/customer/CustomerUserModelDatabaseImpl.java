@@ -5,6 +5,7 @@ import shared.transferObjects.Address;
 import shared.transferObjects.user.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
@@ -28,13 +29,16 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
 
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
+        LocalDate dob = LocalDate.of(resultSet.getDate("dob").getYear(),
+            resultSet.getDate("dob").getMonth(),
+            resultSet.getDate("dob").getDay());
         PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
         DriverLicense driverLicense = new DriverLicense(
             resultSet.getString("driver_license_no"));
 
         customers.add(new Customer(resultSet.getString("f_name"),
             resultSet.getString("l_name"), address, phoneNo, password,
-            email, driverLicense, resultSet.getInt("customer_id")));
+            email,dob, driverLicense, resultSet.getInt("customer_id")));
       }
       return customers;
     }
@@ -63,12 +67,15 @@ public class CustomerUserModelDatabaseImpl implements CustomerUserModelDatabase
 
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
+      LocalDate dob = LocalDate.of(resultSet.getDate("dob").getYear(),
+          resultSet.getDate("dob").getMonth(),
+          resultSet.getDate("dob").getDay());
       PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
       DriverLicense driverLicense = new DriverLicense(
           resultSet.getString("driver_license_no"));
 
       return new Customer(resultSet.getString(" f_name"),
-          resultSet.getString("l_name"), address, phoneNo, password, email,
+          resultSet.getString("l_name"), address, phoneNo, password, email,dob,
           driverLicense, resultSet.getInt("customer_id"));
     }
     catch (SQLException throwables)

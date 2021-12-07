@@ -23,7 +23,7 @@ public class Password implements Serializable
     return password;
   }
 
-  public static boolean isValid(String password)
+  private boolean isValid(String password)
   {
     boolean hasDigits = false;
     boolean hasUppercase = false;

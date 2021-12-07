@@ -2,53 +2,65 @@ package shared.transferObjects.user;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Pattern;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmailTest
 {
+  private boolean isValid(String email)
+  {
+    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\." + "[a-zA-Z0-9_+&*-]+)*@"
+        + "(?:[a-zA-Z0-9-]+\\.)+[a-z" + "A-Z]{2,7}$";
+
+    Pattern pat = Pattern.compile(emailRegex);
+    return pat.matcher(email).matches();
+  }
+
+
   @Test public void validEmail()
   {
     Email validEmail = new Email("bob@gmail.com");
-    assertTrue(Email.isValid(validEmail.getEmail()));
+    assertTrue(isValid(validEmail.getEmail()));
   }
 
   @Test public void validEmailWithDot()
   {
     Email validEmailWithDot = new Email("bob.oldenuff@gmail.com");
-    assertTrue(Email.isValid(validEmailWithDot.getEmail()));
+    assertTrue(isValid(validEmailWithDot.getEmail()));
   }
 
   @Test public void validEmailWithDifferentDomain()
   {
     Email validEmailWithDifferentDomain = new Email("bob.oldenuff@via.dk");
-    assertTrue(Email.isValid(validEmailWithDifferentDomain.getEmail()));
+    assertTrue(isValid(validEmailWithDifferentDomain.getEmail()));
   }
 
   @Test public void validEmailWithNumbers()
   {
     Email validEmailWithNumber = new Email("bob123@gmial.com");
-    assertTrue(Email.isValid(validEmailWithNumber.getEmail()));
+    assertTrue(isValid(validEmailWithNumber.getEmail()));
   }
 
   @Test public void validEmailWithCustomAddress()
   {
     Email validEmailWithCustomAddress = new Email(
         "bob.oldenuff@ohm.rentals.dk");
-    assertTrue(Email.isValid(validEmailWithCustomAddress.getEmail()));
+    assertTrue(isValid(validEmailWithCustomAddress.getEmail()));
   }
 
   @Test public void validEmailWithUppercaseCharacters()
   {
     Email validEmailWithUppercaseCharacters = new Email(
         "Bob.Oldenuff@Ohm.Rentals.dk");
-    assertTrue(Email.isValid(validEmailWithUppercaseCharacters.getEmail()));
+    assertTrue(isValid(validEmailWithUppercaseCharacters.getEmail()));
   }
 
   @Test public void emailWithDoubleDomain()
   {
 
     Email emailWIthMultipleDomain = new Email("bob.oldenuff@gamil.dk.com");
-    assertTrue(Email.isValid(emailWIthMultipleDomain.getEmail()));
+    assertTrue(isValid(emailWIthMultipleDomain.getEmail()));
 
   }
 
@@ -57,7 +69,7 @@ class EmailTest
     try
     {
       Email emailWithNoAddress = new Email("bob.oldenuff");
-      assertFalse(Email.isValid(emailWithNoAddress.getEmail()));
+      assertFalse(isValid(emailWithNoAddress.getEmail()));
     }
     catch (IllegalArgumentException e)
     {
@@ -70,7 +82,7 @@ class EmailTest
     try
     {
       Email emailWithNoAtSign = new Email("bob.oldenuff.via.dk");
-      assertFalse(Email.isValid(emailWithNoAtSign.getEmail()));
+      assertFalse(isValid(emailWithNoAtSign.getEmail()));
     }
     catch (IllegalArgumentException e)
     {
@@ -83,7 +95,7 @@ class EmailTest
     try
     {
       Email emailWithNoDomain = new Email("bob.oldenuff@gmail");
-      assertFalse(Email.isValid(emailWithNoDomain.getEmail()));
+      assertFalse(isValid(emailWithNoDomain.getEmail()));
     }
     catch (IllegalArgumentException e)
     {
@@ -96,7 +108,7 @@ class EmailTest
     try
     {
       Email emailWithNoAddress = new Email("bob.oldenuff@com");
-      assertFalse(Email.isValid(emailWithNoAddress.getEmail()));
+      assertFalse(isValid(emailWithNoAddress.getEmail()));
     }
     catch (IllegalArgumentException e)
     {
@@ -109,7 +121,7 @@ class EmailTest
     try
     {
       Email emailWithLongDomain = new Email("bob.oldenuff@gmail.copenhagen");
-      assertFalse(Email.isValid(emailWithLongDomain.getEmail()));
+      assertFalse(isValid(emailWithLongDomain.getEmail()));
     }
     catch (IllegalArgumentException e)
     {
@@ -122,7 +134,7 @@ class EmailTest
     try
     {
       Email emailWithDoubleAtSign = new Email("bob.oldenuff@@gmail.com");
-      assertFalse(Email.isValid(emailWithDoubleAtSign.getEmail()));
+      assertFalse(isValid(emailWithDoubleAtSign.getEmail()));
     }
     catch (IllegalArgumentException e)
     {

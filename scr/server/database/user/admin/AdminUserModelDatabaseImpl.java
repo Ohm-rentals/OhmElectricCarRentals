@@ -5,6 +5,7 @@ import shared.transferObjects.Address;
 import shared.transferObjects.user.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
@@ -29,11 +30,14 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
 
         Password password = new Password(resultSet.getString("password"));
         Email email = new Email(resultSet.getString("email"));
+        LocalDate dob = LocalDate.of(resultSet.getDate("dob").getYear(),
+            resultSet.getDate("dob").getMonth(),
+            resultSet.getDate("dob").getDay());
         PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
         Ssn ssn = new Ssn(resultSet.getString("ssn"));
 
         admins.add(new Admin(resultSet.getString("f_name"),
-            resultSet.getString("l_name"), address, phoneNo, password, email,
+            resultSet.getString("l_name"), address, phoneNo, password, email,dob,
             ssn, resultSet.getInt("emp_id")));
       }
       return admins;
@@ -65,11 +69,14 @@ public class AdminUserModelDatabaseImpl implements AdminUserModelDatabase
 
       Password password = new Password(resultSet.getString("password"));
       Email email = new Email(resultSet.getString("email"));
+      LocalDate dob = LocalDate.of(resultSet.getDate("dob").getYear(),
+          resultSet.getDate("dob").getMonth(),
+          resultSet.getDate("dob").getDay());
       PhoneNo phoneNo = new PhoneNo(resultSet.getString("phone_no"));
       Ssn ssn = new Ssn(resultSet.getString("ssn"));
 
       return new Admin(resultSet.getString("f_name"),
-          resultSet.getString("l_name"), address, phoneNo, password, email, ssn,
+          resultSet.getString("l_name"), address, phoneNo, password, email,dob, ssn,
           resultSet.getInt("emp_id"));
     }
     catch (SQLException throwables)

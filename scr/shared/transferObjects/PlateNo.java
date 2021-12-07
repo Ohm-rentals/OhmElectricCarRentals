@@ -21,7 +21,7 @@ public class PlateNo implements Serializable
     }
   }
 
-  public static boolean isValid(String plateNo)
+  private boolean isValid(String plateNo)
   {
     String licenseRegex = "[A-Za-z][A-Za-z][0-9][0-9][0-9][0-9][0-9]";
     Pattern pattern = Pattern.compile(licenseRegex);
