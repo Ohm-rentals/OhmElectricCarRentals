@@ -41,7 +41,7 @@
       </HBox>
       <ImageView fitHeight="432.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
          <image>
-            <Image url="@../utils/Images/frontView.png" />
+            <Image url="@../utils/images/frontView.png" />
          </image>
       </ImageView>
       <Text fill="#6f6e6e" strokeType="OUTSIDE" strokeWidth="0.0" text="mailto@ohm.com">

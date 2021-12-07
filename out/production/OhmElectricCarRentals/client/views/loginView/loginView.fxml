@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="17.0" fitWidth="18.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../utils/Images/windowclose_104378.png" />
+                  <Image url="@../utils/images/windowclose_104378.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -57,7 +57,7 @@
          <children>
             <ImageView fitHeight="24.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../utils/Images/user_customer_person_13976.png" />
+                  <Image url="@../utils/images/user_customer_person_13976.png" />
                </image>
                <HBox.margin>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -73,7 +73,7 @@
          <children>
             <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../utils/Images/internet_lock_locked_padlock_password_secure_security_icon_127078.png" />
+                  <Image url="@../utils/images/internet_lock_locked_padlock_password_secure_security_icon_127078.png" />
                </image>
                <HBox.margin>
                   <Insets />

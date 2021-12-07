@@ -1,5 +1,6 @@
 package client.views.manageCarsView;
 
+import client.core.viewHandler.View;
 import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
 import client.views.ViewController;
@@ -22,13 +23,17 @@ public class ManageCarsController implements ViewController {
 
     @FXML private HBox menuBarHBox;
 
+    private ViewHandler viewHandler;
+
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
+        this.viewHandler = viewHandler;
         menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml", viewHandler));
         statusComboBox.getItems().addAll("Available","Service", "Cleaning", "Unavailable");
     }
 
     public void onCancel(MouseEvent mouseEvent) {
+        System.out.println("this controller");
     }
 
     public void onSave(MouseEvent mouseEvent) {
@@ -54,5 +59,9 @@ public class ManageCarsController implements ViewController {
     }
 
     public void onUpdate(MouseEvent mouseEvent) {
+    }
+
+    public void onCreateCar(MouseEvent mouseEvent) {
+        viewHandler.openNewView(View.CREATE_CAR);
     }
 }

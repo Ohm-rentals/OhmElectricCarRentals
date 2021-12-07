@@ -22,7 +22,7 @@
          <children>
             <ImageView fitHeight="17.0" fitWidth="18.0" onMouseClicked="#onClose" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../utils/Images/windowclose_104378.png" />
+                  <Image url="@../utils/images/windowclose_104378.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

@@ -55,7 +55,7 @@
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="509.0" spacing="20.0">
                            <children>
                               <Separator prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                              <HBox fx:id="createAccountHBox2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onCancel" prefHeight="30.0" prefWidth="47.0" spacing="60.0" style="-fx-background-color: #00c0ff#00c0ff; -fx-background-radius: 5px;">
+                              <HBox fx:id="createAccountHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onCreateCar" prefHeight="30.0" prefWidth="47.0" spacing="60.0" style="-fx-background-color: #00c0ff#00c0ff; -fx-background-radius: 5px;">
                                  <children>
                                     <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="+ Car">
                                        <font>
@@ -144,7 +144,7 @@
                            <children>
                               <ImageView fx:id="bigImageView" fitHeight="250.0" fitWidth="401.0" pickOnBounds="true" HBox.hgrow="ALWAYS">
                                  <image>
-                                    <Image url="@../utils/Images/delorean1.jpeg" />
+                                    <Image url="@../utils/images/delorean1.jpeg" />
                                  </image>
                               </ImageView>
                            </children>
@@ -153,7 +153,7 @@
                            <children>
                               <ImageView fx:id="oneImageView" fitHeight="100.0" fitWidth="144.0" onMouseClicked="#oneImageView" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
                                  <image>
-                                    <Image url="@../utils/Images/delorean2.jpeg" />
+                                    <Image url="@../utils/images/delorean2.jpeg" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -161,7 +161,7 @@
                               </ImageView>
                               <ImageView fx:id="twoImageView" fitHeight="100.0" fitWidth="144.0" onMouseClicked="#twoImageView" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../utils/Images/delorean4.jpeg" />
+                                    <Image url="@../utils/images/delorean4.jpeg" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -169,7 +169,7 @@
                               </ImageView>
                               <ImageView fx:id="threeImageView" fitHeight="100.0" fitWidth="144.0" onMouseClicked="#threeImageView" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../utils/Images/delorean5.jpeg" />
+                                    <Image url="@../utils/images/delorean5.jpeg" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
@@ -282,7 +282,7 @@
                         </HBox>
                         <HBox fx:id="createAccountHBox1" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onSave" prefHeight="30.0" prefWidth="90.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
                            <children>
-                              <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel">
+                              <Text fill="#363333" onMouseClicked="#onCancel" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="14.0" />
                                  </font>

@@ -4,6 +4,7 @@ public enum View {
 
     CATALOG("catalogView/catalogView.fxml"),
     CREATE_ACCOUNT("createAccountView/createAccountView.fxml"),
+    CREATE_CAR("createCarView/createCarView.fxml"),
     LOGIN("loginView/loginView.fxml"),
     MY_ACCOUNT("myAccountView/myAccountView.fxml"),
     MANAGE_ACCOUNT("manageAccountView/manageAccountsView.fxml"),

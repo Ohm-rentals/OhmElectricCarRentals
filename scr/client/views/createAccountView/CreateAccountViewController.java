@@ -129,4 +129,6 @@ public class CreateAccountViewController implements ViewController {
     }
 
 
+    public void onCreateCar(MouseEvent mouseEvent) {
+    }
 }

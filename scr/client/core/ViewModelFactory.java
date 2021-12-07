@@ -2,6 +2,7 @@ package client.core;
 
 import client.views.catalogView.CatalogViewModel;
 import client.views.createAccountView.CreateAccountViewModel;
+import client.views.createCarView.CreateCarViewModel;
 import client.views.loginView.LoginViewModel;
 import client.views.manageAccountView.ManageAccountsViewModel;
 import client.views.manageCarsView.ManageCarsViewModel;
@@ -13,6 +14,7 @@ public class ViewModelFactory {
 
     private CatalogViewModel catalogViewModel;
     private CreateAccountViewModel createAccountViewModel;
+    private CreateCarViewModel createCarViewModel;
     private LoginViewModel loginViewModel;
     private ManageAccountsViewModel manageAccountsViewModel;
     private ManageCarsViewModel manageCarsViewModel;
@@ -33,6 +35,12 @@ public class ViewModelFactory {
         if (createAccountViewModel == null)
         return new CreateAccountViewModel();
         return createAccountViewModel;
+    }
+
+    public CreateCarViewModel getCreateCarViewModel() {
+        if (createCarViewModel == null)
+            return new CreateCarViewModel();
+        return createCarViewModel;
     }
 
     public LoginViewModel getLoginViewModel() {
