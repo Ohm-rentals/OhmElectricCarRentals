@@ -3,6 +3,7 @@ package shared.transferObjects.user;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Admin extends User implements Serializable
@@ -11,7 +12,7 @@ public class Admin extends User implements Serializable
   private int empId;
 
   public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email, LocalDate dob, Ssn ssn, int empId)
+      Password password, Email email, Date dob, Ssn ssn, int empId)
   {
     super(fName, lName, address, phoneNo, password, email,dob);
     this.ssn = ssn;
@@ -19,7 +20,7 @@ public class Admin extends User implements Serializable
   }
 
   public Admin(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email,LocalDate dob, Ssn ssn)
+      Password password, Email email,Date dob, Ssn ssn)
   {
     super(fName, lName, address, phoneNo, password, email, dob);
     this.ssn = ssn;
@@ -37,7 +38,7 @@ public class Admin extends User implements Serializable
 
   @Override public String toString()
   {
-    return "Admin{" + "ssn='" + ssn + '\'' + ", empId='" + empId + '\'' + '}';
+    return "Admin{" + "ssn=" + ssn + ", empId=" + empId + '}';
   }
 
   @Override public LoginType getType()

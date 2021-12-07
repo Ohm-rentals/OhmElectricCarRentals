@@ -9,8 +9,8 @@ public class Ssn implements Serializable
   public Ssn(String ssn)
   {
     if (isValid(ssn))
-    { this.ssn = ssn;
-
+    {
+      this.ssn = ssn;
     }
     else {
       throw new IllegalArgumentException(
@@ -27,5 +27,10 @@ public class Ssn implements Serializable
   private boolean isValid(String ssn)
   {
     return ssn.length() == 10 && ssn.matches("[0-9]+");
+  }
+
+  @Override public String toString()
+  {
+    return ssn;
   }
 }
