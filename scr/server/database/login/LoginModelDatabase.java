@@ -1,9 +1,8 @@
 package server.database.login;
 
-import shared.transferObjects.user.LoginUser;
-import shared.transferObjects.user.LoginType;
+import shared.transferObjects.user.*;
 
 public interface LoginModelDatabase
 {
-  LoginType login(LoginUser user);
+  User login(Email email, Password password);
 }

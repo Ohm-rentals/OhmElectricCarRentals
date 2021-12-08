@@ -16,6 +16,6 @@ public class LoginModelServerImp implements LoginModelServer
 
   @Override public LoginType login(LoginUser user)
   {
-    return loginModelDatabase.login(user);
+    return null;
   }
 }

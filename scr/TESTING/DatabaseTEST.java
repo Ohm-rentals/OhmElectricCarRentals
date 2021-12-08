@@ -1,5 +1,7 @@
 package TESTING;
 
+import server.database.login.LoginModelDatabase;
+import server.database.login.LoginModelDatabaseImp;
 import server.database.user.UserModelDatabase;
 import server.database.user.UserModelDatabaseImpl;
 import shared.transferObjects.Address;
@@ -60,14 +62,14 @@ public class DatabaseTEST
 
     UserModelDatabase userModelDatabase = new UserModelDatabaseImpl();
 
-    userModelDatabase.createUser(simus);
+   /* userModelDatabase.createUser(simus);
     System.out.println("Simus created");
     userModelDatabase.createUser(christopher);
     System.out.println("Christopher created");
     userModelDatabase.createUser(vlad);
     System.out.println("Vlad created");
     userModelDatabase.createUser(alfonso);
-    System.out.println("Alfonso created");
+    System.out.println("Alfonso created");*/
 
     System.out.println(userModelDatabase.getUsersByType(LoginType.ADMIN));
     System.out.println(userModelDatabase.getUsersByType(LoginType.CUSTOMER));
@@ -77,6 +79,10 @@ public class DatabaseTEST
     System.out.println(userModelDatabase.getUserById(4001,LoginType.CUSTOMER));
     System.out.println(userModelDatabase.getUserById(5001,LoginType.FRONT_DESK));
 
+    LoginModelDatabase loginModelDatabase = new LoginModelDatabaseImp();
 
+
+
+    System.out.println(loginModelDatabase.login(email1,password1));
   }
 }
