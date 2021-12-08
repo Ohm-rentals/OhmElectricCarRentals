@@ -3,6 +3,7 @@ package TESTING;
 import shared.transferObjects.Address;
 import shared.transferObjects.user.*;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class TestUser {
@@ -21,13 +22,13 @@ public class TestUser {
        System.out.println("Creados");
 
        if (email.getEmail().equals("vlad@gmail.com") && password.getPassword().equals("Simus123")) {
-           Customer customer = new Customer("Vlad", "Rodriguez", address,new PhoneNo("12345678"), password, email, LocalDate.now().minusMonths(240),new DriverLicense("78978372"));
+           Customer customer = new Customer("Vlad", "Rodriguez", address,new PhoneNo("12345678"), password, email, Date.valueOf(LocalDate.now().minusMonths(240)),new DriverLicense("78978372"));
            System.out.println("noooooooo");
            return customer;
        }
 
        if (email.getEmail().equals("simus@gmail.com") && password.getPassword().equals("Vlad1234")) {
-           Admin admin = new Admin("Simus", "Lopez", address, new PhoneNo("12345678"), password, email,LocalDate.now().minusMonths(240), new Ssn("9878245378"));
+           Admin admin = new Admin("Simus", "Lopez", address, new PhoneNo("12345678"), password, email, Date.valueOf(LocalDate.now().minusMonths(240)), new Ssn("9878245378"));
            System.out.println("yesss");
            return admin;
 

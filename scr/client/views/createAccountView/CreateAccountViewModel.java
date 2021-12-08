@@ -9,10 +9,10 @@ import javafx.util.converter.LocalDateStringConverter;
 import shared.transferObjects.Address;
 import shared.transferObjects.user.*;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
-import java.util.Date;
 import java.util.Timer;
 import java.util.function.DoubleBinaryOperator;
 
@@ -59,7 +59,7 @@ public class CreateAccountViewModel {
                                 new PhoneNo(phone.getValue()),
                                     password,
                                     new Email(email.getValue()),
-                                    DOB,
+                                    Date.valueOf(DOB), // Please let change this dates
                                     new DriverLicense(license.getValue()));
         } catch (Exception e) {
           //  System.out.println(e.);
