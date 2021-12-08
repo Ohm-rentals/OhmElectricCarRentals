@@ -71,7 +71,7 @@ public class LoginViewController implements ViewController {
     }
 
     public void requestPassword(MouseEvent mouseEvent) {
-
+        loginViewModel.login("vlad@gmail.com", "Simus123");
     }
 
     private void closeWindow() {

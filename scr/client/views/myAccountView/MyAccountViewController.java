@@ -14,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import shared.transferObjects.user.LoginType;
 
@@ -37,12 +38,24 @@ public class MyAccountViewController implements ViewController {
     @FXML private PasswordField rePasswordPasswordField;
     @FXML private Text errorText;
     @FXML private HBox kindHBox;
+    @FXML private VBox myBox;
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
-        kindHBox.setVisible(Personal.getPersonal().getKind().equals(LoginType.ADMIN) ? true : false);
         myAccountViewModel = viewModelFactory.getMyAccountViewModel();
+        if ((Personal.getPersonal().getKind().equals(LoginType.ADMIN) || Personal.getPersonal().getKind().equals(LoginType.FRONT_DESK))) {
+            kindHBox.setVisible(true);
+            myBox.getChildren().add(new LoadPanel().load("../extraObjectsView/myBusinessInformation/myBusinessInformation.fxml", viewHandler));
+        } else {
+            kindHBox.setVisible(false);
+            myBox.getChildren().add(new LoadPanel().load("../extraObjectsView/myReservations/myReservations.fxml", viewHandler));
+        }
+
+
+        kindHBox.setVisible(Personal.getPersonal().getKind().equals(LoginType.ADMIN) ? true : false);
         menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml", viewHandler));
+
+
         firstNameTextField.setDisable(true);
         lastNameTextField.setDisable(true);
         emailTextField.setDisable(true);

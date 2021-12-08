@@ -4,13 +4,14 @@ import client.core.viewHandler.View;
 import client.core.viewHandler.ViewHandler;
 import client.model.personal.Personal;
 import client.model.personal.status.Stat;
+import client.views.extraObjectsView.ExtraController;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import shared.transferObjects.user.LoginType;
 
-public class MenuBarController  {
+public class MenuBarController  implements ExtraController {
     @FXML private HBox welcomeHBox;
     @FXML private Text nameText;
     @FXML private Text logText;
@@ -29,7 +30,7 @@ public class MenuBarController  {
         this.viewHandler = viewHandler;
         welcomeHBox.setVisible(false);
         logText.setText("|LogIn|");
-        text1.setText("");
+        text1.setText("|Create Account|");
         text2.setText("");
         text3.setText("");
         text4.setText("");
@@ -61,7 +62,12 @@ public class MenuBarController  {
     }
 
     public void onMyAccount(MouseEvent mouseEvent) {
-        viewHandler.openView(View.MY_ACCOUNT);
+        if (personal.getStatus().equals(Stat.ONLINE)) {
+            viewHandler.openView(View.MY_ACCOUNT);
+        } else {
+            viewHandler.openNewView(View.CREATE_ACCOUNT);
+        }
+
     }
 
     public void onManageAccount(MouseEvent mouseEvent) {
@@ -76,4 +82,9 @@ public class MenuBarController  {
     public void onManageCars(MouseEvent mouseEvent) {
         viewHandler.openView(View.MANAGE_CARS);
     }
+
+    public void goHome(MouseEvent mouseEvent) {
+        viewHandler.openView(View.SEARCH);
+    }
+
 }

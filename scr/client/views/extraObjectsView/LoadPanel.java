@@ -15,7 +15,7 @@ public class LoadPanel {
         loader.setLocation(getClass().getResource(path));
         try {
              newLoadedPane = loader.load();
-            MenuBarController viewController = loader.getController();
+            ExtraController viewController = loader.getController();
             viewController.init(viewHandler);
         } catch (IOException e) {
             e.printStackTrace();

@@ -8,9 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
@@ -28,12 +26,14 @@ import java.io.IOException;
 public class CreateCarViewController implements ViewController {
 
     @FXML private Button addMainPhoto, addOnePhoto, addTowPhoto, addThreePhoto;
+    @FXML private ImageView oneImageView, twoImageView, threeImageView, mainImageView;
+    @FXML private TextField makeTextField, modelTextField, licenseTextField, yearTextField, seatsTextField, rangeTextField, kmTextField, priceTextField;
+    @FXML private ComboBox modelComboBox;
+    @FXML private Spinner<String> yearSpinner;
+
     private ViewHandler viewHandler;
     private CreateCarViewModel createCarViewModel;
-
-    @FXML private ImageView oneImageView, twoImageView, threeImageView, mainImageView;
-    @FXML private Spinner<String> yearSpinner;
-    private CarImage carImage;
+    private CarImage[] carImage = new CarImage[4];
     private BufferedImage bufferedImage = null;
 
 
@@ -42,10 +42,12 @@ public class CreateCarViewController implements ViewController {
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
         this.createCarViewModel = viewModelFactory.getCreateCarViewModel();
-        addMainPhoto.setOnAction(actionEvent -> addPhoto(mainImageView));
-        addOnePhoto.setOnAction(actionEvent -> addPhoto(oneImageView));
-        addTowPhoto.setOnAction(actionEvent -> addPhoto(twoImageView));
-        addThreePhoto.setOnAction(actionEvent -> addPhoto(threeImageView));
+        addMainPhoto.setOnAction(actionEvent -> addPhoto(mainImageView,0));
+        addOnePhoto.setOnAction(actionEvent -> addPhoto(oneImageView,1));
+        addTowPhoto.setOnAction(actionEvent -> addPhoto(twoImageView,2));
+        addThreePhoto.setOnAction(actionEvent -> addPhoto(threeImageView,3));
+
+        makeTextField.textProperty().bindBidirectional(createCarViewModel.getMakeTextField());
     }
 
     public void onClose(MouseEvent mouseEvent) {
@@ -53,15 +55,12 @@ public class CreateCarViewController implements ViewController {
         window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
-    public void onCreateCar(MouseEvent mouseEvent) {
 
-    }
 
-    public void addPhoto(ImageView imageView) {
+    public void addPhoto(ImageView imageView, int position) {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.bmp", "*.jpeg");
         fileChooser.getExtensionFilters().add(extFilter);
-
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
             try {
@@ -69,9 +68,16 @@ public class CreateCarViewController implements ViewController {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            carImage = new CarImage(bufferedImage, file.getName());
-            imageView.setImage(carImage.getImage());
+            carImage[position] = new CarImage(bufferedImage, file.getName());
+            imageView.setImage(carImage[position].getImage());
         }
     }
+
+
+    public void onCreateCar(MouseEvent mouseEvent) {
+        createCarViewModel.createCar(carImage);
+      //  carImage.imageIoWrite("CarID1");
+    }
+
 
 }

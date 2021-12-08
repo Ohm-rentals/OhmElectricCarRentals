@@ -49,7 +49,7 @@
                               <Image url="@../utils/images/car_model_default.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="addMainPhoto" mnemonicParsing="false"  prefHeight="127.0" prefWidth="200.0" styleClass="btns" stylesheets="@../utils/style/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Button fx:id="addMainPhoto" mnemonicParsing="false" prefHeight="127.0" prefWidth="200.0" styleClass="btns" stylesheets="@../utils/style/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
@@ -125,7 +125,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
                <children>
-                  <TextField fx:id="makeTextField" promptText="Make" text="Make" />
+                  <TextField fx:id="makeTextField" promptText="Make" />
                   <ComboBox fx:id="modelComboBox" prefHeight="25.0" prefWidth="203.0" promptText="Model" />
                   <TextField fx:id="licenseTextField" promptText="License #" />
                   <TextField fx:id="seatsTextField" promptText="Seats" />

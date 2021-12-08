@@ -2,8 +2,10 @@ package client.views.createAccountView;
 
 import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
+import client.model.personal.Personal;
 import client.views.ViewController;
 import client.views.utils.other.Error;
+import com.sun.javafx.geom.transform.Identity;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -14,7 +16,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import shared.transferObjects.user.LoginType;
 import shared.transferObjects.user.Password;
+import shared.transferObjects.user.User;
 
 import javax.swing.event.ChangeListener;
 import java.time.LocalDate;
@@ -56,6 +60,8 @@ public class CreateAccountViewController implements ViewController {
 
     CreateAccountViewModel createAccountViewModel;
 
+    Personal personal = Personal.getPersonal();
+
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
@@ -72,7 +78,7 @@ public class CreateAccountViewController implements ViewController {
         zipTextField.textProperty().bind(createAccountViewModel.getAddressZipProperty().asString());
         createAccountViewModel.DOBProperty().bind(DOBDatePicker.styleProperty());
         errorText.textProperty().bindBidirectional(createAccountViewModel.errorTextProperty());
-        kindHBox.setVisible(false);
+        kindHBox.setVisible(personal.getKind().equals(LoginType.ADMIN));
 
     }
 
