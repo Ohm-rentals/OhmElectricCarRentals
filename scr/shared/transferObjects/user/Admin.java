@@ -38,7 +38,7 @@ public class Admin extends User implements Serializable
 
   @Override public String toString()
   {
-    return "Admin{" + "ssn=" + ssn + ", empId=" + empId + '}';
+    return super.toString() + " Admin{" + "ssn=" + ssn + ", empId=" + empId + '}';
   }
 
   @Override public LoginType getType()

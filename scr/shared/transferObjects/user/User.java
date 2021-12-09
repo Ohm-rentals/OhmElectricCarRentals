@@ -121,5 +121,11 @@ public abstract class User implements Serializable
     return true;
   }
 
+  @Override public String toString()
+  {
+    return "User{" + "fName='" + fName + '\'' + ", lName='" + lName + '\''
+        + ", password=" + password + ", email=" + email + ", address=" + address
+        + ", phoneNo=" + phoneNo + ", dob=" + dob + '}';
+  }
 }
 
