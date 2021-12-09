@@ -1,51 +1,62 @@
 package server.database.login;
 
 import server.database.DatabaseConnector;
-import shared.transferObjects.user.LoginUser;
-import shared.transferObjects.user.LoginType;
+import server.database.user.UserModelDatabase;
+import server.database.user.UserModelDatabaseImpl;
+import shared.transferObjects.user.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
-public class   LoginModelDatabaseImp implements LoginModelDatabase
+public class LoginModelDatabaseImp implements LoginModelDatabase
 {
+  private final UserModelDatabase userModelDatabase = new UserModelDatabaseImpl();
 
-  @Override public LoginType login(LoginUser user)
+  @Override public User login(Email email, Password password)
   {
     try (Connection connection = DatabaseConnector.getInstance()
         .getConnection())
     {
+      LoginType loginType = getLoginType(email);
       Statement statement = connection.createStatement();
 
       String query =
-          "SELECT password, type FROM \"OhmCarRental\".usertype WHERE email = '"
-              + user.getEmail() + "';";
+          "SELECT password, " + setIdType(loginType) + " FROM \"OhmCarRental\"."
+              + loginType + " WHERE email = '" + email.getEmail() + "';";
 
-      System.out.println("Database query---> " + query);
       ResultSet resultSet = statement.executeQuery(query);
-
       resultSet.next();
-
-      System.out.println(
-          "Database return<--- Password: " + resultSet.getString("password"));
       String dbPassword = resultSet.getString("password");
-
-      if (dbPassword.equals(user.getPassword()))
+      int id = resultSet.getInt(setIdType(loginType));
+      if (dbPassword.equals(password.getPassword()))
       {
-        System.out.println(
-            "Database return<--- LoginType: " + resultSet.getString("type"));
-        String loginType = resultSet.getString("type");
-        return setLoginType(loginType);
+        System.out.println("Logged in");
+        return userModelDatabase.getUserById(id, loginType);
       }
-
     }
-    catch (SQLException e)
+    catch (SQLException throwables)
     {
-      e.printStackTrace();
+      throwables.printStackTrace();
     }
-    System.out.println(LoginType.NO_ACCESS + "Password did not match");
+    return null;
+  }
+
+  private LoginType getLoginType(Email email)
+  {
+    try (Connection connection = DatabaseConnector.getInstance()
+        .getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(
+            "SELECT type FROM \"OhmCarRental\".usertype WHERE email = ?"))
+    {
+      preparedStatement.setString(1, email.getEmail());
+      ResultSet resultSet = preparedStatement.executeQuery();
+      resultSet.next();
+      String type = resultSet.getString("type");
+      return setLoginType(type);
+    }
+    catch (SQLException throwables)
+    {
+      throwables.printStackTrace();
+    }
     return LoginType.NO_ACCESS;
   }
 
@@ -53,17 +64,14 @@ public class   LoginModelDatabaseImp implements LoginModelDatabase
   {
     if (type.equalsIgnoreCase("admin"))
     {
-      System.out.println("Logged in as Admin");
       return LoginType.ADMIN;
     }
     if (type.equalsIgnoreCase("front_desk"))
     {
-      System.out.println("Logged in as Front desk");
       return LoginType.FRONT_DESK;
     }
     if (type.equalsIgnoreCase("customer"))
     {
-      System.out.println("Logged in as Customer");
       return LoginType.CUSTOMER;
     }
     else
@@ -71,5 +79,19 @@ public class   LoginModelDatabaseImp implements LoginModelDatabase
       System.out.println("Login Type did not match");
       return LoginType.NO_ACCESS;
     }
+  }
+
+  private String setIdType(LoginType loginType)
+  {
+    if (loginType.equals(LoginType.FRONT_DESK) || loginType.equals(
+        LoginType.ADMIN))
+    {
+      return "emp_id";
+    }
+    else if (loginType.equals(LoginType.CUSTOMER))
+    {
+      return "customer_id";
+    }
+    return null;
   }
 }
