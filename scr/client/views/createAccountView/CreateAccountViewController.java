@@ -8,9 +8,7 @@ import client.views.utils.other.Error;
 import com.sun.javafx.geom.transform.Identity;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -57,8 +55,15 @@ public class CreateAccountViewController implements ViewController {
     private Text errorText;
     @FXML
     private HBox kindHBox;
+    @FXML
+    Text messageText;
+    @FXML
+    RadioButton adminRadioButton, frontDeskRadioButton, customerRadioButton;
+    @FXML
+    ToggleGroup userToggle;
 
     CreateAccountViewModel createAccountViewModel;
+    String toggleGroupValue;
 
     Personal personal = Personal.getPersonal();
 
@@ -79,13 +84,13 @@ public class CreateAccountViewController implements ViewController {
         createAccountViewModel.DOBProperty().bind(DOBDatePicker.styleProperty());
         errorText.textProperty().bindBidirectional(createAccountViewModel.errorTextProperty());
         kindHBox.setVisible(personal.getKind().equals(LoginType.ADMIN));
-
+        messageText.setVisible(personal.getKind().equals(LoginType.NO_ACCESS));
+        toggleGroupValue = ((RadioButton) userToggle.getSelectedToggle()).getText();
     }
 
     public void onClose(MouseEvent mouseEvent) {
         Window window = firstNameTextField.getScene().getWindow();
         window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
-
     }
 
 
@@ -99,13 +104,22 @@ public class CreateAccountViewController implements ViewController {
         } else {
             try {
                 Password password = new Password(passwordPasswordField.getText());
-                createAccountViewModel.createAccount(password);
+                createAccountViewModel.createAccount(password, getKind());
             } catch (Exception e) {
                 errorText.setText(e.getMessage());
             }
 
         }
 
+    }
+
+    private LoginType getKind() {
+        switch (((RadioButton) userToggle.getSelectedToggle()).getText()) {
+            case "Admin" : return LoginType.ADMIN;
+            case "Font Desk" : return LoginType.FRONT_DESK;
+            case "Customer" : return LoginType.CUSTOMER;
+        }
+        return null;
     }
 
     private boolean equalPasswords() { //change to through errors
@@ -116,17 +130,19 @@ public class CreateAccountViewController implements ViewController {
         boolean response = true;
         try {
             response = firstNameTextField.getText().isEmpty() ||
-                                lastNameTextField.getText().isEmpty() ||
-                                emailTextField.getText().isEmpty() ||
-                                phoneTextField.getText().isEmpty() ||
-                                licenseTextField.getText().isEmpty() ||
-                                zipTextField.getText().isEmpty() ||
-                                (DOBDatePicker.getValue() == null) ||
-                                streetTextField.getText().isEmpty() ||
-                                numberTextField.getText().isEmpty() ||
-                                cityTextField.getText().isEmpty() ||
-                                countryTextField.getText().isEmpty();
-        } catch (Exception ignored) {};
+                    lastNameTextField.getText().isEmpty() ||
+                    emailTextField.getText().isEmpty() ||
+                    phoneTextField.getText().isEmpty() ||
+                    licenseTextField.getText().isEmpty() ||
+                    zipTextField.getText().isEmpty() ||
+                    (DOBDatePicker.getValue() == null) ||
+                    streetTextField.getText().isEmpty() ||
+                    numberTextField.getText().isEmpty() ||
+                    cityTextField.getText().isEmpty() ||
+                    countryTextField.getText().isEmpty();
+        } catch (Exception ignored) {
+        }
+        ;
         return response;
     }
 
@@ -134,7 +150,4 @@ public class CreateAccountViewController implements ViewController {
         return (!DOBDatePicker.getValue().isBefore(LocalDate.now().minusYears(18)));
     }
 
-
-    public void onCreateCar(MouseEvent mouseEvent) {
-    }
 }

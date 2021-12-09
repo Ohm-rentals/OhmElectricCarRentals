@@ -38,7 +38,7 @@ public class CreateAccountViewModel {
         errorText = new SimpleStringProperty();
     }
 
-    public void createAccount(Password password) {
+    public void createAccount(Password password, LoginType kind) {
         System.out.println(phone.getValue() + "Phone number");
         User newUser = null;
         System.out.println("Starting to create");
@@ -53,16 +53,34 @@ public class CreateAccountViewModel {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate DOB = LocalDate.parse("16/08/2000",formatter);
 
-        newUser = new Customer(firstName.getValue(),
-                                lastName.getValue(),
-                                address,
-                                new PhoneNo(phone.getValue()),
-                                    password,
-                                    new Email(email.getValue()),
-                                    Date.valueOf(DOB), // Please let change this dates
-                                    new DriverLicense(license.getValue()));
+        switch (kind) {
+            case CUSTOMER -> newUser = new Customer(firstName.getValue(),
+                                        lastName.getValue(),
+                                        address,
+                                        new PhoneNo(phone.getValue()),
+                                        password,
+                                        new Email(email.getValue()),
+                                        Date.valueOf(DOB), // Please lets change this dates
+                                        new DriverLicense(license.getValue()));
+            case FRONT_DESK -> newUser = new FrontDesk(firstName.getValue(),
+                                         lastName.getName(),
+                                         address,
+                                         new PhoneNo(phone.getValue()),
+                                         password, new Email(email.getValue()),
+                                         Date.valueOf(DOB),
+                                    null,
+                             null);
+            case ADMIN -> newUser = new Admin(firstName.getValue(),
+                                        lastName.getName(),
+                                        address,
+                                        new PhoneNo(phone.getValue()),
+                                        password, new Email(email.getValue()),
+                                        Date.valueOf(DOB),
+                                        null);
+        }
+
+
         } catch (Exception e) {
-          //  System.out.println(e.);
             errorText.set(e.getLocalizedMessage());
         }
         errorText.set("");

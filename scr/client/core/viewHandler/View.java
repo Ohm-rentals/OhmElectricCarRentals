@@ -12,6 +12,7 @@ public enum View {
     MANAGE_CARS("manageCarsView/manageCarsView.fxml"),
     SEARCH("searchView/searchView.fxml");
 
+
     private final String path;
 
     private final String startPath = "../../views/";
