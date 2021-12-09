@@ -31,6 +31,7 @@ public class LoginViewModel implements Subject {
             Password password = new Password(passwordString);
             usersModel.login(email, password);
         } catch (Exception e) {
+            e.printStackTrace();
             support.firePropertyChange("LOGIN_ERROR", null, null);
         }
     }

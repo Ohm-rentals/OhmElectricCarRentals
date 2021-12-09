@@ -1,6 +1,7 @@
 package client.views.myAccountView;
 
 
+import client.core.viewHandler.View;
 import client.core.viewHandler.ViewHandler;
 import client.core.ViewModelFactory;
 import client.model.personal.Personal;
@@ -17,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import shared.transferObjects.user.LoginType;
+import shared.transferObjects.user.User;
 
 public class MyAccountViewController implements ViewController {
 
@@ -37,51 +39,64 @@ public class MyAccountViewController implements ViewController {
     @FXML private PasswordField passwordPasswordField;
     @FXML private PasswordField rePasswordPasswordField;
     @FXML private Text errorText;
-    @FXML private HBox kindHBox;
+   // @FXML private HBox kindHBox;
     @FXML private VBox myBox;
+
+
+    private ViewHandler viewHandler;
 
     @Override
     public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
+        this.viewHandler = viewHandler;
         myAccountViewModel = viewModelFactory.getMyAccountViewModel();
         if ((Personal.getPersonal().getKind().equals(LoginType.ADMIN) || Personal.getPersonal().getKind().equals(LoginType.FRONT_DESK))) {
-            kindHBox.setVisible(true);
+          //  kindHBox.setVisible(true);
             myBox.getChildren().add(new LoadPanel().load("../extraObjectsView/myBusinessInformation/myBusinessInformation.fxml", viewHandler));
         } else {
-            kindHBox.setVisible(false);
-            myBox.getChildren().add(new LoadPanel().load("../extraObjectsView/myReservations/myReservations.fxml", viewHandler));
+          //  kindHBox.setVisible(false);
+            myBox.getChildren().add(new LoadPanel().load("../myReservationsView/myReservations.fxml", viewHandler, viewModelFactory));
         }
 
-
-        kindHBox.setVisible(Personal.getPersonal().getKind().equals(LoginType.ADMIN) ? true : false);
+        errorText.setText("this is an error text");
+      //  kindHBox.setVisible(Personal.getPersonal().getKind().equals(LoginType.ADMIN) ? true : false);
         menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml", viewHandler));
-
-
         firstNameTextField.setDisable(true);
         lastNameTextField.setDisable(true);
         emailTextField.setDisable(true);
-
         firstNameTextField.textProperty().bindBidirectional(myAccountViewModel.firstNameProperty());
         lastNameTextField.textProperty().bindBidirectional(myAccountViewModel.lastNameProperty());
         emailTextField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
         phoneTextField.textProperty().bindBidirectional(myAccountViewModel.phoneProperty());
-        /*
-        license
-        street
-        number
-        city
-        country
-        zip
-        DOB
-
-         */
-
+      //  licenseTextField.textProperty().bindBidirectional(myAccountViewModel.licenseProperty()); FIX THIS
+        streetTextField.textProperty().bindBidirectional(myAccountViewModel.streetProperty());
+        numberTextField.textProperty().bindBidirectional(myAccountViewModel.numberProperty());
+        cityTextField.textProperty().bindBidirectional(myAccountViewModel.cityProperty());
+        countryTextField.textProperty().bindBidirectional(myAccountViewModel.countryProperty());
+        zipTextField.textProperty().bind(myAccountViewModel.zipProperty().asString());
+        passwordPasswordField.textProperty().bindBidirectional(myAccountViewModel.passwordProperty());
+        rePasswordPasswordField.textProperty().bindBidirectional(myAccountViewModel.rePasswordProperty());
+        errorText.textProperty().bindBidirectional(myAccountViewModel.errorTextProperty());
+       // DOBDatePicker.converterProperty().bind(myAccountViewModel.DOBProperty()); FIX THIS
     }
 
     public void onCancel(MouseEvent mouseEvent) {
-        AlertControl.confirmationBox(Message.CANCEL);
+        if (AlertControl.confirmationBox(Message.CANCEL)) {
+            viewHandler.openView(View.SEARCH);
+        }
 
     }
 
     public void onUpdate(MouseEvent mouseEvent) {
+        myAccountViewModel.onUpdate();
+       // viewHandler.refreshActualView();
+    }
+
+    public void onDeleteAccount(MouseEvent mouseEvent) {
+        if (AlertControl.confirmationBox(Message.DELETE_ACCOUNT)) {
+            myAccountViewModel.onDelete();
+            Personal personal = Personal.getPersonal();
+            personal.logOut();
+            viewHandler.openView(View.SEARCH);
+        }
     }
 }

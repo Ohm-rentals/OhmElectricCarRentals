@@ -69,7 +69,7 @@ public class CarImage implements Serializable {
     }
 
 
-    public void imageIoWrite(String carID) {
+    public void imageIoWrite(int carID) {
         String completeFileName = carID + "-" + this.fileName + "." + this.extension;
         try {
             new File(locationPath + carID).mkdirs();

@@ -41,13 +41,13 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <TableView prefHeight="588.0" prefWidth="469.0" VBox.vgrow="ALWAYS">
+                        <TableView fx:id="usersTableView" prefHeight="588.0" prefWidth="469.0" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn prefWidth="49.0" text="#ID" />
-                              <TableColumn prefWidth="54.0" text="From" />
-                              <TableColumn prefWidth="50.0" text="To" />
-                              <TableColumn prefWidth="45.0" text="Car" />
-                              <TableColumn prefWidth="55.0" text="Pick Up" />
+                              <TableColumn fx:id="typeTableColumn" prefWidth="49.0" text="Type" />
+                              <TableColumn fx:id="idTableColumn" prefWidth="66.0" text="ID#" />
+                              <TableColumn fx:id="nameTableColumn" prefWidth="83.0" text="Name" />
+                              <TableColumn fx:id="lastNameTableColumn" minWidth="0.0" prefWidth="95.0" text="Last Name" />
+                              <TableColumn fx:id="emailTableColumn" prefWidth="175.0" text="e-mail" />
                            </columns>
                            <VBox.margin>
                               <Insets />
@@ -167,13 +167,13 @@
                   </VBox>
                   <HBox fx:id="kindHBox" alignment="TOP_CENTER" spacing="30.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Admin">
+                        <RadioButton fx:id="admin" mnemonicParsing="false" text="Admin">
                            <toggleGroup>
-                              <ToggleGroup fx:id="User" />
+                              <ToggleGroup fx:id="kindToggle" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Front Desk" toggleGroup="$User" />
-                        <RadioButton mnemonicParsing="false" selected="true" text="Customer" toggleGroup="$User" />
+                        <RadioButton fx:id="frontDesk" mnemonicParsing="false" text="Front Desk" toggleGroup="$kindToggle" />
+                        <RadioButton fx:id="customer" mnemonicParsing="false" selected="true" text="Customer" toggleGroup="$kindToggle" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
@@ -190,7 +190,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </HBox>
-                        <HBox fx:id="createAccountHBox11" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpdate" prefHeight="30.0" prefWidth="90.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                        <HBox fx:id="createAccountHBox11" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onDelete" prefHeight="30.0" prefWidth="90.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
                            <children>
                               <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete">
                                  <font>
@@ -214,6 +214,11 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="449.0">
+                     <children>
+                        <Text fx:id="errorText" fill="#ff0606" strokeType="OUTSIDE" strokeWidth="0.0" text="errror text" />
                      </children>
                   </HBox>
                </children>

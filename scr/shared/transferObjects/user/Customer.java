@@ -6,18 +6,9 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 
-public class Customer extends User implements Serializable
-{
-  private int customerId;
+public class Customer extends User implements Serializable {
   private DriverLicense driverLicenseNo;
 
-  public Customer(String fName, String lName, Address address, PhoneNo phoneNo,
-      Password password, Email email, Date dob, DriverLicense driverLicenseNo, int id)
-  {
-    super(fName, lName, address, phoneNo, password, email,dob);
-    this.driverLicenseNo = driverLicenseNo;
-    this.customerId = id;
-  }
   public Customer(String fName, String lName, Address address, PhoneNo phoneNo,
       Password password, Email email,Date dob, DriverLicense driverLicenseNo)
   {
@@ -25,20 +16,25 @@ public class Customer extends User implements Serializable
     this.driverLicenseNo = driverLicenseNo;
   }
 
-  public int getCustomerId()
+  public Customer(int userID, String fName, String lName, Address address, PhoneNo phoneNo,
+                  Password password, Email email,Date dob, DriverLicense driverLicenseNo)
   {
-    return customerId;
+    super(userID, fName, lName, address, phoneNo, password, email,dob);
+    this.driverLicenseNo = driverLicenseNo;
   }
 
-  public DriverLicense getDriverLicenseNo()
+
+
+  public String getDriverLicenseNo()
   {
-    return driverLicenseNo;
+    return driverLicenseNo.getLicense();
   }
 
-  @Override public String toString()
-  {
-    return "Customer{" + "customerId=" + customerId + ", driverLicenseNo='"
-        + driverLicenseNo + '\'' + '}';
+  @Override
+  public String toString() {
+    return super.toString() + "Customer{" +
+            "driverLicenseNo=" + driverLicenseNo +
+            '}';
   }
 
   @Override public LoginType getType()

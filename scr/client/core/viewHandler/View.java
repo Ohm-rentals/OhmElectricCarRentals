@@ -13,6 +13,7 @@ public enum View {
     SEARCH("searchView/searchView.fxml");
 
 
+
     private final String path;
 
     private final String startPath = "../../views/";

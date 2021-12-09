@@ -25,18 +25,18 @@ public class Reservation implements Serializable
         "end date is before start or km start is bigger than km end");
   }
 
-  public Reservation(Timestamp start, Timestamp end, int kmStart,
-      int kmEnd, int customerId, int carId, int reservationId)
+  public Reservation(int reservationId, Timestamp start, Timestamp end, int kmStart,
+      int kmEnd, int customerId, int carId)
   {
     if (start.before(end) && kmStart < kmEnd)
     {
+      this.reservationId = reservationId;
       this.kmStart= kmStart;
       this.kmEnd = kmEnd;
       this.start = start;
       this.end = end;
       this.customerId = customerId;
       this.carId = carId;
-      this.reservationId=reservationId;
     }
     else throw new IllegalArgumentException(
         "end date is before start or km start is bigger than km end");
@@ -110,5 +110,18 @@ public class Reservation implements Serializable
   public void setKmEnd(int kmEnd)
   {
     this.kmEnd = kmEnd;
+  }
+
+  @Override
+  public String toString() {
+    return "Reservation{" +
+            "start=" + start +
+            ", end=" + end +
+            ", reservationId=" + reservationId +
+            ", customerId=" + customerId +
+            ", carId=" + carId +
+            ", kmStart=" + kmStart +
+            ", kmEnd=" + kmEnd +
+            '}';
   }
 }

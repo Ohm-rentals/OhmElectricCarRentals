@@ -83,8 +83,10 @@ public class CreateAccountViewController implements ViewController {
         zipTextField.textProperty().bind(createAccountViewModel.getAddressZipProperty().asString());
         createAccountViewModel.DOBProperty().bind(DOBDatePicker.styleProperty());
         errorText.textProperty().bindBidirectional(createAccountViewModel.errorTextProperty());
+
         kindHBox.setVisible(personal.getKind().equals(LoginType.ADMIN));
         messageText.setVisible(personal.getKind().equals(LoginType.NO_ACCESS));
+
         toggleGroupValue = ((RadioButton) userToggle.getSelectedToggle()).getText();
     }
 
@@ -105,6 +107,8 @@ public class CreateAccountViewController implements ViewController {
             try {
                 Password password = new Password(passwordPasswordField.getText());
                 createAccountViewModel.createAccount(password, getKind());
+               // Window window = firstNameTextField.getScene().getWindow();
+             //   window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
             } catch (Exception e) {
                 errorText.setText(e.getMessage());
             }
@@ -116,10 +120,9 @@ public class CreateAccountViewController implements ViewController {
     private LoginType getKind() {
         switch (((RadioButton) userToggle.getSelectedToggle()).getText()) {
             case "Admin" : return LoginType.ADMIN;
-            case "Font Desk" : return LoginType.FRONT_DESK;
             case "Customer" : return LoginType.CUSTOMER;
+            default: return LoginType.FRONT_DESK;
         }
-        return null;
     }
 
     private boolean equalPasswords() { //change to through errors

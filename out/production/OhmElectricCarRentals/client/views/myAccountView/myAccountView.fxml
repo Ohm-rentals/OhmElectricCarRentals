@@ -4,10 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -112,45 +110,55 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <HBox fx:id="kindHBox" alignment="TOP_CENTER" spacing="30.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Admin">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="User" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Front Desk" toggleGroup="$User" />
-                        <RadioButton mnemonicParsing="false" selected="true" text="Customer" toggleGroup="$User" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
-                     <children>
-                        <HBox fx:id="createAccountHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onCancel" prefHeight="30.0" prefWidth="160.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="449.0">
                            <children>
-                              <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="14.0" />
-                                 </font>
-                              </Text>
+                              <Text fx:id="errorText" fill="#ff0606" strokeType="OUTSIDE" strokeWidth="0.0" text="errror text" />
                            </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </HBox>
-                        <HBox fx:id="createAccountHBox1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpdate" prefHeight="30.0" prefWidth="160.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Update">
-                                 <font>
-                                    <Font name="Arial Rounded MT Bold" size="14.0" />
-                                 </font>
-                              </Text>
+                              <HBox fx:id="createAccountHBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onCancel" prefHeight="30.0" prefWidth="90.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
+                              <HBox fx:id="createAccountHBox1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onUpdate" prefHeight="30.0" prefWidth="90.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Update">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
+                              <HBox fx:id="createAccountHBox11" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onDeleteAccount" prefHeight="30.0" prefWidth="90.0" spacing="60.0" style="-fx-background-color: #5CD85A#5CD85A; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Text fill="#363333" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete">
+                                       <font>
+                                          <Font name="Arial Rounded MT Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
                            </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

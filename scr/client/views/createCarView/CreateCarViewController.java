@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -30,6 +31,7 @@ public class CreateCarViewController implements ViewController {
     @FXML private TextField makeTextField, modelTextField, licenseTextField, yearTextField, seatsTextField, rangeTextField, kmTextField, priceTextField;
     @FXML private ComboBox modelComboBox;
     @FXML private Spinner<String> yearSpinner;
+    @FXML private Text errorText;
 
     private ViewHandler viewHandler;
     private CreateCarViewModel createCarViewModel;
@@ -46,8 +48,16 @@ public class CreateCarViewController implements ViewController {
         addOnePhoto.setOnAction(actionEvent -> addPhoto(oneImageView,1));
         addTowPhoto.setOnAction(actionEvent -> addPhoto(twoImageView,2));
         addThreePhoto.setOnAction(actionEvent -> addPhoto(threeImageView,3));
-
         makeTextField.textProperty().bindBidirectional(createCarViewModel.getMakeTextField());
+        makeTextField.textProperty().bindBidirectional(createCarViewModel.makeTextFieldProperty());
+        modelTextField.textProperty().bindBidirectional(createCarViewModel.modelTextFieldProperty());
+        licenseTextField.textProperty().bindBidirectional(createCarViewModel.licenseTextFieldProperty());
+        yearTextField.textProperty().bindBidirectional(createCarViewModel.yearTextFieldProperty());
+        seatsTextField.textProperty().bindBidirectional(createCarViewModel.seatsTextFieldProperty());
+        rangeTextField.textProperty().bindBidirectional(createCarViewModel.rangeTextFieldProperty());
+        kmTextField.textProperty().bindBidirectional(createCarViewModel.kmTextFieldProperty());
+        priceTextField.textProperty().bindBidirectional(createCarViewModel.priceTextFieldProperty());
+        errorText.textProperty().bindBidirectional(createCarViewModel.errorMessageProperty());
     }
 
     public void onClose(MouseEvent mouseEvent) {

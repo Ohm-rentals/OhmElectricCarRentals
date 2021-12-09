@@ -1,5 +1,6 @@
 package client.views.extraObjectsView.carAd;
 
+import client.core.ViewModelFactory;
 import client.core.viewHandler.ViewHandler;
 import client.views.extraObjectsView.ExtraController;
 import javafx.event.ActionEvent;
@@ -25,6 +26,11 @@ public class CarController implements ExtraController {
 
     @Override
     public void init(ViewHandler viewHandler) {
+
+    }
+
+    @Override
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
 
     }
 }

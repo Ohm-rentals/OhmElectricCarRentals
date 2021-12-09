@@ -8,18 +8,10 @@ import java.time.LocalDate;
 
 public class FrontDesk extends User implements Serializable
 {
-  private int empId;
+
   private Ssn ssn;
   private Address workAddress;
 
-  public FrontDesk(String fName, String lName, Address personalAddress, PhoneNo phoneNo,
-      Password password, Email email, Date dob, Ssn ssn, Address workAddress, int empId)
-  {
-    super(fName, lName, personalAddress, phoneNo, password, email, dob);
-    this.empId = empId;
-    this.ssn = ssn;
-    this.workAddress=workAddress;
-  }
 
   public FrontDesk(String fName, String lName, Address personalAddress, PhoneNo phoneNo,
       Password password, Email email,Date dob, Ssn ssn, Address workAddress)
@@ -29,20 +21,24 @@ public class FrontDesk extends User implements Serializable
     this.workAddress=workAddress;
   }
 
-  public int getEmpId()
+  public FrontDesk(int userID, String fName, String lName, Address personalAddress, PhoneNo phoneNo,
+                   Password password, Email email,Date dob, Ssn ssn, Address workAddress)
   {
-    return empId;
+    super(userID, fName, lName, personalAddress, phoneNo, password, email, dob);
+    this.ssn = ssn;
+    this.workAddress=workAddress;
   }
 
-  public Ssn getSsn()
+
+  public String getSsn()
   {
-    return ssn;
+    return ssn.getSsn();
   }
 
 
   @Override public String toString()
   {
-    return "FrontDesk{" + "empId=" + empId + ", ssn='" + ssn + '\'' + '}';
+    return "FrontDesk{" + "empId=" +  ", ssn='" + ssn + '\'' + '}';
   }
 
   @Override public LoginType getType()

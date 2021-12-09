@@ -1,5 +1,6 @@
 package shared.transferObjects.user;
 
+import javafx.css.CssParser;
 import shared.transferObjects.Address;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.time.Period;
 
 public abstract class User implements Serializable
 {
+  private int userID;
   private String fName, lName;
   private Password password;
   private Email email;
@@ -37,24 +39,44 @@ public abstract class User implements Serializable
     }
   }
 
+  public User(int userID, String fName, String lName, Address address, PhoneNo phoneNo,
+              Password password, Email email, Date dob)
+  {
+    this.userID = userID;
+    this.fName = fName;
+    this.lName = lName;
+    this.address = address;
+    this.phoneNo = phoneNo;
+    this.password = password;
+    this.email = email;
+    if (hasValidDob(dob.toLocalDate()))
+    {
+      this.dob = dob;
+    }
+    else
+    {
+      throw new IllegalArgumentException("age is not in range of 18-112");
+    }
+  }
+
   public abstract LoginType getType();
 
-  public String getfName()
+  public String getFName()
   {
     return fName;
   }
 
-  public void setfName(String fName)
+  public void setFName(String fName)
   {
     this.fName = fName;
   }
 
-  public String getlName()
+  public String getLName()
   {
     return lName;
   }
 
-  public void setlName(String lName)
+  public void setLName(String lName)
   {
     this.lName = lName;
   }
@@ -79,9 +101,9 @@ public abstract class User implements Serializable
     this.password = password;
   }
 
-  public Email getEmail()
+  public String getEmail()
   {
-    return email;
+    return email.getEmail();
   }
 
   public void setEmail(Email email)
@@ -104,6 +126,9 @@ public abstract class User implements Serializable
     return dob;
   }
 
+  public int getUserID() {
+    return userID;
+  }
 
   public String getDobAsString()
   {
@@ -121,11 +146,18 @@ public abstract class User implements Serializable
     return true;
   }
 
-  @Override public String toString()
-  {
-    return "User{" + "fName='" + fName + '\'' + ", lName='" + lName + '\''
-        + ", password=" + password + ", email=" + email + ", address=" + address
-        + ", phoneNo=" + phoneNo + ", dob=" + dob + '}';
+  @Override
+  public String toString() {
+    return "User{" +
+            "userID=" + userID +
+            ", fName='" + fName + '\'' +
+            ", lName='" + lName + '\'' +
+            ", password=" + password +
+            ", email=" + email +
+            ", address=" + address +
+            ", phoneNo=" + phoneNo +
+            ", dob=" + dob +
+            '}';
   }
 }
 

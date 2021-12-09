@@ -1,17 +1,18 @@
 package shared.transferObjects;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class Car implements Serializable
-{
+public class Car implements Serializable {
+
   private String make, model, type;
   private PlateNo plateNo;
   private int year, seats, range, km, carId;
   private double price;
-  private Address pickupPoint;
+  private String pickupPoint;
 
   public Car(String make, String model, int year, double price, String type,
-      int range, int km, Address pickupPoint, PlateNo plateNo)
+             int range, int km, String pickupPoint, PlateNo plateNo)
   {
     this.make = make;
     this.model = model;
@@ -20,14 +21,14 @@ public class Car implements Serializable
     this.type = type;
     this.range = range;
     this.km = km;
-    this.pickupPoint=pickupPoint;
     this.plateNo = plateNo;
-
+    this.pickupPoint = pickupPoint;
   }
 
-  public Car(String make, String model, int year, double price, String type,
-      int range, int km,Address pickupPoint, PlateNo plateNo, int  carId)
+  public Car(int  carId, String make, String model, int year, double price, String type,
+      int range, int km, String pickupPoint, PlateNo plateNo)
   {
+    this.carId = carId;
     this.make = make;
     this.model = model;
     this.year = year;
@@ -35,9 +36,8 @@ public class Car implements Serializable
     this.type = type;
     this.range = range;
     this.km = km;
-    this.pickupPoint=pickupPoint;
     this.plateNo = plateNo;
-    this.carId=carId;
+    this.pickupPoint = pickupPoint;
   }
 
   public String getMake()
@@ -140,13 +140,30 @@ public class Car implements Serializable
     this.carId = carId;
   }
 
-  public Address getPickupPoint()
+  public String getPickupPoint()
   {
     return pickupPoint;
   }
 
-  public void setPickupPoint(Address pickupPoint)
+  public void setPickupPoint()
   {
     this.pickupPoint = pickupPoint;
+  }
+
+  @Override
+  public String toString() {
+    return "Car{" +
+            "make='" + make + '\'' +
+            ", model='" + model + '\'' +
+            ", type='" + type + '\'' +
+            ", plateNo=" + plateNo +
+            ", year=" + year +
+            ", seats=" + seats +
+            ", range=" + range +
+            ", km=" + km +
+            ", carId=" + carId +
+            ", price=" + price +
+            ", pickupPoint=" + pickupPoint +
+            '}';
   }
 }

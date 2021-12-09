@@ -14,7 +14,9 @@ public class PhoneNo implements Serializable
     }
     else
     {
+      System.out.println(number);
       throw new IllegalArgumentException(
+
           "The phone number contains characters and/or is not 8 digits long");
     }
   }

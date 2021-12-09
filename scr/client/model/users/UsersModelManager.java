@@ -2,13 +2,14 @@ package client.model.users;
 
 
 import client.model.personal.Personal;
-import client.networking.User.UsersClient;
+import client.networking.user.UsersClient;
 import shared.transferObjects.user.Email;
 import shared.transferObjects.user.Password;
 import shared.transferObjects.user.User;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.List;
 
 public class UsersModelManager implements UsersModel {
 
@@ -20,7 +21,6 @@ public class UsersModelManager implements UsersModel {
     public UsersModelManager(UsersClient usersClient) {
         support = new PropertyChangeSupport(this);
         this.usersClient = usersClient;
-        usersClient.connectUser();
     }
 
     @Override
@@ -30,29 +30,40 @@ public class UsersModelManager implements UsersModel {
             support.firePropertyChange("LOGIN_ERROR", null, null);
         } else {
             Personal personal = Personal.getPersonal();
-            System.out.println(identity.getfName());
-            System.out.println(identity.getEmail());
-            System.out.println(identity.getType());
-            System.out.println("Esperado");
             personal.setIdentity(identity);
             support.firePropertyChange("LOGIN_SUCCESS", null, identity);
         }
     }
 
 
+
     @Override
     public void createUser(User user) {
+        System.out.println("ok desde model");
         usersClient.createUser(user);
     }
 
     @Override
-    public void editUser(String id, User user) {
-        usersClient.editUser(id, user);
+    public void editUser(int userID, User user) {
+        System.out.println("desde model");
+        usersClient.editUser(userID, user);
+
     }
 
     @Override
-    public void deleteUser(String id) {
-        usersClient.deleteUser(id);
+    public void deleteUser(int userID) {
+        System.out.println("from model");
+        usersClient.deleteUser(userID);
+    }
+
+    @Override
+    public boolean existUser(Email email) {
+        return usersClient.existUser(email);
+    }
+
+    @Override
+    public List<User> getUsersList() {
+        return usersClient.getUsersList();
     }
 
     @Override

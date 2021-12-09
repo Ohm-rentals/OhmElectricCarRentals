@@ -1,6 +1,8 @@
 package client.views.createAccountView;
 
 
+import client.model.users.UsersModel;
+import client.views.utils.other.Error;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,9 +23,10 @@ public class CreateAccountViewModel {
     private StringProperty firstName, lastName, email, phone, license, addressStreet, addressNumber, addressCity, addressCountry, DOB, errorText;
     private IntegerProperty addressZip;
     private Password password;
+    private UsersModel usersModel;
 
-
-    public CreateAccountViewModel() {
+    public CreateAccountViewModel(UsersModel usersModel) {
+        this.usersModel = usersModel;
         firstName = new SimpleStringProperty();
         lastName = new SimpleStringProperty();
         email = new SimpleStringProperty();
@@ -39,51 +42,57 @@ public class CreateAccountViewModel {
     }
 
     public void createAccount(Password password, LoginType kind) {
-        System.out.println(phone.getValue() + "Phone number");
-        User newUser = null;
-        System.out.println("Starting to create");
-        try {
-        Address address = new Address(addressCountry.getValue(),
-                                      addressCity.getValue(),
-                                      addressStreet.getValue(),
-                                      addressNumber.getValue(),
-                                      addressZip.getValue());
+        if (!usersModel.existUser(new Email(email.getValue()))) {
+
+            User newUser = null;
+            System.out.println("Starting to create");
+            System.out.println(kind);
+            try {
+                Address address = new Address(addressCountry.getValue(),
+                        addressCity.getValue(),
+                        addressStreet.getValue(),
+                        addressNumber.getValue(),
+                        addressZip.getValue());
 
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate DOB = LocalDate.parse("16/08/2000",formatter);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate DOB = LocalDate.parse("16/08/2000", formatter);
 
-        switch (kind) {
-            case CUSTOMER -> newUser = new Customer(firstName.getValue(),
-                                        lastName.getValue(),
-                                        address,
-                                        new PhoneNo(phone.getValue()),
-                                        password,
-                                        new Email(email.getValue()),
-                                        Date.valueOf(DOB), // Please lets change this dates
-                                        new DriverLicense(license.getValue()));
-            case FRONT_DESK -> newUser = new FrontDesk(firstName.getValue(),
-                                         lastName.getName(),
-                                         address,
-                                         new PhoneNo(phone.getValue()),
-                                         password, new Email(email.getValue()),
-                                         Date.valueOf(DOB),
-                                    null,
-                             null);
-            case ADMIN -> newUser = new Admin(firstName.getValue(),
-                                        lastName.getName(),
-                                        address,
-                                        new PhoneNo(phone.getValue()),
-                                        password, new Email(email.getValue()),
-                                        Date.valueOf(DOB),
-                                        null);
+                switch (kind) {
+                    case CUSTOMER -> newUser = new Customer(firstName.getValue(),
+                            lastName.getValue(),
+                            address,
+                            new PhoneNo(phone.getValue()),
+                            password,
+                            new Email(email.getValue()),
+                            Date.valueOf(DOB), // Please lets change this dates
+                            new DriverLicense(license.getValue()));
+                    case FRONT_DESK -> newUser = new FrontDesk(firstName.getValue(),
+                            lastName.getValue(),
+                            address,
+                            new PhoneNo(phone.getValue()),
+                            password, new Email(email.getValue()),
+                            Date.valueOf(DOB),
+                            new Ssn("0000000000"),
+                            address);
+                    case ADMIN -> newUser = new Admin(firstName.getValue(),
+                            lastName.getValue(),
+                            address,
+                            new PhoneNo(phone.getValue()),
+                            password, new Email(email.getValue()),
+                            Date.valueOf(DOB),
+                            new Ssn("0000000000"));
+                }
+
+                usersModel.createUser(newUser);
+
+            } catch (Exception e) {
+                errorText.set(e.getLocalizedMessage());
+            }
+            errorText.set("");
+        } else {
+            errorText.set(Error.USER_EXIST.getMessage());
         }
-
-
-        } catch (Exception e) {
-            errorText.set(e.getLocalizedMessage());
-        }
-        errorText.set("");
     }
 
      StringProperty firstNameProperty() {return firstName;}

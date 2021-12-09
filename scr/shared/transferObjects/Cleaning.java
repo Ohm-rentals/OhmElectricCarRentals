@@ -1,8 +1,5 @@
 package shared.transferObjects;
 
-import maybeFolder.Date;
-import maybeFolder.Time;
-
 import java.sql.Timestamp;
 
 public class Cleaning extends Status

@@ -66,12 +66,13 @@ public class LoginViewController implements ViewController {
     }
 
     public void login(MouseEvent mouseEvent) {
-        //loginViewModel.login(textFieldEmail.getText(), passwordFieldPassword.getText());
-        loginViewModel.login("simus@gmail.com", "Vlad1234");
+        loginViewModel.login(textFieldEmail.getText(), passwordFieldPassword.getText());
+      //  loginViewModel.login("simus@gmail.com", "Vlad1234");
+     //   loginViewModel.login("alfonso@gmail.com", "Alfonso1234");
     }
 
     public void requestPassword(MouseEvent mouseEvent) {
-        loginViewModel.login("vlad@gmail.com", "Simus123");
+     //   loginViewModel.login("vlad@gmail.com", "Simus1234");
     }
 
     private void closeWindow() {

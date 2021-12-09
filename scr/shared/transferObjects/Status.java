@@ -1,7 +1,5 @@
 package shared.transferObjects;
 
-import maybeFolder.Date;
-import maybeFolder.Time;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

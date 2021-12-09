@@ -1,15 +1,18 @@
 package server.DataAccess;
 
 import shared.transferObjects.Car;
+import shared.transferObjects.PlateNo;
 
 import java.util.Date;
 import java.util.List;
 
 public interface CarsData {
-    void storeCar(Car car);
-    void updateCar(String carId, Car car);
+    int storeCar(Car car);
+    void updateCar(int carId, Car car);
     List<Car> getListCar();
+    Car getCarById(int carID);
+    int getCarIdByPlate(PlateNo plateNo);
    // List<Car> getListCar(Parameters parameters) FOr Later
-    boolean isAvailable(String carId, Date from, Date to);
-    void deleteCar(String carId);
+    boolean isAvailable(int carId, Date from, Date to);
+    void deleteCar(int carId);
 }

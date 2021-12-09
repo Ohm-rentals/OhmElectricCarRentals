@@ -1,5 +1,6 @@
 package client.views.extraObjectsView.menuBar;
 
+import client.core.ViewModelFactory;
 import client.core.viewHandler.View;
 import client.core.viewHandler.ViewHandler;
 import client.model.personal.Personal;
@@ -36,7 +37,7 @@ public class MenuBarController  implements ExtraController {
         text4.setText("");
         personal = Personal.getPersonal();
         if (personal.getStatus().equals(Stat.ONLINE)) {
-            nameText.setText(personal.getIdentity().getfName());
+            nameText.setText(personal.getIdentity().getFName());
             welcomeHBox.setVisible(true);
             logText.setText("|Logout|");
             text1.setText("|My Account|");
@@ -44,6 +45,11 @@ public class MenuBarController  implements ExtraController {
             text3.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Reservations|");
             text4.setText(personal.getKind().equals(LoginType.CUSTOMER) ? "" : "|Manage Cars|");
         }
+
+    }
+
+    @Override
+    public void init(ViewHandler viewHandler, ViewModelFactory viewModelFactory) {
 
     }
 
