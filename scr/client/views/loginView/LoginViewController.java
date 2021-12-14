@@ -67,6 +67,8 @@ public class LoginViewController implements ViewController {
 
     public void login(MouseEvent mouseEvent) {
         loginViewModel.login(textFieldEmail.getText(), passwordFieldPassword.getText());
+        System.out.println(textFieldEmail.getText() + "view");
+        System.out.println(passwordFieldPassword + "view");
       //  loginViewModel.login("simus@gmail.com", "Vlad1234");
      //   loginViewModel.login("alfonso@gmail.com", "Alfonso1234");
     }

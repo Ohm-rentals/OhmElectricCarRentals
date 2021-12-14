@@ -88,7 +88,8 @@ public class RMIServerImp implements RMIServer, RMIUserServer, RMICarsServer, RM
 
     @Override
     public User login(Email email, Password password) throws RemoteException {
-
+        System.out.println(email.getEmail() + " server rmi");
+        System.out.println(password.getPassword() + "server rmi");
         return usersManager.login(email, password);
     }
 

@@ -5,10 +5,10 @@ import java.sql.*;
 
 public class DataConnection {
 
-    static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
-    static final String USER = "postgres";
-    static final String PASSWORD = "1234";
-    static final String SCHEMA = "newOhmFour";
+    static final String DB_URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/";
+    static final String USER = "dtiqzmpo";
+    static final String PASSWORD = "DD9MFQuiTIB_7ZDsqk17ngu9dAh-Sefh";
+    static final String SCHEMA = "ohm";
 
     private static DataConnection instance = new DataConnection();
 

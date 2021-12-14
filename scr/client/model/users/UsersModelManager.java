@@ -26,6 +26,8 @@ public class UsersModelManager implements UsersModel {
     @Override
     public void login(Email email, Password password) {
         identity = usersClient.login(email, password);
+        System.out.println(email.getEmail() + " client model");
+        System.out.println(password.getPassword() + "client model");
         if (identity == null) {
             support.firePropertyChange("LOGIN_ERROR", null, null);
         } else {

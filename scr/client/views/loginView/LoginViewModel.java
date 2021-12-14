@@ -27,6 +27,8 @@ public class LoginViewModel implements Subject {
 
     public void login(String emailString, String passwordString) {
         try {
+            System.out.println(emailString + "view model");
+            System.out.println(passwordString + "View model");
             Email email = new Email(emailString);
             Password password = new Password(passwordString);
             usersModel.login(email, password);

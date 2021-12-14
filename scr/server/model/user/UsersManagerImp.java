@@ -18,6 +18,8 @@ public class UsersManagerImp implements UsersManager {
 
     @Override
     public User login(Email email, Password password) {
+        System.out.println(email.getEmail() + " server model");
+        System.out.println(password.getPassword() + "server model");
         return usersData.login(email, password);
     }
 

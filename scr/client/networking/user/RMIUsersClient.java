@@ -31,6 +31,8 @@ public class RMIUsersClient implements UsersClient, ClientCallback {
     @Override
     public User login(Email email, Password password) {
         try {
+            System.out.println(email.getEmail() + " client rmi");
+            System.out.println(password.getPassword() + "client rmi");
             return userServer.login(email, password);
         } catch (RemoteException e) {
             e.printStackTrace();

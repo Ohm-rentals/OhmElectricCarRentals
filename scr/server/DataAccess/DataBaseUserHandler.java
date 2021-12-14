@@ -19,6 +19,8 @@ public class DataBaseUserHandler implements UsersData{
         System.out.println("Aca llego");
         User user = getUserByEmail(email);
         if (user == null) return null;
+        System.out.println(email.getEmail() + " Database");
+        System.out.println(password.getPassword() + " database");
         return (user.getPassword().equals(password)) ? user : null;
     }
 

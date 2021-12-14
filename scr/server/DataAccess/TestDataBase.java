@@ -66,6 +66,12 @@ public class TestDataBase {
 
             FrontDesk alfonso = new FrontDesk("Alfonso", "Ridao", address2, phoneNo2,
                     password2, email2, date4, ssn1, address1);
+
+
+            UsersData usersData = new DataBaseUserHandler();
+            usersData.storeUser(simus);
+            usersData.storeUser(chico);
+            usersData.storeUser(vlad);
 /*
             UserModelDatabase userModelDatabase = new UserModelDatabaseImpl();
 
@@ -91,7 +97,8 @@ public class TestDataBase {
 
 
             System.out.println(loginModelDatabase.login(email1,password1));
-*/
+*//*
+
 
              UsersData usersData = new DataBaseUserHandler();
              usersData.deleteUser(3005);
@@ -103,6 +110,7 @@ public class TestDataBase {
 
             usersData.deleteUser(3002);
 
+*/
 /*
 
           // usersData.deleteUser(3001);
@@ -128,7 +136,8 @@ public class TestDataBase {
             Reservation reservation = new Reservation(start, end, 23, 54, 3004, 1000);
             ReserveData reserveData = new DataBaseReservationHandler();
             reserveData.storeReservation(reservation);
-*/
+*//*
+
 
 
 
@@ -139,14 +148,17 @@ public class TestDataBase {
 
 
 
-            /*
+            */
+/*
             Car car = new Car("Tesla", "S", 2001,1999, "Sedan", 2100, 1222, "Aarhus", new PlateNo("CD44444"));
             CarsData carsData = new DataBaseCarsHandler();
             carsData.storeCar(car);
 
 
-             */
+             *//*
 
+
+*/
 
         }
 
