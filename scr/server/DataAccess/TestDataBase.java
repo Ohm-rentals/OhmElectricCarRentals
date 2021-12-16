@@ -56,7 +56,7 @@ public class TestDataBase {
                     email1, date1, ssn1);
 
             FrontDesk chico = new FrontDesk("Christopher", "Gadgaard", address2, phoneNo2,
-                    password2, email3, date2, ssn3,address1);
+                    password2, email4, date2, ssn3,address1);
 
             Admin christopher = new Admin("Christopher", "Gadgaard", address2, phoneNo2,
                     password2, email2, date2, ssn2);
@@ -68,10 +68,22 @@ public class TestDataBase {
                     password2, email2, date4, ssn1, address1);
 
 
-            UsersData usersData = new DataBaseUserHandler();
+    /*       UsersData usersData = new DataBaseUserHandler();
             usersData.storeUser(simus);
             usersData.storeUser(chico);
             usersData.storeUser(vlad);
+
+            PlateNo plateNo = new PlateNo("aa12345");
+
+            Car car = new Car("bmw","M3",2020,2000,"van",500,1000,"Horsens",plateNo);
+            CarsData carsData = new DataBaseCarsHandler();
+            carsData.storeCar(car);*/
+
+           Reservation reservation = new Reservation(new Timestamp(1999,1,1,12,12,12,12),new Timestamp(1999,1,2,12,12,12,12),3000,3001,3002,1000);
+            ReserveData reserveData = new DataBaseReservationHandler();
+            reserveData.storeReservation(reservation);
+
+
 /*
             UserModelDatabase userModelDatabase = new UserModelDatabaseImpl();
 

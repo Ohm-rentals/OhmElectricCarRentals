@@ -5,8 +5,8 @@ import java.sql.Timestamp;
 public class Cleaning extends Status
 {
 
-  public Cleaning(int carId, int empId, Timestamp start, Timestamp end)
+  public Cleaning(int carId, Timestamp start, Timestamp end)
   {
-    super(carId, empId, start, end);
+    super(carId, start, end);
   }
 }

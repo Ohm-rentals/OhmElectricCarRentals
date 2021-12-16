@@ -7,9 +7,9 @@ public class Other extends Status
 {
   private String description;
 
-  public Other(int carId, int empId, Timestamp start, Timestamp end, String description)
+  public Other(int carId, Timestamp start, Timestamp end, String description)
   {
-    super(carId, empId, start, end);
+    super(carId, start, end);
     this.description=description;
   }
 

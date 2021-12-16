@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 public class DataBaseCarsHandler implements CarsData{
+
     @Override
     public int storeCar(Car car) {
         String query = "INSERT INTO \"" + DataConnection.SCHEMA + "\".car (make, model, year, price, type, range, km, plate_no, location) VALUES (?,?,?,?,?,?,?,?,?)";

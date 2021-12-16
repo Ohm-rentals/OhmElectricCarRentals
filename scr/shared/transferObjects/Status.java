@@ -7,17 +7,10 @@ import java.sql.Timestamp;
 public abstract class Status implements Serializable
 {
   private Timestamp start, end;
-  private int carId, empId;
+  private int carId;
 
-  public Status(int carId,int empId,Timestamp start, Timestamp end){
+  public Status(int carId,Timestamp start, Timestamp end){
     this.carId=carId;
-    this.empId=empId;
-
-  }
-
-  public int getEmpId()
-  {
-    return empId;
   }
 
   public Timestamp getEnd()
@@ -40,11 +33,6 @@ public abstract class Status implements Serializable
     this.end = end;
   }
 
-  public void setEmpId(int empId)
-  {
-    this.empId = empId;
-  }
-
   public void setCarId(int carId)
   {
     this.carId = carId;
@@ -58,6 +46,6 @@ public abstract class Status implements Serializable
   @Override public String toString()
   {
     return "Status{" + "start=" + start + ", end=" + end + ", carId=" + carId
-        + ", empId=" + empId + '}';
+        + '}';
   }
 }
