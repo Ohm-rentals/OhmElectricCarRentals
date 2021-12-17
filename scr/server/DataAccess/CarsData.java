@@ -12,7 +12,6 @@ public interface CarsData {
     List<Car> getListCar();
     Car getCarById(int carID);
     int getCarIdByPlate(PlateNo plateNo);
-   // List<Car> getListCar(Parameters parameters) FOr Later
     boolean isAvailable(int carId, Date from, Date to);
     void deleteCar(int carId);
 }

@@ -4,10 +4,8 @@ import org.postgresql.util.PSQLException;
 import shared.transferObjects.Address;
 import shared.transferObjects.user.*;
 
-import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.Socket;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

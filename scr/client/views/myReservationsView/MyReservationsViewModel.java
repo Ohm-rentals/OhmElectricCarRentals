@@ -34,7 +34,6 @@ public class MyReservationsViewModel {
     }
 
     public void loadUsers() {
-       // List<Reservation> reservationList = reservationModel.getReservationByUserID(identity.getUserID());
         List<Reservation> reservationList = reservationModel.getListReservations(); //Change This
         this.reservations = FXCollections.observableArrayList(reservationList);
     }

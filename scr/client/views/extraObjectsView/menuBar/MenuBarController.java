@@ -60,7 +60,6 @@ public class MenuBarController  implements ExtraController {
 
         if (personal.getStatus().equals(Stat.ONLINE)){
             personal.logOut();
-          //  viewHandler.refreshActualView(); // what should I do when I log out? which view should I GO
             viewHandler.openView(View.SEARCH);
         }
 

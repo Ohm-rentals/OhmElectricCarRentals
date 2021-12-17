@@ -86,7 +86,6 @@ public class CreateCarViewController implements ViewController {
 
     public void onCreateCar(MouseEvent mouseEvent) {
         createCarViewModel.createCar(carImage);
-      //  carImage.imageIoWrite("CarID1");
     }
 
 

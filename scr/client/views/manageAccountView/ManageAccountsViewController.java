@@ -84,7 +84,6 @@ public class ManageAccountsViewController implements ViewController {
         lastNameTextField.textProperty().bindBidirectional(manageAccountsViewModel.lastNameProperty());
         emailTextField.textProperty().bindBidirectional(manageAccountsViewModel.emailProperty());
         phoneTextField.textProperty().bindBidirectional(manageAccountsViewModel.phoneProperty());
-        //  licenseTextField.textProperty().bindBidirectional(manageAccountsViewModel.licenseProperty()); FIX THIS
         streetTextField.textProperty().bindBidirectional(manageAccountsViewModel.streetProperty());
         numberTextField.textProperty().bindBidirectional(manageAccountsViewModel.numberProperty());
         cityTextField.textProperty().bindBidirectional(manageAccountsViewModel.cityProperty());
@@ -94,7 +93,6 @@ public class ManageAccountsViewController implements ViewController {
         rePasswordPasswordField.textProperty().bindBidirectional(manageAccountsViewModel.rePasswordProperty());
         errorText.textProperty().bindBidirectional(manageAccountsViewModel.errorTextProperty());
         kindToggle.selectToggle(setKind(loginType));
-        // DOBDatePicker.converterProperty().bind(manageAccountsViewModel.DOBProperty()); FIX THIS
     }
 
 

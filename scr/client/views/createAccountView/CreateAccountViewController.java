@@ -107,8 +107,6 @@ public class CreateAccountViewController implements ViewController {
             try {
                 Password password = new Password(passwordPasswordField.getText());
                 createAccountViewModel.createAccount(password, getKind());
-               // Window window = firstNameTextField.getScene().getWindow();
-             //   window.fireEvent(new WindowEvent(window,WindowEvent.WINDOW_CLOSE_REQUEST));
             } catch (Exception e) {
                 errorText.setText(e.getMessage());
             }

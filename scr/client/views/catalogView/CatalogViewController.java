@@ -76,17 +76,13 @@ public class CatalogViewController implements ViewController {
 
 
             paneVBox.getChildren().add(newLoadedPane);
-            //  pane.getChildren().add(newLoadedPane);
 
         }
         scrollPane.setContent(paneVBox);
     }
 
     public void logInAction(MouseEvent mouseEvent) {
-      //  @FXML Pane secPane;
-     //   public void loadFxml (ActionEvent event) {
-      //      Pane newLoadedPane =        FXMLLoader.load(getClass().getResource("/application/fxml2.fxml"));
-      //      secPane.getChildren().add(newLoadedPane);
+
         }
 
     public void refreshList(InputMethodEvent inputMethodEvent) {

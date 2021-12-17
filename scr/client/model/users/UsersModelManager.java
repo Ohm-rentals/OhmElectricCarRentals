@@ -41,20 +41,17 @@ public class UsersModelManager implements UsersModel {
 
     @Override
     public void createUser(User user) {
-        System.out.println("ok desde model");
         usersClient.createUser(user);
     }
 
     @Override
     public void editUser(int userID, User user) {
-        System.out.println("desde model");
         usersClient.editUser(userID, user);
 
     }
 
     @Override
     public void deleteUser(int userID) {
-        System.out.println("from model");
         usersClient.deleteUser(userID);
     }
 

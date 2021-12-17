@@ -65,7 +65,7 @@ public class ViewModelFactory {
 
     public SearchViewModel getSearchViewModel() {
         if (searchViewModel == null)
-            return new SearchViewModel();
+            return new SearchViewModel(modelFactory.getCarsModel());
         return searchViewModel;
     }
 

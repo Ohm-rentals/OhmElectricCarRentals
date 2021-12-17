@@ -32,7 +32,6 @@ public class LoginViewController implements ViewController {
 
         this.viewHandler = viewHandler;
         this.loginViewModel = viewModelFactory.getLoginViewModel();
-     //   ((Stage) textFieldEmail.getScene().getWindow()).initStyle(StageStyle.UNDECORATED);
         loginViewModel.addListener("LOGIN_ERROR", this::onErrorLogin);
         loginViewModel.addListener("LOGIN_SUCCESS", this::onSuccessLogin);
 
@@ -44,7 +43,6 @@ public class LoginViewController implements ViewController {
         });
 
     }
-
 
 
     private void onSuccessLogin(PropertyChangeEvent event) {
@@ -67,14 +65,11 @@ public class LoginViewController implements ViewController {
 
     public void login(MouseEvent mouseEvent) {
         loginViewModel.login(textFieldEmail.getText(), passwordFieldPassword.getText());
-        System.out.println(textFieldEmail.getText() + "view");
-        System.out.println(passwordFieldPassword + "view");
-      //  loginViewModel.login("simus@gmail.com", "Vlad1234");
-     //   loginViewModel.login("alfonso@gmail.com", "Alfonso1234");
+
     }
 
     public void requestPassword(MouseEvent mouseEvent) {
-     //   loginViewModel.login("vlad@gmail.com", "Simus1234");
+
     }
 
     private void closeWindow() {

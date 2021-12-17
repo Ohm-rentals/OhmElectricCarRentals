@@ -46,7 +46,7 @@ public class ManageAccountsViewModel {
         errorText = new SimpleStringProperty();
     }
 
-    public void loadUsers() { //CHECK THIS, MAYBE PUT IN THE CONSTRUCTOR
+    public void loadUsers() {
         List<User> userList = usersModel.getUsersList();
         this.users = FXCollections.observableArrayList(userList);
     }

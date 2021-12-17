@@ -42,7 +42,7 @@ public class DataBaseReservationHandler implements ReserveData{
 
     @Override
     public void updateReservation(int resID, Reservation newReservation) {
-        //Working on this
+
     }
 
     @Override

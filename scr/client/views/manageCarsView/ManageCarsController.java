@@ -72,18 +72,7 @@ public class ManageCarsController implements ViewController {
 
         //BINDING////
 
-    //    TO FIX ALL! BIDING NOT WORKING
-        yearTextField.setText("Hola Hola");
-        priceTextField = new TextField("a");
-    //    idText.textProperty().bindBidirectional(manageCarsViewModel.carIDProperty());
-      //  makeText.textProperty().bindBidirectional(manageCarsViewModel.makeProperty());
-      //  modelText.textProperty().bindBidirectional(manageCarsViewModel.modelProperty());
-      //  yearTextField.textProperty().bind(manageCarsViewModel.yearProperty());
-       // priceTextField.textProperty().bind(manageCarsViewModel.priceProperty());
-    //    typeTextField.textProperty().bindBidirectional(manageCarsViewModel.typeProperty());
-     //   rangeTextField.textProperty().bindBidirectional(manageCarsViewModel.rangeProperty());
-      //  kmTextField.textProperty().bindBidirectional(manageCarsViewModel.kmProperty());
-     //   licenseTextField.textProperty().bindBidirectional(manageCarsViewModel.plateNoProperty());
+
     }
 
     public void onCancel(MouseEvent mouseEvent) {

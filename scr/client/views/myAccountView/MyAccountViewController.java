@@ -50,15 +50,15 @@ public class MyAccountViewController implements ViewController {
         this.viewHandler = viewHandler;
         myAccountViewModel = viewModelFactory.getMyAccountViewModel();
         if ((Personal.getPersonal().getKind().equals(LoginType.ADMIN) || Personal.getPersonal().getKind().equals(LoginType.FRONT_DESK))) {
-          //  kindHBox.setVisible(true);
+
             myBox.getChildren().add(new LoadPanel().load("../extraObjectsView/myBusinessInformation/myBusinessInformation.fxml", viewHandler));
         } else {
-          //  kindHBox.setVisible(false);
+
             myBox.getChildren().add(new LoadPanel().load("../myReservationsView/myReservations.fxml", viewHandler, viewModelFactory));
         }
 
         errorText.setText("this is an error text");
-      //  kindHBox.setVisible(Personal.getPersonal().getKind().equals(LoginType.ADMIN) ? true : false);
+
         menuBarHBox.getChildren().add(new LoadPanel().load("../extraObjectsView/menuBar/menuBar.fxml", viewHandler));
         firstNameTextField.setDisable(true);
         lastNameTextField.setDisable(true);
@@ -67,7 +67,6 @@ public class MyAccountViewController implements ViewController {
         lastNameTextField.textProperty().bindBidirectional(myAccountViewModel.lastNameProperty());
         emailTextField.textProperty().bindBidirectional(myAccountViewModel.emailProperty());
         phoneTextField.textProperty().bindBidirectional(myAccountViewModel.phoneProperty());
-      //  licenseTextField.textProperty().bindBidirectional(myAccountViewModel.licenseProperty()); FIX THIS
         streetTextField.textProperty().bindBidirectional(myAccountViewModel.streetProperty());
         numberTextField.textProperty().bindBidirectional(myAccountViewModel.numberProperty());
         cityTextField.textProperty().bindBidirectional(myAccountViewModel.cityProperty());
@@ -88,7 +87,6 @@ public class MyAccountViewController implements ViewController {
 
     public void onUpdate(MouseEvent mouseEvent) {
         myAccountViewModel.onUpdate();
-       // viewHandler.refreshActualView();
     }
 
     public void onDeleteAccount(MouseEvent mouseEvent) {

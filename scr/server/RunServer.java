@@ -10,17 +10,8 @@ import java.rmi.RemoteException;
 
 public class RunServer {
     public static void main(String[] args) throws RemoteException {
-
-
         RMIServer rmiServer = new RMIServerImp(new UsersManagerImp(), new CarsManagerImp(), new ReservationManagerImp());
         rmiServer.startServer();
-
-
-/*
-        RMIUserServerImp rmiUserServerImp = new RMIUserServerImp(new UsersManagerImp());
-        rmiUserServerImp.startServer();
-*/
-
 
     }
 }

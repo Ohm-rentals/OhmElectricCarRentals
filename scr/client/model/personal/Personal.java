@@ -62,14 +62,4 @@ public class Personal {
         return personal;
     }
 
-
-
-    /*
-    private void setMenuBar() {
-        Personal personal = Personal.getPersonal();
-        System.out.println("the status is:" + personal.getStatus());
-        logInText.setText(personal.getStatus().equals(Stat.ONLINE) ? "Settings" : "Login");
-    }
-
-     */
 }

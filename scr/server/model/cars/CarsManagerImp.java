@@ -36,7 +36,6 @@ public class CarsManagerImp implements CarsManager{
     @Override
     public void addCar(Car car, CarImage[] carImages) {
         int carID = carsData.storeCar(car);
-        System.out.println(carID);
         for (CarImage carImage: carImages) {
             if (carImage != null)
                 carImage.imageIoWrite(carID);
